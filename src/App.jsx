@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-// Structure
+// Structure globale
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -47,6 +48,9 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      {/* Gestion de restauration du scroll global */}
+      <ScrollToTop />
+
       {/* La Navbar sera visible sur toutes les pages */}
       <Navbar />
 

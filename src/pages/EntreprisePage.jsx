@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '../components/Hero/Hero';
+import PageCarousel from '../components/PageCarousel';
 import Breadcrumb from '../components/Breadcrumb';
 import CardDesc from '../components/Card/CardDesc';
 import CardGrid from '../components/Card/CardGrid'; // Import de ton composant
@@ -15,15 +15,20 @@ import {
 } from '../data/entreprise';
 
 export default function EntreprisePage() {
+  const carouselSlides = [
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1200', // Example image
+      title: hero.titre,
+      subtitle: hero.sousTitre,
+    }
+  ];
+
   return (
     <div className="bg-white min-h-screen antialiased">
+      <PageCarousel slides={carouselSlides} />
       <Breadcrumb
         items={[{ label: 'Accueil', to: '/' }, { label: 'Entreprise' }]}
-      />
-      
-      <Hero
-        title={hero.titre}
-        subtitle={hero.sousTitre}
       />
 
       <main className="py-[60px] px-6 max-w-[1100px] mx-auto flex flex-col gap-12" id="main-content">

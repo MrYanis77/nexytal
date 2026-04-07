@@ -2,23 +2,29 @@ import React from 'react';
 import { campus } from '../data/campus';
 import CardFormation from '../components/CardFormation';
 import Breadcrumb from '../components/Breadcrumb'; 
-import Hero from '../components/Hero/Hero'; 
+import PageCarousel from '../components/PageCarousel'; 
 
 export default function CampusPage() {
+  const carouselSlides = [
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200', // Example image
+      title: "Nos Campus",
+      subtitle: "Retrouvez-nous dans toute l'Île-de-France. Des infrastructures modernes au service de votre réussite.",
+    }
+  ];
+
   return (
     <div className="bg-white min-h-screen">
+      {/* 1. HERO SECTION */}
+      <PageCarousel slides={carouselSlides} />
+
       {/* Fil d'Ariane */}
       <Breadcrumb
         items={[
           { label: 'Accueil', to: '/' }, 
           { label: 'Nos Campus' }
         ]}
-      />
-
-      {/* 1. HERO SECTION */}
-      <Hero
-        title="Nos Campus"
-        subtitle="Retrouvez-nous dans toute l'Île-de-France. Des infrastructures modernes au service de votre réussite."
       />
 
       {/* 2. GRILLE DES CAMPUS */}

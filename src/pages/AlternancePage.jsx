@@ -7,21 +7,26 @@
  */
 
 import Breadcrumb from '../components/Breadcrumb';
-import Hero from '../components/Hero/Hero';
+import PageCarousel from '../components/PageCarousel';
 import InfoGrid from '../components/Infos/InfoGrid';
 import DetailHeader from '../components/Card/CardJob';
 import StepItem from '../components/Items/StepItem';
 import { hero,benefits, formations, steps } from '../data/alternance';
 
 export default function AlternancePage() {
+  const carouselSlides = [
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200', // Example image
+      title: hero.titre,
+      subtitle: hero.sousTitre,
+    }
+  ];
+
   return (
     <div className="bg-white min-h-screen">
-      <Breadcrumb items={[{ label: 'Accueil', to: '/' }, { label: 'Alternance' }]} />
-      
-    <Hero
-        title={hero.titre}
-        subtitle={hero.sousTitre}
-    />
+      <PageCarousel slides={carouselSlides} />
+      <Breadcrumb items={[{ label: 'Accueil', to: '/' }, { label: 'Présentiel' }]} />
 
       {/* ===== SECTION AVANTAGES (Image 9a35a3) ===== */}
       <section className="py-20 px-6 bg-white">

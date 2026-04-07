@@ -15,7 +15,7 @@ export default function AdvantageCard({ label, iconeName, index }) {
     <div className={`
       ${isNavy ? 'bg-[#1E2F47]' : 'bg-[#D9934A]'} 
       rounded-[20px] p-8 flex flex-col items-center justify-center text-center 
-      aspect-[16/9] transition-transform hover:scale-105 duration-300 shadow-md
+      h-full min-h-[200px] transition-transform hover:scale-105 duration-300 shadow-md
     `}>
       <div className="text-white mb-4">
         <Icon size={42} strokeWidth={1.5} />

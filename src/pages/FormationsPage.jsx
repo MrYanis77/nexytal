@@ -1,23 +1,27 @@
 
 import Breadcrumb from '../components/Breadcrumb';
-import Hero from '../components/Hero/Hero';
+import PageCarousel from '../components/PageCarousel';
 import CardFormation from '../components/CardFormation'; // Import du nouveau composant
 import { hero,catalogue } from '../data/formations';
 
 export default function FormationsPage() {
+  const carouselSlides = [
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200',
+      title: hero.titre,
+      subtitle: hero.sousTitre,
+    }
+  ];
+
   return (
     <div className="bg-white min-h-screen">
       
+      {/* Hero Section (Carousel) */}
+      <PageCarousel slides={carouselSlides} />
+
       {/* Fil d'ariane */}
       <Breadcrumb items={[{ label: 'Accueil', to: '/' }, { label: 'Formations' }]} />
-      
-      {/* Hero Section */}
-      <Hero
-        title={hero.titre}
-        subtitle={hero.sousTitre}
-        href={hero.href} // On passe le nouveau lien ici
-        image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200" // Image spécifique pour la page formations
-      />
 
       {/* ===== CATALOGUE ===== */}
       <main className="max-w-[1200px] mx-auto py-[80px] px-6" id="main-content">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Breadcrumb from '../components/Breadcrumb';
-import Hero from '../components/Hero/Hero';
+import PageCarousel from '../components/PageCarousel';
 import Footer from '../components/Footer';
 
 // Import des données et composants dédiés au blog
@@ -16,16 +16,22 @@ export default function BlogPage() {
     ? blogPosts 
     : blogPosts.filter(post => post.category === activeCategory);
 
+  const carouselSlides = [
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200', // Example image
+      title: "Actualités & Ressources",
+      subtitle: "Suivez les dernières tendances de la formation et du digital",
+    }
+  ];
+
   return (
     <div className="bg-white min-h-screen">
       
+      <PageCarousel slides={carouselSlides} />
+
       <Breadcrumb
         items={[{ label: 'Accueil', to: '/' }, { label: 'Actualités' }]}
-      />
-
-      <Hero
-        title="Actualités & Ressources"
-        subtitle="Suivez les dernières tendances de la formation et du digital"
       />
 
       <main className="max-w-[1100px] mx-auto px-6 py-[60px]">

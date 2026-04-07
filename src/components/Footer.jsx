@@ -1,14 +1,11 @@
 import { Link } from 'react-router-dom';
-import ContactForm from './ContactForm';
 
 const currentYear = new Date().getFullYear();
 
-export default function Footer({ showContact = true }) {
+export default function Footer() {
   return (
     <>
-      {showContact && <ContactForm />}
-
-      <footer className="bg-footer px-10 pt-10 pb-5">
+      <footer className="bg-footer px-10 pt-10 pb-5 border-t-4 border-orange">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-[30px]">
           
           {/* Colonne 1 : Formations */}
@@ -30,7 +27,7 @@ export default function Footer({ showContact = true }) {
               Services
             </h4>
             <ul className="list-none p-0 m-0 space-y-2">
-              <li><Link to="/alternance" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Alternance</Link></li>
+              <li><Link to="/alternance" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Présentiel</Link></li>
               <li><Link to="/e-learning" className="text-[#aaa] text-[12px] hover:text-white transition-colors">E-learning</Link></li>
               <li><Link to="/financements" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Financements</Link></li>
               <li><Link to="/entreprise" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Solutions Entreprise</Link></li>
@@ -45,6 +42,7 @@ export default function Footer({ showContact = true }) {
             <ul className="list-none p-0 m-0 space-y-2">
               <li><Link to="/a-propos" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Notre histoire</Link></li>
               <li><Link to="/a-propos#equipe" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Notre équipe</Link></li>
+              <li><Link to="/campus" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Nos Campus</Link></li>
               <li><Link to="/blog" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Blog</Link></li>
               <li><Link to="/contact" className="text-[#aaa] text-[12px] hover:text-white transition-colors">Contact</Link></li>
             </ul>

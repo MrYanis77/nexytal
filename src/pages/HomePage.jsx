@@ -41,13 +41,13 @@ export default function HomePage() {
     <div className="bg-white antialiased">
       
       {/* SECTION 1 : HERO CAROUSEL */}
-      <section className="relative h-[600px] md:h-[550px] bg-navy overflow-hidden flex items-center">
+      <section className="relative h-[600px] md:h-[550px] bg-navy overflow-hidden flex items-center group">
         {/* Animation de fond */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`bg-${currentSlide}`}
             initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 0.4, scale: 1 }}
+            animate={{ opacity: 0.65, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
             className="absolute inset-0 z-0"
@@ -60,7 +60,7 @@ export default function HomePage() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/60 to-transparent" />
 
         <div className="container mx-auto relative z-20 px-6 md:px-[60px]">
           <AnimatePresence mode="wait">
@@ -75,6 +75,22 @@ export default function HomePage() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Flèches de navigation (Visibles au hover) */}
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
+          className="absolute left-2 md:left-6 inset-y-0 my-auto h-12 w-12 flex items-center justify-center bg-black/20 hover:bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all z-30"
+          aria-label="Slide précédent"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+          className="absolute right-2 md:right-6 inset-y-0 my-auto h-12 w-12 flex items-center justify-center bg-black/20 hover:bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all z-30"
+          aria-label="Slide suivant"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        </button>
 
         {/* Navigation Dots */}
         <div className="absolute bottom-10 left-6 md:left-[60px] z-30 flex gap-3">
