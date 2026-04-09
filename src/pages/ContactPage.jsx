@@ -2,6 +2,7 @@ import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import { hero, contactData } from '../data/contact';
+import ContactForm from '../components/Form/ContactForm';
 
 export default function ContactPage() {
   const { coordonnees, horaires, formulaire } = contactData;
@@ -55,45 +56,7 @@ export default function ContactPage() {
 
         {/* Colonne Droite : Formulaire */}
         <div className="w-full md:w-2/3">
-          <h2 className="text-navy font-bold text-[24px] mb-8">{formulaire.titre}</h2>
-
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="flex flex-col gap-2">
-              <label className="text-[14px] font-medium text-navy">{formulaire.champs.nom}</label>
-              <input type="text" className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:border-orange transition-colors" />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="text-[14px] font-medium text-navy">{formulaire.champs.prenom}</label>
-              <input type="text" className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:border-orange transition-colors" />
-            </div>
-
-            <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[14px] font-medium text-navy">{formulaire.champs.email}</label>
-              <input type="email" className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:border-orange transition-colors" />
-            </div>
-
-            <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[14px] font-medium text-navy">{formulaire.champs.telephone}</label>
-              <input type="tel" className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:border-orange transition-colors" />
-            </div>
-
-            <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[14px] font-medium text-navy">{formulaire.champs.sujet}</label>
-              <input type="text" className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:border-orange transition-colors" />
-            </div>
-
-            <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[14px] font-medium text-navy">{formulaire.champs.message}</label>
-              <textarea rows="6" className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:border-orange transition-colors resize-none"></textarea>
-            </div>
-
-            <div className="md:col-span-2 mt-4">
-              <button type="submit" className="w-full bg-orange hover:bg-orange-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange/20">
-                {formulaire.boutonLabel}
-              </button>
-            </div>
-          </form>
+          <ContactForm variant="page" title={formulaire.titre} />
         </div>
       </main>
     </div>

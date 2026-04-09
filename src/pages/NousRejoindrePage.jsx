@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero/Hero';
 import InfoGrid from '../components/Infos/InfoGrid';
-import DetailHeader from '../components/Card/CardJob'; 
+import DetailHeader from '../components/Card/CardJob';
 import AdvantageCard from '../components/Card/AdvantageCard';
-import { Heart, TrendingUp, Target } from "lucide-react";
+
+// Icônes SVG inline 100% Tailwind (plus besoin de lucide-react)
+const Heart = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+);
+
+const TrendingUp = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>
+);
+
+const Target = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
+);
 import * as CollabData from '../data/collaborateur';
 import * as FormData from '../data/formateur';
 import Breadcrumb from '../components/Breadcrumb';
@@ -12,9 +24,9 @@ export default function NousRejoindre() {
   const [view, setView] = useState('collaborateur');
 
   const currentData = view === 'collaborateur' ? CollabData : FormData;
-  
-  const currentOffres = view === 'collaborateur' 
-    ? CollabData.offresOuvertes 
+
+  const currentOffres = view === 'collaborateur'
+    ? CollabData.offresOuvertes
     : FormData.offresOuvertesFormateurs;
 
 
@@ -22,8 +34,8 @@ export default function NousRejoindre() {
     <div className="bg-white min-h-screen antialiased">
 
       {/* 1. HERO - Taille réduite pour matcher la home */}
-      <Hero 
-        title={view === 'collaborateur' ? CollabData.heroRecrutement?.titre : FormData.heroFormateur?.titre} 
+      <Hero
+        title={view === 'collaborateur' ? CollabData.heroRecrutement?.titre : FormData.heroFormateur?.titre}
         subtitle="Découvrez nos opportunités et rejoignez une équipe d'experts passionnés."
       />
 
@@ -66,7 +78,7 @@ export default function NousRejoindre() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {currentData.avantages.map((avantage, index) => (
-              <AdvantageCard 
+              <AdvantageCard
                 key={avantage.id}
                 label={avantage.label}
                 iconeName={avantage.icone}
@@ -83,17 +95,15 @@ export default function NousRejoindre() {
           <div className="flex bg-white p-1.5 rounded-full shadow-sm w-fit mx-auto border border-gray-200">
             <button
               onClick={() => setView('collaborateur')}
-              className={`px-8 md:px-10 py-3 rounded-full font-bold transition-all duration-300 cursor-pointer ${
-                view === 'collaborateur' ? 'bg-orange text-white shadow-md' : 'text-gray-500 hover:text-navy'
-              }`}
+              className={`px-8 md:px-10 py-3 rounded-full font-bold transition-all duration-300 cursor-pointer ${view === 'collaborateur' ? 'bg-orange text-white shadow-md' : 'text-gray-500 hover:text-navy'
+                }`}
             >
               Collaborateur
             </button>
             <button
               onClick={() => setView('formateur')}
-              className={`px-8 md:px-10 py-3 rounded-full font-bold transition-all duration-300 cursor-pointer ${
-                view === 'formateur' ? 'bg-[#1E2F47] text-white shadow-md' : 'text-gray-500 hover:text-navy'
-              }`}
+              className={`px-8 md:px-10 py-3 rounded-full font-bold transition-all duration-300 cursor-pointer ${view === 'formateur' ? 'bg-[#1E2F47] text-white shadow-md' : 'text-gray-500 hover:text-navy'
+                }`}
             >
               Formateur
             </button>
@@ -126,12 +136,12 @@ export default function NousRejoindre() {
       {/* 6. SECTION ÉQUIPE - Format côte à côte */}
       <section className="py-[70px] px-6 bg-gray-50 border-t border-border">
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
+
           <div>
             <h2 className="text-[32px] font-extrabold text-[#1E2F47] mb-6 leading-tight uppercase">
               {currentData.sectionEquipe.titre}
             </h2>
-            
+
             <div className="space-y-4 mb-10">
               <p className="text-muted text-[15px] leading-relaxed">
                 {currentData.sectionEquipe.paragraphe1}
@@ -152,10 +162,10 @@ export default function NousRejoindre() {
           </div>
 
           <div className="rounded-[24px] overflow-hidden h-[400px] shadow-lg border-4 border-white">
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" 
-              alt="Team ALT FORMATIONS" 
-              className="w-full h-full object-cover" 
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+              alt="Team ALT FORMATIONS"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
@@ -170,7 +180,7 @@ export default function NousRejoindre() {
           <p className="text-[15px] opacity-80 mb-10 leading-relaxed">
             Envoyez-nous votre candidature et faites partie de l'aventure ALT FORMATIONS.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="btn-orange px-10 py-4 text-sm shadow-xl hover:-translate-y-1 transition-all">
               <a href="./contact">Postuler maintenant</a>

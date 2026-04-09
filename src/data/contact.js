@@ -19,7 +19,7 @@ export const contactData = {
       },
       {
         type: "Email",
-        valeur: "formations@alt-rh.com",
+        valeur: "yanislaldjipro@gmail.com",
         icon: "✉️"
       },
       {
