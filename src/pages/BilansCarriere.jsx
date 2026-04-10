@@ -4,7 +4,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import TexteSection from '../components/Textes/TexteSection';
 
 // Import de votre JSON
-import dataBilan from '../data/json/bilan.json';
+import * as dataBilan from '../data/json/bilan.json';
 
 // Icônes SVG au design moderne
 const CheckIcon = () => (
