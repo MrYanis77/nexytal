@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero/Hero';
 import Breadcrumb from '../components/Breadcrumb';
-import dataRessources from '../data/JSON/ressources-ia.json';
+import dataRessources from '../data/json/ressources-ia.json';
 
 // 2. ICÔNES SVG SUR-MESURE
 const Icons = {

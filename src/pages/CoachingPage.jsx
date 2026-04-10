@@ -3,7 +3,7 @@ import Hero from '../components/Hero/Hero';
 import Breadcrumb from '../components/Breadcrumb';
 import TexteSection from '../components/Textes/TexteSection';
 
-import dataCoaching from '../data/JSON/coaching.json';
+import dataCoaching from '../data/json/coaching.json';
 
 // Icône check pour les listes
 const CheckIcon = () => (
