@@ -20,8 +20,6 @@ import CardFormation from '../components/Card/CardFormation';
 import VideoSection from '../components/VideoSection';
 import CertificationSection from '../components/CertificationSection';
 
-import { slides, stats, services, partenaires, temoignages, certifications } from '../data/home';
-
 // Import des données statiques depuis home.js
 import { slides, stats, presentation, services, partenaires, temoignages, certifications } from '../data/home';
 

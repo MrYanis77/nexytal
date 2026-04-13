@@ -2,6 +2,7 @@ import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import CardDesc from '../components/Card/CardDesc';
+import CallToAction from '../components/CallToAction';
 
 // Import des données depuis ton fichier JS
 import { hero, cpf, opco, poleEmploi, autresSolutions } from '../data/financement';
@@ -55,20 +56,13 @@ export default function FinancementsPage() {
       </main>
 
       {/* CTA FINAL */}
-      <section className="bg-[#f9fafb] py-[80px] px-6 text-center border-t border-gray-100">
-        <h2 className="font-heading text-[32px] font-bold text-navy mb-4 uppercase">
-          Besoin d'aide pour votre financement ?
-        </h2>
-        <p className="text-[#666] text-[16px] mb-10 max-w-2xl mx-auto">
-          Nos conseillers vous accompagnent gratuitement dans le montage de votre dossier et le choix du dispositif adapté.
-        </p>
-        <a
-          href="/contact"
-          className="inline-block bg-orange hover:bg-orange-dark text-white px-12 py-4 rounded-lg font-heading text-[16px] font-bold transition-all no-underline shadow-md uppercase tracking-widest"
-        >
-          Prendre rendez-vous
-        </a>
-      </section>
+      <CallToAction
+        variante="claire"
+        titre="Besoin d'aide pour votre financement ?"
+        sousTitre="Nos conseillers vous accompagnent gratuitement dans le montage de votre dossier et le choix du dispositif adapté."
+        texteBouton="Prendre rendez-vous"
+        lienBouton="/contact"
+      />
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import Hero from '../components/Hero/Hero';
 import Breadcrumb from '../components/Breadcrumb';
 import TexteSection from '../components/Textes/TexteSection';
-
 import dataCoaching from '../data/json/coaching.json';
+import CallToAction from '../components/CallToAction';
 
 // Icône check pour les listes
 const CheckIcon = () => (
@@ -158,34 +158,16 @@ export default function Coaching() {
 
             {/* 6. CTA FINAL (Design personnalisé Tailwind) */}
             {currentData.cta && currentData.cta.length > 0 && (
-                <section className="relative py-24 px-6 bg-navy text-center overflow-hidden">
-                    {/* Décoration d'arrière-plan */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+                <CallToAction
+                    variante="sombre"
+                    titre="Prêt(e) à développer votre potentiel ?"
+                    texteBouton={currentData.cta[0]?.label}
+                    lienBouton={currentData.cta[0]?.url}
 
-                    <div className="max-w-[800px] mx-auto relative z-10">
-                        <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-white mb-10 uppercase leading-tight tracking-tight">
-                            Prêt(e) à développer votre potentiel ?
-                        </h2>
-
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <a
-                                href={currentData.cta[0]?.url}
-                                className="w-full sm:w-auto inline-block bg-orange hover:bg-white text-white hover:text-orange px-10 py-4 rounded-lg font-heading font-bold shadow-lg shadow-orange/20 transition-all duration-300 hover:-translate-y-1 uppercase tracking-wider"
-                            >
-                                {currentData.cta[0]?.label}
-                            </a>
-
-                            {currentData.cta[1] && (
-                                <a
-                                    href={currentData.cta[1]?.url}
-                                    className="w-full sm:w-auto inline-block bg-transparent border-2 border-white/70 text-white hover:bg-white hover:text-navy px-10 py-4 rounded-lg font-heading font-bold transition-all duration-300 hover:-translate-y-1 uppercase tracking-wider"
-                                >
-                                    {currentData.cta[1]?.label}
-                                </a>
-                            )}
-                        </div>
-                    </div>
-                </section>
+                    // Ajout conditionnel du deuxième bouton s'il existe dans le JSON
+                    texteBoutonSecondaire={currentData.cta[1]?.label}
+                    lienBoutonSecondaire={currentData.cta[1]?.url}
+                />
             )}
 
         </div>

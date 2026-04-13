@@ -4,6 +4,7 @@ import CardFormation from '../components/Card/CardFormation';
 import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import FiltreCat from '../components/Items/FiltreCat'; // Import de votre nouveau composant
+import CallToAction from '../components/CallToAction';
 
 export default function CertificationPage() {
   const [activeCategory, setActiveCategory] = useState("Tous");
@@ -65,18 +66,13 @@ export default function CertificationPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 border-t border-border">
-        <div className="max-w-[800px] mx-auto text-center px-6">
-          <h2 className="text-navy font-bold text-2xl mb-4">Besoin d'un renseignement ?</h2>
-          <p className="text-muted mb-8">
-            Nos conseillers vous accompagnent dans le choix de votre certification
-            et le montage de votre dossier de financement.
-          </p>
-          <button className="btn-orange">
-            Contactez un expert
-          </button>
-        </div>
-      </section>
+      <CallToAction
+        variante="claire"
+        titre="Besoin d'un renseignement ?"
+        sousTitre="Nos conseillers vous accompagnent dans le choix de votre certification et le montage de votre dossier de financement."
+        texteBouton="Contactez un expert"
+        lienBouton="/contact"
+      />
     </div>
   );
 }

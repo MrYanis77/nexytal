@@ -3,11 +3,12 @@ import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import TexteSection from '../components/Textes/TexteSection'; // Import du composant flexible
 import { hero, notreHistoire, nosValeurs, certificationsAgrements } from '../data/apropos';
+import CallToAction from '../components/CallToAction';
 
 export default function AproposPage() {
   return (
     <div className="bg-white min-h-screen font-body antialiased">
-      <Hero 
+      <Hero
         title={hero.titre}
         subtitle={hero.sousTitre}
         image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
@@ -17,13 +18,13 @@ export default function AproposPage() {
       />
 
       <main id="main-content">
-        
+
         {/* ======== BLOC 1 : NOTRE HISTOIRE (TexteSection) ======== */}
         {/* Ce composant gère l'image de manière conditionnelle et applique la barre orange */}
         <TexteSection data={notreHistoire} imageRight={true} />
 
         <div className="max-w-[1100px] mx-auto px-6 flex flex-col gap-16 pb-24">
-          
+
           {/* ======== BLOC 2 : NOS VALEURS ======== */}
           <section className="bg-[#fcfcfc] border border-orange/30 rounded-3xl p-10 md:p-16 shadow-sm">
             <h2 className="font-heading text-[32px] font-black text-navy mb-12 text-center uppercase tracking-tight">
@@ -72,24 +73,15 @@ export default function AproposPage() {
       </main>
 
       {/* ======== SECTION CTA FINAL ======== */}
-      <section className="bg-gray-50 py-24 px-6 text-center border-t border-gray-100">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-[36px] font-black text-navy mb-6 uppercase tracking-tight">
-            Rejoignez l'aventure
-          </h2>
-          <p className="text-muted text-lg mb-10 leading-relaxed">
-            Vous êtes formateur expert ou passionné par la pédagogie ? Nous recrutons régulièrement de nouveaux talents pour renforcer notre équipe.
-          </p>
-          <a 
-            href="/nous-rejoindre" 
-            className="btn-orange inline-block px-12 py-5 shadow-lg hover:-translate-y-1"
-          >
-            Voir nos offres d'emploi
-          </a>
-        </div>
-      </section>
+      <CallToAction
+        variante="claire"
+        titre="Rejoignez l'aventure"
+        sousTitre="Vous êtes formateur expert ou passionné par la pédagogie ? Nous recrutons régulièrement de nouveaux talents pour renforcer notre équipe."
+        texteBouton="Voir nos offres d'emploi"
+        lienBouton="/nous-rejoindre"
+      />
 
-    
+
     </div>
   );
 }

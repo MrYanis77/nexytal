@@ -2,6 +2,7 @@
 import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import CardFormation from '../components/Card/CardFormation'; // Import du nouveau composant
+import CallToAction from '../components/CallToAction';
 import { hero, catalogue } from '../data/formations';
 
 export default function FormationsPage() {
@@ -61,22 +62,13 @@ export default function FormationsPage() {
       </main>
 
       {/* ===== CTA FINAL ===== */}
-      <section className="bg-[#F9FAFB] py-24 px-6 text-center border-t border-border">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-3xl md:text-[38px] font-[800] text-navy mb-6 leading-tight">
-            Besoin d'un conseil personnalisé ?
-          </h2>
-          <p className="text-muted font-body text-[16px] mb-12 leading-relaxed max-w-2xl mx-auto">
-            Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements.
-          </p>
-          <a
-            href="tel:0123456789"
-            className="btn-orange text-[15px] px-12 py-5 shadow-xl hover:-translate-y-1 inline-block"
-          >
-            ÊTRE RAPPELÉ GRATUITEMENT
-          </a>
-        </div>
-      </section>
+      <CallToAction
+        variant="light"
+        title="Besoin d'un conseil personnalisé ?"
+        subtitle="Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements."
+        buttonText="Être rappelé gratuitement"
+        onButtonClick={() => window.location.href = 'tel:0123456789'}
+      />
     </div>
   );
 }

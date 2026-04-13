@@ -7,6 +7,7 @@ import Breadcrumb from '../components/Breadcrumb';
 
 // Import unique des données fusionnées
 import { dataNousRejoindre } from '../data/nous-rejoindre';
+import CallToAction from '../components/CallToAction';
 
 // Icônes SVG
 const Heart = (props) => (
@@ -161,24 +162,13 @@ export default function NousRejoindre() {
       </section>
 
       {/* 6. CTA FINAL */}
-      <section className="py-20 px-6 bg-navy text-center text-white">
-        <div className="max-w-[700px] mx-auto">
-          <h2 className="text-2xl md:text-[34px] font-extrabold mb-4 uppercase">
-            Prêt(e) à nous rejoindre ?
-          </h2>
-          <p className="text-[15px] opacity-80 mb-10 leading-relaxed">
-            Envoyez-nous votre candidature et faites partie de l'aventure ALT FORMATIONS.
-          </p>
-          <div className="flex justify-center">
-            <a
-              href="/contact"
-              className="inline-block bg-orange hover:bg-orange-dark text-white px-10 py-4 rounded-lg font-bold shadow-xl transition-all hover:-translate-y-1 uppercase text-sm no-underline"
-            >
-              Postuler maintenant
-            </a>
-          </div>
-        </div>
-      </section>
+      <CallToAction
+        variante="sombre"
+        titre="Prêt(e) à nous rejoindre ?"
+        sousTitre="Envoyez-nous votre candidature et faites partie de l'aventure ALT FORMATIONS."
+        texteBouton="Postuler maintenant"
+        lienBouton="/contact"
+      />
     </div>
   );
 }

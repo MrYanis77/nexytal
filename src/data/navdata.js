@@ -125,6 +125,6 @@ export const navlinks = [
     ],
   },
   { label: "Nous rejoindre", href: "/nous-rejoindre" },
-  { label: "Contact", href: "/contact" },
   { label: "Nos Campus", href: "/campus" },
+  { label: "Contact", href: "/contact" },
 ];
