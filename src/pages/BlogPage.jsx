@@ -3,6 +3,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import { categories, blogPosts, newsletterData, paginationData } from '../data/Blog';
 import BlogCard from '../components/Card/BlogCard';
+import FiltreCat from '../components/Items/FiltreCat'; // <-- Import du nouveau composant
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("Tous");
@@ -27,22 +28,12 @@ export default function BlogPage() {
 
       <main className="max-w-[1100px] mx-auto px-6 py-[60px]">
 
-        {/* ======== SECTION FILTRES (image_a607a6.png) ======== */}
-        <div className="flex flex-wrap items-center gap-3 mb-12 py-6 border-b border-gray-50">
-          <span className="font-bold text-navy text-[16px] mr-2">Catégories :</span>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-lg border text-[14px] font-medium transition-all
-                ${activeCategory === cat
-                  ? 'bg-orange border-orange text-white shadow-md'
-                  : 'bg-white border-gray-200 text-navy hover:border-orange hover:text-orange'}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        {/* ======== SECTION FILTRES ======== */}
+        <FiltreCat
+          categories={categories}
+          activeCat={activeCategory}
+          setActiveCat={setActiveCategory}
+        />
 
         {/* ======== GRILLE D'ARTICLES (image_a607c5.png) ======== */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

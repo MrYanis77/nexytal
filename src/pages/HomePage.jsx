@@ -14,23 +14,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Import des sous-composants
 import HeroSlide from '../components/Hero/HeroSlide';
 import StatsSection from '../components/Stats/StatsSection';
 import CardFormation from '../components/Card/CardFormation';
 import VideoSection from '../components/VideoSection';
 import CertificationSection from '../components/CertificationSection';
 
-// Import des données statiques depuis home.js
 import { slides, stats, services, partenaires, temoignages, certifications } from '../data/home';
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Préparation des logos pour l'effet "marquée" (boucle infinie)
   const doublePartenaires = [...partenaires, ...partenaires];
 
-  // Gestion du cycle automatique du Hero (toutes les 6 secondes)
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);

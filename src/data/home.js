@@ -18,7 +18,7 @@ export const slides = [
     desc: 'Concevez, administrez et sécurisez les infrastructures informatiques pour devenir un pilier stratégique des entreprises.',
     cta: 'Découvrir la formation',
     ctaTo: '/formations/administrateur-dinfrastructures-securisees-ais',
-    video: '/Assets/video/formations/admin-infra.mp4'
+    video: '/Assets/video/formations/infra-reseau.mp4'
   },
   {
     id: 2,
