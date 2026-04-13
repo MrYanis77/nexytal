@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import formationsData from '../data/JSON/formation.json';
+import formationsData from '../data/json/formation.json';
 import { formationsArray } from '../data/navdata'; // Importation centralisée avec les catégories sécurisées
 import { allFormations } from '../data/index'; // Importation des 4 formations originelles spécifiques
 

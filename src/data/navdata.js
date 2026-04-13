@@ -1,4 +1,4 @@
-import formationsData from './JSON/formation.json';
+import formationsData from './json/formation.json';
 
 // Mapping local en sécurité au cas où le fichier JSON est écrasé sans les catégories
 const categoryMap = {

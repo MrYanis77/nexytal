@@ -12,7 +12,7 @@ export default function FormationsPage() {
       <Hero
         title={hero.titre}
         subtitle={hero.sousTitre}
-        image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200"
+        video={hero.video}
       />
 
       {/* Fil d'ariane */}
@@ -21,9 +21,8 @@ export default function FormationsPage() {
       {/* ===== CATALOGUE ===== */}
       <main className="max-w-[1200px] mx-auto py-[80px] px-6" id="main-content">
         {catalogue.map((category, index) => {
-          // Détermine la variante de la carte selon la catégorie (ex: Image 1=Blanc, Image 2=Navy)
-          // Tu peux aussi baser cela sur une propriété dans tes datas
-          const isDarkSection = category.id === "management" || category.id === "digital";
+          // Alternance : une section sur deux en mode "Navy" (sombre)
+          const isDarkSection = index % 2 !== 0;
 
           return (
             <section key={category.id} className="mb-[100px]" id={category.id}>

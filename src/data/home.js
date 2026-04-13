@@ -13,7 +13,7 @@ export const slides = [
   {
     id: 1,
     badge: 'Infrastructure & Sécurité',
-    title: 'Devenez Administrateur·rice\nd’infrastructures sécurisées',
+    title: 'Devenez Administrateur\nd’infrastructures sécurisées',
     subtitle: 'Garantissez la disponibilité et la sécurité',
     desc: 'Concevez, administrez et sécurisez les infrastructures informatiques pour devenir un pilier stratégique des entreprises.',
     cta: 'Découvrir la formation',
@@ -33,7 +33,7 @@ export const slides = [
   {
     id: 3,
     badge: 'Ressources Humaines',
-    title: 'Devenez Assistant(e)\nRessources Humaines',
+    title: 'Devenez Assistant\nRessources Humaines',
     subtitle: 'Véritable trait d\'union dans l\'entreprise',
     desc: 'Participez activement à la gestion administrative du personnel, au recrutement, à la formation et au bon climat social.',
     cta: 'Découvrir la formation',

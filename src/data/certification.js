@@ -48,7 +48,7 @@ export const certifications = [
   },
   {
     id: 5,
-    nom: "Assistant(e) Ressources Humaines",
+    nom: "Assistant Ressources Humaines",
     rncp: "36612",
     niveau: "5",
     category: "RH & Gestion",
@@ -72,7 +72,7 @@ export const certifications = [
   },
   {
     id: 9,
-    nom: "Conseiller(ère) Relation Client à Distance",
+    nom: "Conseiller Relation Client à Distance",
     rncp: "35304",
     niveau: "4",
     category: "Relation Client",

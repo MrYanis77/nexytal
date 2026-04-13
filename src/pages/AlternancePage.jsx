@@ -19,7 +19,7 @@ export default function AlternancePage() {
       <Hero 
         title={hero.titre}
         subtitle={hero.sousTitre}
-        image="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200"
+        video={hero.video}
       />
       <Breadcrumb items={[{ label: 'Accueil', to: '/' }, { label: 'Présentiel' }]} />
 
