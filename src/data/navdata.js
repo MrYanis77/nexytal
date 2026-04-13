@@ -71,7 +71,7 @@ const getSubMenu = (categoryKey) => {
  */
 export const navlinks = [
   {
-    label: "Formation",
+    label: "Formations",
     href: "/formations",
     submenu: [
       {
@@ -99,7 +99,6 @@ export const navlinks = [
   },
 
   { label: "Financements", href: "/financements" },
-  { label: "Entreprise", href: "/entreprise" },
   { label: "Certifications", href: "/certification" },
   {
     label: "Gestion de Carrières",
@@ -117,14 +116,43 @@ export const navlinks = [
   {
     label: "Ressources",
     submenu: [
+      
       {
-        label: "Ressources IA",
+        label: "Fiches métier",
         href: "/ressources-ia",
+      },
+      {
+        label: "Coaching emploi",
+        href: "/coaching-emploi",
+      },
+      {
+        label: "IA",
+        href: "/ressources-ia",
+      },
+      {
+        label: "Cybersécurité",
+        href: "/cybersécurité",
       },
 
     ],
   },
+  {
+    label: "Entreprises",
+    href: "/entreprise",
+    submenu: [
+      {
+        label: "Solutions recrutement",
+        href: "/bilans-carriere",
+      },
+      {
+        label: "Formation collaborateurs",
+        href: "/coaching-emploi",
+      },
+    ],
+  },
   { label: "Nous rejoindre", href: "/nous-rejoindre" },
-  { label: "Contact", href: "/contact" },
   { label: "Nos Campus", href: "/campus" },
+  { label: "Contact", href: "/contact" },
+  { label: "F.A.Q", href: "/faq" },
+  
 ];

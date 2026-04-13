@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import CardFormation from '../components/Card/CardFormation'; // Import du nouveau composant
@@ -51,6 +52,7 @@ export default function FormationsPage() {
                     image={item.imageUrl || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800"} // Image dynamique
                     points={item.features}
                     variant={isDarkSection ? "navy" : "white"} // Respect de l'alternance des visuels
+                    href={item.href}
                   />
                 ))}
               </div>
@@ -68,12 +70,12 @@ export default function FormationsPage() {
           <p className="text-muted font-body text-[16px] mb-12 leading-relaxed max-w-2xl mx-auto">
             Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements.
           </p>
-          <a
-            href="tel:0123456789"
+          <Link
+            to="/contact"
             className="btn-orange text-[15px] px-12 py-5 shadow-xl hover:-translate-y-1 inline-block"
           >
             ÊTRE RAPPELÉ GRATUITEMENT
-          </a>
+          </Link>
         </div>
       </section>
     </div>
