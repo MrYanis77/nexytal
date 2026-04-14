@@ -118,18 +118,18 @@ export const navlinks = [
     label: "Ressources",
     submenu: [
 
-      {
-        label: "Fiches métier",
-        href: "/ressources-ia",
-      },
+      // {
+      //   label: "Fiches métier",
+      //   href: "/ressources-ia",
+      // },
       {
         label: "IA",
         href: "/ressources-ia",
       },
-      {
-        label: "Cybersécurité",
-        href: "/cybersécurité",
-      },
+      // {
+      //   label: "Cybersécurité",
+      //   href: "/cybersécurité",
+      // },
 
     ],
   },

@@ -80,26 +80,26 @@
             ]
         },
         "testsExterieurs": {
-            "titre": "Tests & Bilans de compétences",
-            "intro": "En complément de nos accompagnements, voici une sélection de tests extérieurs reconnus pour évaluer vos aptitudes, affiner votre projet professionnel et faire le point sur votre carrière.",
+            "titre": "Tests & Outils en ligne gratuits",
+            "intro": "En complément de nos accompagnements, voici une sélection de tests extérieurs fiables pour débuter votre réflexion professionnelle.",
             "tests": [
                 {
-                    "nom": "Test de Personnalité (RIASEC / MBTI)",
-                    "description": "Identifiez vos traits de personnalité dominants et découvrez les environnements de travail et les métiers qui vous correspondent le mieux.",
-                    "lien": "#",
-                    "labelLien": "Passer le test"
+                    "nom": "Test de Personnalité (MBTI)",
+                    "description": "Le fameux test '16Personalities' pour comprendre votre manière d'interagir avec le monde et vos préférences en milieu de travail.",
+                    "lien": "https://www.16personalities.com/fr/test-de-personnalite",
+                    "labelLien": "Passer le test (10 min)"
                 },
                 {
-                    "nom": "Évaluation des Soft Skills",
-                    "description": "Mesurez vos compétences comportementales (leadership, gestion du stress, communication, empathie) très recherchées par les recruteurs aujourd'hui.",
-                    "lien": "#",
-                    "labelLien": "Découvrir"
+                    "nom": "Évaluation Soft Skills (APEC)",
+                    "description": "Un outil de l'APEC permettant d'évaluer vos atouts comportementaux et relationnels très prisés par les recruteurs aujourd'hui.",
+                    "lien": "https://www.apec.fr/candidat/faire-le-point/evaluez-vos-atouts-et-vos-soft-skills.html",
+                    "labelLien": "Faire l'évaluation"
                 },
                 {
-                    "nom": "Bilan d'Orientation Professionnelle",
-                    "description": "Évaluez vos compétences transférables, analysez votre parcours et explorez de nouveaux secteurs d'activité adaptés à votre profil.",
-                    "lien": "#",
-                    "labelLien": "En savoir plus"
+                    "nom": "Test d'Intérêts Professionnels",
+                    "description": "Le test d'orientation de l'Onisep pour identifier les secteurs d'activité qui correspondent réellement à ce que vous aimez faire.",
+                    "lien": "https://www.onisep.fr/Decouvrir-les-metiers/Test-d-orientation",
+                    "labelLien": "Découvrir ses intérêts"
                 }
             ]
         },
