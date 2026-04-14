@@ -22,7 +22,7 @@ export default function ElearningPage() {
       <Hero 
         title={hero.titre}
         subtitle={hero.sousTitre}
-        image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200"
+        video={hero.video}
       />
       <Breadcrumb items={[{ label: 'Accueil', to: '/' }, { label: 'E-learning' }]} />
 
