@@ -4,6 +4,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import CardDesc from '../components/Card/CardDesc';
 import CardGrid from '../components/Card/CardGrid'; 
 import StatsSection from '../components/Stats/StatsSection';
+import CallToAction from '../components/CallToAction';
 
 // Import des données
 import {
@@ -57,22 +58,13 @@ export default function EntreprisePage() {
       <StatsSection stats={stats} title="Pourquoi choisir ALT FORMATIONS ?" variant="navy" />
 
       {/* ======== SECTION CTA FINAL ======== */}
-      <section className="py-[80px] px-6 bg-white text-center">
-        <div className="max-w-[700px] mx-auto">
-          <h2 className="font-heading text-[32px] font-bold text-navy mb-4 uppercase">
-            Besoin d'un accompagnement spécifique ?
-          </h2>
-          <p className="text-muted text-[16px] mb-10 leading-relaxed">
-            Nos experts vous proposent un audit gratuit pour identifier vos besoins en formation et recrutement.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-orange hover:bg-orange-dark text-white px-12 py-4 rounded-lg font-heading text-[16px] font-bold transition-all shadow-lg no-underline uppercase tracking-wider"
-          >
-            Demander un devis
-          </a>
-        </div>
-      </section>
+      <CallToAction
+        variante="claire"
+        titre="Besoin d'un accompagnement spécifique ?"
+        sousTitre="Nos experts vous proposent un audit gratuit pour identifier vos besoins en formation et recrutement."
+        texteBouton="Demander un devis"
+        lienBouton="/contact"
+      />
     </div>
   );
 }

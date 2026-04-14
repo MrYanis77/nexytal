@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import formationsData from '../data/json/formation.json';
 import { formationsArray } from '../data/navdata'; // Importation centralisée avec les catégories sécurisées
 import { allFormations } from '../data/index'; // Importation des 4 formations originelles spécifiques
+import { imageMap } from '../data/formations';
 
 // Importation des composants standards
 import Hero from '../components/Hero/Hero';
@@ -63,7 +64,7 @@ export default function FormationDetail() {
           data={{
             titre: data.presentation.titre,
             contenu: data.presentation.paragraphes,
-            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80"
+            image: imageMap[id] || data.presentation.image || "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80"
           }}
           imageRight={true}
         />
@@ -127,9 +128,6 @@ export default function FormationDetail() {
               <h2 className="text-[#1E2F47] text-2xl md:text-[32px] font-extrabold mb-3 uppercase tracking-wider">
                 Programme de la formation
               </h2>
-              <p className="text-orange font-bold text-sm uppercase tracking-widest">
-                {data.programme.dureeTotale}
-              </p>
             </div>
             <div className="space-y-4">
               {data.programme.modules?.map((module, idx) => (

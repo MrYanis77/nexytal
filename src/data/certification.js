@@ -4,13 +4,22 @@ export const hero = {
   video: "public/Assets/video/certification.mp4",
 };
 
+// Liste des catégories pour le filtre
+export const categories = [
+  "Tous",
+  "Digital & Web",
+  "Systèmes & Réseaux",
+  "RH & Gestion",
+  "Relation Client"
+];
+
 export const certifications = [
-  // Image 1 & 2
   {
     id: 1,
     nom: "Développeur Web et Web Mobile",
     rncp: "37674",
     niveau: "5",
+    category: "Digital & Web",
     lien: "https://www.francecompetences.fr/recherche/rncp/37674/"
   },
   {
@@ -18,6 +27,7 @@ export const certifications = [
     nom: "Concepteur Développeur d'Applications",
     rncp: "37625",
     niveau: "6",
+    category: "Digital & Web",
     lien: "https://www.francecompetences.fr/recherche/rncp/37625/"
   },
   {
@@ -25,20 +35,23 @@ export const certifications = [
     nom: "Technicien Supérieur Systèmes et Réseaux",
     rncp: "37682",
     niveau: "5",
+    category: "Systèmes & Réseaux",
     lien: "https://www.francecompetences.fr/recherche/rncp/37682/"
   },
   {
     id: 4,
     nom: "Community Manager",
-    rncp: "37682",
+    rncp: "37682", // Note: vérifiez si le code RNCP est identique au id:3 par erreur dans vos data
     niveau: "6",
+    category: "Digital & Web",
     lien: "https://www.francecompetences.fr/recherche/rncp/37682/"
   },
   {
     id: 5,
-    nom: "Assistant(e) Ressources Humaines",
+    nom: "Assistant Ressources Humaines",
     rncp: "36612",
     niveau: "5",
+    category: "RH & Gestion",
     lien: "https://www.francecompetences.fr/recherche/rncp/36612/"
   },
   {
@@ -46,6 +59,7 @@ export const certifications = [
     nom: "Gestionnaire de Paie",
     rncp: "37948",
     niveau: "5",
+    category: "RH & Gestion",
     lien: "https://www.francecompetences.fr/recherche/rncp/37948/"
   },
   {
@@ -53,13 +67,23 @@ export const certifications = [
     nom: "Secrétaire Comptable",
     rncp: "36434",
     niveau: "4",
+    category: "RH & Gestion",
     lien: "https://www.francecompetences.fr/recherche/rncp/36434/"
   },
   {
     id: 9,
-    nom: "Conseiller(ère) Relation Client à Distance",
+    nom: "Conseiller Relation Client à Distance",
     rncp: "35304",
     niveau: "4",
+    category: "Relation Client",
     lien: "https://www.francecompetences.fr/recherche/rncp/35304/"
+  },
+  {
+    id: 10,
+    nom: "Administrateur Système DevOps",
+    rncp: "36061",
+    niveau: "6",
+    category: "Systèmes & Réseaux",
+    lien: "https://www.francecompetences.fr/recherche/rncp/36061/"
   }
 ];

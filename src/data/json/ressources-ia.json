@@ -1,48 +1,60 @@
 {
     "ressourcesIA": {
         "hero": {
-            "titre": "Ressources Intelligence Artificielle",
-            "sousTitre": "Découvrez notre sélection d'outils et de guides pour intégrer l'IA dans votre quotidien professionnel.",
-            "video": "public/Assets/video/ai-background.mp4"
+            "titre": "Le Top des IA en 2026",
+            "sousTitre": "Classement et outils indispensables pour transformer votre productivité et votre créativité.",
+            "video": "public/Assets/video/Network_Engineer.mp4"
         },
         "intro": {
             "titre": "L'IA, votre nouvel atout professionnel",
-            "description": "L'intelligence artificielle transforme tous les secteurs d'activité. Que vous cherchiez à automatiser des tâches répétitives, à générer du contenu créatif ou à analyser des données complexes, maîtriser ces outils est devenu indispensable. Découvrez notre boîte à outils."
+            "description": "L'intelligence artificielle n'est plus un gadget mais un moteur de croissance. En 2026, la différence se fait sur le choix du bon modèle pour la bonne tâche. Voici notre sélection rigoureuse des meilleures solutions actuelles."
         },
         "categories": [
             {
                 "id": "generation-texte",
-                "titre": "Génération de texte & Assistance",
+                "titre": "Génération de texte & Raisonnement",
                 "icon": "Message",
                 "outils": [
                     {
-                        "nom": "ChatGPT (OpenAI)",
-                        "description": "L'assistant conversationnel de référence pour la rédaction, la synthèse et le brainstorming d'idées.",
-                        "tag": "Incontournable",
-                        "lien": "https://chat.openai.com/"
+                        "nom": "Claude 3.7 / 4 (Anthropic)",
+                        "description": "Le leader actuel pour la rédaction naturelle, le codage complexe et le raisonnement nuancé sans 'hallucinations'.",
+                        "tag": "Meilleur Raisonnement",
+                        "lien": "https://claude.ai/"
                     },
                     {
-                        "nom": "Claude (Anthropic)",
-                        "description": "Une excellente alternative, réputée pour sa capacité d'analyse de longs documents et sa sécurité.",
-                        "tag": "Avancé",
-                        "lien": "https://claude.ai/"
+                        "nom": "Gemini 3 Flash (Google)",
+                        "description": "L'IA la plus rapide et polyvalente, capable d'analyser des heures de vidéo ou des milliers de lignes de code d'un coup.",
+                        "tag": "Multimodalité",
+                        "lien": "https://gemini.google.com/"
+                    },
+                    {
+                        "nom": "GPT-o1 / GPT-5 (OpenAI)",
+                        "description": "L'expert pour résoudre des problèmes mathématiques et logiques nécessitant un temps de réflexion approfondi.",
+                        "tag": "Logique Pure",
+                        "lien": "https://chat.openai.com/"
                     }
                 ]
             },
             {
                 "id": "creation-visuelle",
-                "titre": "Création Visuelle & Design",
+                "titre": "Image & Vidéo Générative",
                 "icon": "Palette",
                 "outils": [
                     {
-                        "nom": "Midjourney",
-                        "description": "Générateur d'images à partir de texte offrant une qualité artistique et un réalisme époustouflants.",
-                        "tag": "Créatif",
+                        "nom": "Midjourney v7",
+                        "description": "Toujours la référence pour la qualité artistique et le photoréalisme chirurgical des images.",
+                        "tag": "Premium Design",
                         "lien": "https://www.midjourney.com/"
                     },
                     {
-                        "nom": "Canva AI",
-                        "description": "Outils d'IA intégrés au Studio Magique pour simplifier la création de vos supports de communication.",
+                        "nom": "Sora / Veo 2",
+                        "description": "Génération de vidéos ultra-réalistes jusqu'à 2 minutes à partir d'un simple texte. Révolutionnaire pour le marketing.",
+                        "tag": "Vidéo IA",
+                        "lien": "https://openai.com/sora"
+                    },
+                    {
+                        "nom": "Canva Magic Studio",
+                        "description": "La meilleure intégration d'IA pour les non-designers : retouche, extension d'image et mise en page automatique.",
                         "tag": "Accessible",
                         "lien": "https://www.canva.com/"
                     }
@@ -50,20 +62,26 @@
             },
             {
                 "id": "productivite",
-                "titre": "Productivité & Automatisation",
+                "titre": "Productivité & Agents",
                 "icon": "Zap",
                 "outils": [
                     {
-                        "nom": "Zapier",
-                        "description": "Connectez vos applications et automatisez vos flux de travail grâce à l'intégration poussée de l'IA.",
-                        "tag": "Automatisation",
-                        "lien": "https://zapier.com/"
+                        "nom": "Perplexity AI",
+                        "description": "Le remplaçant de Google Search. Une IA qui cite ses sources en temps réel pour une recherche fiable.",
+                        "tag": "Recherche",
+                        "lien": "https://www.perplexity.ai/"
                     },
                     {
                         "nom": "Microsoft Copilot",
-                        "description": "L'assistant IA directement intégré dans vos outils de bureautique quotidiens (Word, Excel, Teams).",
+                        "description": "L'intégration parfaite dans Excel, Word et Outlook pour automatiser vos rapports et emails.",
                         "tag": "Bureautique",
                         "lien": "https://copilot.microsoft.com/"
+                    },
+                    {
+                        "nom": "Cursor",
+                        "description": "L'éditeur de code qui écrit des applications entières à votre place. Indispensable pour les développeurs.",
+                        "tag": "Code",
+                        "lien": "https://cursor.com/"
                     }
                 ]
             }
@@ -72,29 +90,29 @@
             "titre": "Mini-glossaire de l'IA",
             "termes": [
                 {
-                    "terme": "Prompt",
-                    "definition": "La phrase ou l'instruction textuelle que vous donnez à une IA pour obtenir un résultat spécifique."
+                    "terme": "Agents IA",
+                    "definition": "Systèmes capables d'utiliser des outils et de prendre des décisions de manière autonome pour accomplir une mission complexe."
                 },
                 {
-                    "terme": "LLM (Large Language Model)",
-                    "definition": "Modèle de langage entraîné sur de vastes quantités de textes pour comprendre et générer du langage humain."
+                    "terme": "Fenêtre de Contexte",
+                    "definition": "La quantité d'informations (texte, fichiers, vidéos) qu'une IA peut 'garder en mémoire' en une seule fois."
                 },
                 {
-                    "terme": "Machine Learning",
-                    "definition": "Technologie permettant à une machine d'apprendre automatiquement et de s'améliorer à partir de données fournies."
+                    "terme": "RAG (Retrieval-Augmented Generation)",
+                    "definition": "Technique permettant à une IA de répondre en utilisant vos propres documents privés comme base de connaissance."
                 }
             ]
         },
         "cta": {
-            "titre": "Envie d'aller plus loin ?",
-            "description": "L'IA évolue vite. Découvrez nos formations dédiées pour maîtriser ces outils et les intégrer efficacement dans la stratégie de votre entreprise.",
+            "titre": "Maîtrisez ces outils dès maintenant",
+            "description": "L'IA évolue chaque semaine. Nos formations vous apprennent à dompter ces modèles pour gagner 2h de travail par jour.",
             "boutons": [
                 {
-                    "label": "Voir nos formations IA",
+                    "label": "Explorer nos formations IA",
                     "url": "/formations"
                 },
                 {
-                    "label": "Nous contacter",
+                    "label": "Audit IA Entreprise",
                     "url": "/contact"
                 }
             ]

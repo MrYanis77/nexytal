@@ -71,7 +71,7 @@ const getSubMenu = (categoryKey) => {
  */
 export const navlinks = [
   {
-    label: "Formation",
+    label: "Formations",
     href: "/formations",
     submenu: [
       {
@@ -98,27 +98,59 @@ export const navlinks = [
     ],
   },
 
-  { label: "Financements", href: "/financements" },
-  { label: "Entreprise", href: "/entreprise" },
+
   { label: "Certifications", href: "/certification" },
+  { label: "Financements", href: "/financements" },
   {
-    label: "Ressources",
+    label: "Carrières",
     submenu: [
+      {
+        label: "Gestion de carrières",
+        href: "/gestion-carrieres",
+      },
       {
         label: "Coaching emploi",
         href: "/coaching-emploi",
       },
+    ],
+  },
+  {
+    label: "Ressources",
+    submenu: [
+
+      // {
+      //   label: "Fiches métier",
+      //   href: "/ressources-ia",
+      // },
       {
-        label: "Gestion de carrières",
-        href: "/bilans-carriere",
-      },
-      {
-        label: "Ressources IA",
+        label: "IA",
         href: "/ressources-ia",
       },
+      // {
+      //   label: "Cybersécurité",
+      //   href: "/cybersécurité",
+      // },
 
     ],
   },
+  // {
+  //   label: "Entreprises",
+  //   href: "/entreprise",
+  //   submenu: [
+  //     {
+  //       label: "Solutions recrutement",
+  //       href: "/bilans-carriere",
+  //     },
+  //     {
+  //       label: "Formation collaborateurs",
+  //       href: "/coaching-emploi",
+  //     },
+  //   ],
+  // },
   { label: "Nous rejoindre", href: "/nous-rejoindre" },
+  { label: "Nos Campus", href: "/campus" },
   { label: "Contact", href: "/contact" },
+  { label: "F.A.Q", href: "/faq" },
+
+
 ];

@@ -2,8 +2,9 @@ import React from 'react';
 import Hero from '../components/Hero/Hero';
 import Breadcrumb from '../components/Breadcrumb';
 import dataRessources from '../data/json/ressources-ia.json';
+import CallToAction from '../components/CallToAction';
 
-// 2. ICÔNES SVG SUR-MESURE
+// 1. ICÔNES SVG MISES À JOUR
 const Icons = {
     Message: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>,
     Palette: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5" /><circle cx="17.5" cy="10.5" r=".5" /><circle cx="8.5" cy="7.5" r=".5" /><circle cx="6.5" cy="12.5" r=".5" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg>,
@@ -19,76 +20,79 @@ export default function RessourcesIA() {
     return (
         <div className="bg-[#F8FAFC] min-h-screen antialiased">
 
-            {/* 1. HERO (Utilisation de votre composant) */}
+            {/* HERO SECTION */}
             <Hero
                 title={data.hero.titre}
                 subtitle={data.hero.sousTitre}
                 video={data.hero.video}
             />
 
-            {/* 2. BREADCRUMB (Utilisation de votre composant) */}
+            {/* BREADCRUMB */}
             <Breadcrumb items={[
                 { label: 'Accueil', to: '/' },
                 { label: data.hero.titre }
             ]} />
 
-            {/* 3. INTRO SECTION */}
+            {/* INTRO SECTION */}
             <section className="py-20 bg-white">
-                <div className="max-w-[800px] mx-auto px-6 text-center">
+                <div className="max-w-[850px] mx-auto px-6 text-center">
                     <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-navy mb-6">
                         {data.intro.titre}
                     </h2>
-                    <div className="w-16 h-1 bg-orange mx-auto mb-8 rounded-full"></div>
+                    <div className="w-20 h-1.5 bg-orange mx-auto mb-8 rounded-full"></div>
                     <p className="text-lg text-slate-600 leading-relaxed font-body">
                         {data.intro.description}
                     </p>
                 </div>
             </section>
 
-            {/* 4. CATÉGORIES D'OUTILS (Le cœur de la page) */}
+            {/* CATÉGORIES D'OUTILS */}
             <section className="py-20 bg-[#F8FAFC]">
-                <div className="max-w-[1200px] mx-auto px-6 space-y-20">
+                <div className="max-w-[1200px] mx-auto px-6 space-y-24">
                     {data.categories.map((cat, index) => {
                         const IconComponent = Icons[cat.icon] || Icons.Zap;
 
                         return (
-                            <div key={index}>
-                                {/* En-tête de la catégorie */}
-                                <div className="flex items-center gap-4 mb-10 border-b border-slate-200 pb-4">
-                                    <div className="w-12 h-12 rounded-xl bg-navy text-white flex items-center justify-center shadow-md">
+                            <div key={index} className="scroll-mt-20">
+                                {/* Header de catégorie */}
+                                <div className="flex items-center gap-5 mb-12 border-b border-slate-200 pb-6">
+                                    <div className="w-14 h-14 rounded-2xl bg-navy text-white flex items-center justify-center shadow-lg transform -rotate-3">
                                         <IconComponent />
                                     </div>
-                                    <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy uppercase tracking-wide">
+                                    <h3 className="font-heading text-2xl md:text-3xl font-black text-navy uppercase tracking-tighter">
                                         {cat.titre}
                                     </h3>
                                 </div>
 
-                                {/* Grille d'outils pour cette catégorie */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Grille d'outils (Responsive Grid) */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                     {cat.outils.map((outil, idx) => (
                                         <a
                                             key={idx}
                                             href={outil.lien}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group block bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+                                            className="group flex flex-col bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden"
                                         >
-                                            <div className="flex justify-between items-start mb-4">
-                                                <h4 className="font-heading text-xl font-bold text-navy group-hover:text-orange transition-colors">
+                                            <div className="flex justify-between items-start mb-6">
+                                                <h4 className="font-heading text-xl font-bold text-navy group-hover:text-orange transition-colors duration-300">
                                                     {outil.nom}
                                                 </h4>
-                                                <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase rounded-full border border-slate-200 group-hover:bg-orange/10 group-hover:border-orange/20 group-hover:text-orange transition-colors">
+                                                <span className="shrink-0 inline-block px-3 py-1 bg-navy/5 text-navy text-[10px] font-black uppercase rounded-md border border-navy/10 group-hover:bg-orange group-hover:text-white group-hover:border-orange transition-all duration-300">
                                                     {outil.tag}
                                                 </span>
                                             </div>
-                                            <p className="text-slate-600 font-body leading-relaxed mb-6">
+
+                                            <p className="text-slate-500 font-body text-sm leading-relaxed mb-8 flex-grow">
                                                 {outil.description}
                                             </p>
-                                            <div className="flex items-center gap-2 text-sm font-bold text-navy group-hover:text-orange transition-colors mt-auto">
-                                                Découvrir l'outil <Icons.ExternalLink />
+
+                                            <div className="flex items-center gap-2 text-xs font-black text-navy uppercase tracking-widest group-hover:text-orange transition-colors">
+                                                Explorer l'IA <Icons.ExternalLink />
                                             </div>
-                                            {/* Ligne décorative au bas de la carte au survol */}
-                                            <div className="absolute bottom-0 left-0 w-0 h-1 bg-orange group-hover:w-full transition-all duration-500 ease-out"></div>
+
+                                            {/* Accent visuel au survol */}
+                                            <div className="absolute top-0 left-0 w-1 h-0 bg-orange group-hover:h-full transition-all duration-500"></div>
                                         </a>
                                     ))}
                                 </div>
@@ -98,24 +102,23 @@ export default function RessourcesIA() {
                 </div>
             </section>
 
-            {/* 5. MINI-GLOSSAIRE */}
-            <section className="py-24 bg-white border-t border-slate-200">
-                <div className="max-w-[1000px] mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-navy uppercase tracking-wide">
+            {/* MINI-GLOSSAIRE */}
+            <section className="py-24 bg-navy">
+                <div className="max-w-[1100px] mx-auto px-6">
+                    <div className="text-center mb-20">
+                        <h2 className="font-heading text-3xl md:text-4xl font-black text-white uppercase tracking-tight">
                             {data.glossaire.titre}
                         </h2>
-                        <p className="text-slate-500 mt-4 font-body">Le vocabulaire essentiel pour comprendre l'écosystème de l'Intelligence Artificielle.</p>
+                        <div className="w-12 h-1 bg-orange mx-auto mt-4"></div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         {data.glossaire.termes.map((item, idx) => (
-                            <div key={idx} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                                <h4 className="font-heading text-lg font-bold text-orange mb-3 flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-navy block"></span>
-                                    {item.terme}
+                            <div key={idx} className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:border-orange/50 transition-colors">
+                                <h4 className="font-heading text-lg font-bold text-orange mb-4 italic">
+                                    # {item.terme}
                                 </h4>
-                                <p className="text-sm text-slate-600 leading-relaxed font-body">
+                                <p className="text-sm text-slate-300 leading-relaxed font-body">
                                     {item.definition}
                                 </p>
                             </div>
@@ -125,36 +128,21 @@ export default function RessourcesIA() {
             </section>
 
             {/* 6. CTA FINAL */}
-            <section className="relative py-24 px-6 bg-navy text-center overflow-hidden">
-                {/* Effet tech : grille de fond très subtile */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+            {data.cta && (
+                <CallToAction
+                    variante="claire"
+                    titre={data.cta.titre}
+                    sousTitre={data.cta.description}
 
-                <div className="max-w-[800px] mx-auto relative z-10">
-                    <h2 className="font-heading text-3xl md:text-4xl font-black text-white mb-6 uppercase leading-tight tracking-tight">
-                        {data.cta.titre}
-                    </h2>
-                    <p className="text-white/80 font-body text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-                        {data.cta.description}
-                    </p>
+                    // Bouton 1
+                    texteBouton={data.cta.boutons[0]?.label}
+                    lienBouton={data.cta.boutons[0]?.url}
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a
-                            href={data.cta.boutons[0]?.url}
-                            className="w-full sm:w-auto inline-block bg-orange hover:bg-white text-white hover:text-orange px-10 py-4 rounded-lg font-heading font-bold shadow-lg shadow-orange/20 transition-all duration-300 hover:-translate-y-1 uppercase tracking-wider"
-                        >
-                            {data.cta.boutons[0]?.label}
-                        </a>
-
-                        <a
-                            href={data.cta.boutons[1]?.url}
-                            className="w-full sm:w-auto inline-block bg-transparent border-2 border-white/70 text-white hover:bg-white hover:text-navy px-10 py-4 rounded-lg font-heading font-bold transition-all duration-300 hover:-translate-y-1 uppercase tracking-wider"
-                        >
-                            {data.cta.boutons[1]?.label}
-                        </a>
-                    </div>
-                </div>
-            </section>
-
+                    // Bouton 2
+                    texteBoutonSecondaire={data.cta.boutons[1]?.label}
+                    lienBoutonSecondaire={data.cta.boutons[1]?.url}
+                />
+            )}
         </div>
     );
 }

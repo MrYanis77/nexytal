@@ -28,9 +28,9 @@ export const dataNousRejoindre = {
             titre: "Postes ouverts - Collaborateurs",
             compteur: "4 offres disponibles",
             list: [
-                { id: 1, poste: "Chargé(e) de Communication", type: "CDI", lieu: "Paris", date: "26 Mars 2026" },
+                { id: 1, poste: "Chargé de Communication", type: "CDI", lieu: "Paris", date: "26 Mars 2026" },
                 { id: 2, poste: "Responsable Admissions", type: "CDI", lieu: "Lyon", date: "20 Mars 2026" },
-                { id: 3, poste: "Assistant(e) Pédagogique", type: "CDD", lieu: "Paris", date: "15 Mars 2026" },
+                { id: 3, poste: "Assistant Pédagogique", type: "CDD", lieu: "Paris", date: "15 Mars 2026" },
                 { id: 4, poste: "Conseiller en Formation", type: "CDI", lieu: "Bordeaux", date: "10 Mars 2026" }
             ]
         },
@@ -48,7 +48,7 @@ export const dataNousRejoindre = {
         hero: {
             titre: "Devenez Intervenant Expert",
             sousTitre: "Partagez votre savoir-faire et formez les talents de demain.",
-            video: "https://assets.mixkit.co/videos/preview/mixkit-group-of-designers-working-on-a-project-43277-large.mp4",
+            video: "public/Assets/video/intervenant.mp4",
         },
         pourquoiNousRejoindre: {
             titre: "Transmettez votre expertise",

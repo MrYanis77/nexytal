@@ -2,6 +2,7 @@
 export const hero = {
   titre: "Alternance",
   sousTitre: "Conjuguez théorie et pratique avec nos formations en alternance reconnues par l'État",
+  video: "/Assets/video/formations/manager.mp4",
 };
 
 export const benefits = [

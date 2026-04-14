@@ -1,7 +1,9 @@
 
+import { Link } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import CardFormation from '../components/Card/CardFormation'; // Import du nouveau composant
+import CallToAction from '../components/CallToAction';
 import { hero, catalogue } from '../data/formations';
 
 export default function FormationsPage() {
@@ -12,7 +14,7 @@ export default function FormationsPage() {
       <Hero
         title={hero.titre}
         subtitle={hero.sousTitre}
-        image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200"
+        video={hero.video}
       />
 
       {/* Fil d'ariane */}
@@ -21,9 +23,8 @@ export default function FormationsPage() {
       {/* ===== CATALOGUE ===== */}
       <main className="max-w-[1200px] mx-auto py-[80px] px-6" id="main-content">
         {catalogue.map((category, index) => {
-          // Détermine la variante de la carte selon la catégorie (ex: Image 1=Blanc, Image 2=Navy)
-          // Tu peux aussi baser cela sur une propriété dans tes datas
-          const isDarkSection = category.id === "management" || category.id === "digital";
+          // Alternance : une section sur deux en mode "Navy" (sombre)
+          const isDarkSection = index % 2 !== 0;
 
           return (
             <section key={category.id} className="mb-[100px]" id={category.id}>
@@ -52,6 +53,7 @@ export default function FormationsPage() {
                     image={item.imageUrl || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800"} // Image dynamique
                     points={item.features}
                     variant={isDarkSection ? "navy" : "white"} // Respect de l'alternance des visuels
+                    href={item.href}
                   />
                 ))}
               </div>
@@ -61,22 +63,16 @@ export default function FormationsPage() {
       </main>
 
       {/* ===== CTA FINAL ===== */}
-      <section className="bg-[#F9FAFB] py-24 px-6 text-center border-t border-border">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-3xl md:text-[38px] font-[800] text-navy mb-6 leading-tight">
-            Besoin d'un conseil personnalisé ?
-          </h2>
-          <p className="text-muted font-body text-[16px] mb-12 leading-relaxed max-w-2xl mx-auto">
-            Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements.
-          </p>
-          <a
-            href="tel:0123456789"
-            className="btn-orange text-[15px] px-12 py-5 shadow-xl hover:-translate-y-1 inline-block"
-          >
-            Être rappelé gratuitement
-          </a>
-        </div>
-      </section>
-    </div>
+
+      <CallToAction
+        variant="light"
+        title="Besoin d'un conseil personnalisé ?"
+        subtitle="Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements."
+        buttonText="PRENDRE RENDEZ-VOUS"
+        onButtonClick={() => window.location.href = 'tel:0123456789'}
+      />
+
+
+    </div >
   );
 }

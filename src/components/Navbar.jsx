@@ -17,15 +17,26 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-[100] w-full bg-navy px-6 lg:px-10 flex items-center justify-between h-[70px]">
 
+<<<<<<< HEAD
       {/* Logo */}
       <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3">
         <img
           src="/Assets/logo-altrh.png"
           alt="Logo ALT Formations"
           className="h-8 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,1))_drop-shadow(0_0_20px_rgba(255,255,255,0.5))]"
+=======
+      {/* Logo - Taille réduite */}
+      <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
+        <img
+          src="/Assets/logo-altrh.png"
+          alt="Logo ALT Formations"
+          // Hauteur réduite (h-8 sur mobile, h-10 sur desktop)
+          className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.8))]"
+>>>>>>> prototype
         />
-        <span className="text-white font-heading font-extrabold text-base tracking-wider uppercase cursor-pointer">
-          ALT FORMATIONS
+        {/* Texte réduit (text-base md:text-lg) */}
+        <span className="text-white font-heading font-extrabold text-base md:text-lg tracking-widest uppercase drop-shadow-md transition-colors duration-300 group-hover:text-orange">
+          ALT RH & FORMATIONS
         </span>
       </Link>
 
@@ -35,15 +46,20 @@ export default function Navbar() {
           <div key={item.label} className="relative group py-[25px]">
             <Link
               to={item.href}
-              className={`text-[13px] font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1
+              // Lien principal Desktop agrandi : text-[15px]
+              className={`text-[15px] font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1
                 ${location.pathname.startsWith(item.href) && item.href !== "/"
                   ? "text-orange"
+<<<<<<< HEAD
                   : "text-gray-400 group-hover:text-white"
+=======
+                  : "text-gray-300 group-hover:text-white"
+>>>>>>> prototype
                 }`}
             >
               {item.label}
               {item.submenu && (
-                <svg className="w-3 h-3 fill-current opacity-50 group-hover:rotate-180 transition-transform" viewBox="0 0 20 20">
+                <svg className="w-3.5 h-3.5 fill-current opacity-50 group-hover:rotate-180 transition-transform" viewBox="0 0 20 20">
                   <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                 </svg>
               )}
@@ -51,17 +67,18 @@ export default function Navbar() {
 
             {/* Dropdown Desktop (Niveau 1) */}
             {item.submenu && (
-              <div className="absolute top-[70px] left-0 w-[240px] bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50">
+              <div className="absolute top-[70px] left-0 w-[260px] bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50">
                 <div className="flex flex-col py-2">
                   {item.submenu.map((sub) => (
                     <div key={sub.label} className="relative group/sub">
                       <Link
                         to={sub.href}
-                        className="px-5 py-3 text-[13px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading flex w-full items-center justify-between"
+                        // Sous-menu niveau 1 agrandi : text-[14px]
+                        className="px-5 py-3 text-[14px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading flex w-full items-center justify-between"
                       >
                         {sub.label}
                         {sub.submenu && (
-                          <svg className="w-3 h-3 fill-current opacity-50" viewBox="0 0 20 20">
+                          <svg className="w-3.5 h-3.5 fill-current opacity-50" viewBox="0 0 20 20">
                             <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
                           </svg>
                         )}
@@ -69,17 +86,18 @@ export default function Navbar() {
 
                       {/* Dropdown Desktop (Niveau 2 et 3) */}
                       {sub.submenu && (
-                        <div className="absolute top-0 left-full ml-0 w-[240px] bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 translate-x-[-10px] group-hover/sub:translate-x-0 z-[60]">
+                        <div className="absolute top-0 left-full ml-0 w-[260px] bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 translate-x-[-10px] group-hover/sub:translate-x-0 z-[60]">
                           <div className="flex flex-col py-2">
                             {sub.submenu.map((subItem) => (
                               <div key={subItem.label} className="relative group/subItem">
                                 <Link
                                   to={subItem.href}
-                                  className="px-5 py-3 text-[13px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading flex items-center justify-between w-full"
+                                  // Sous-menu niveau 2 agrandi : text-[14px]
+                                  className="px-5 py-3 text-[14px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading flex items-center justify-between w-full"
                                 >
                                   {subItem.label}
                                   {subItem.submenu && (
-                                    <svg className="w-3 h-3 fill-current opacity-50" viewBox="0 0 20 20">
+                                    <svg className="w-3.5 h-3.5 fill-current opacity-50" viewBox="0 0 20 20">
                                       <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
                                     </svg>
                                   )}
@@ -93,7 +111,8 @@ export default function Navbar() {
                                         <Link
                                           key={subSub.label}
                                           to={subSub.href}
-                                          className="px-5 py-3 text-[12px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading block w-full"
+                                          // Sous-menu niveau 3 agrandi : text-[13px]
+                                          className="px-5 py-3 text-[13px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading block w-full"
                                         >
                                           {subSub.label}
                                         </Link>
@@ -117,7 +136,7 @@ export default function Navbar() {
 
       {/* Actions */}
       <div className="flex items-center gap-4">
-        <button className="hidden sm:block btn-orange text-[13px] py-2 px-4">
+        <button className="hidden sm:block btn-orange text-[14px] py-2.5 px-5">
           <a href="/connexion">Se connecter</a>
         </button>
 
@@ -129,21 +148,38 @@ export default function Navbar() {
       </div>
 
       {/* Menu Mobile */}
-      <div className={`fixed inset-0 bg-navy z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} pt-[70px] px-6 overflow-y-auto`}>
-        <div className="flex flex-col gap-6 py-10 border-t border-white/10">
+      <div className={`fixed inset-0 bg-navy z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} flex flex-col overflow-y-auto`}>
+
+        {/* NOUVEAU : En-tête du menu mobile avec bouton de fermeture (Flèche) */}
+        <div className="flex items-center justify-between px-6 min-h-[70px] border-b border-white/10 shrink-0">
+          <span className="text-white font-heading font-extrabold text-lg tracking-widest uppercase">Menu</span>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-2 text-gray-300 hover:text-white bg-white/5 px-3 py-2 rounded-lg transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span className="text-sm font-semibold uppercase">Retour</span>
+          </button>
+        </div>
+
+        {/* Contenu des liens */}
+        <div className="flex flex-col gap-6 py-10 px-6">
           {navlinks.map((item) => (
             <div key={item.label} className="flex flex-col gap-4 text-left">
               <div className="flex items-center justify-between w-full">
                 <Link
                   to={item.href}
                   onClick={() => !item.submenu && setIsOpen(false)}
-                  className={`text-lg font-bold font-heading no-underline flex-grow ${location.pathname.startsWith(item.href) && item.href !== "/" ? "text-orange" : "text-white"}`}
+                  // Lien Mobile Niveau 1 agrandi : text-xl
+                  className={`text-xl font-bold font-heading no-underline flex-grow ${location.pathname.startsWith(item.href) && item.href !== "/" ? "text-orange" : "text-white"}`}
                 >
                   {item.label}
                 </Link>
                 {item.submenu && (
                   <button onClick={() => toggleMobileMenu(item.label)} className="p-2 text-white">
-                    <svg className={`w-5 h-5 fill-current transition-transform ${openMobileMenus[item.label] ? "rotate-180" : ""}`} viewBox="0 0 20 20">
+                    <svg className={`w-6 h-6 fill-current transition-transform ${openMobileMenus[item.label] ? "rotate-180" : ""}`} viewBox="0 0 20 20">
                       <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                     </svg>
                   </button>
@@ -152,14 +188,15 @@ export default function Navbar() {
 
               {/* Niveau 1 (Mobile) */}
               {item.submenu && openMobileMenus[item.label] && (
-                <div className="flex flex-col gap-4 pl-4 border-l-2 border-orange/30">
+                <div className="flex flex-col gap-5 pl-4 border-l-2 border-orange/30">
                   {item.submenu.map((sub) => (
                     <div key={sub.label} className="flex flex-col gap-4">
                       <div className="flex items-center justify-between w-full">
                         <Link
                           to={sub.href}
                           onClick={() => !sub.submenu && setIsOpen(false)}
-                          className="text-gray-400 text-base font-semibold no-underline flex-grow"
+                          // Lien Mobile Niveau 2 agrandi : text-lg
+                          className="text-gray-300 text-lg font-semibold no-underline flex-grow"
                         >
                           {sub.label}
                         </Link>
@@ -181,13 +218,14 @@ export default function Navbar() {
                                 <Link
                                   to={subItem.href}
                                   onClick={() => !subItem.submenu && setIsOpen(false)}
-                                  className="text-gray-400 text-sm font-semibold no-underline flex-grow"
+                                  // Lien Mobile Niveau 3 agrandi : text-base
+                                  className="text-gray-400 text-base font-semibold no-underline flex-grow"
                                 >
                                   {subItem.label}
                                 </Link>
                                 {subItem.submenu && (
                                   <button onClick={() => toggleMobileMenu(subItem.label)} className="p-1 text-gray-500">
-                                    <svg className={`w-4 h-4 fill-current transition-transform ${openMobileMenus[subItem.label] ? "rotate-180" : ""}`} viewBox="0 0 20 20">
+                                    <svg className={`w-5 h-5 fill-current transition-transform ${openMobileMenus[subItem.label] ? "rotate-180" : ""}`} viewBox="0 0 20 20">
                                       <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                                     </svg>
                                   </button>
@@ -202,7 +240,8 @@ export default function Navbar() {
                                       key={subSub.label}
                                       to={subSub.href}
                                       onClick={() => setIsOpen(false)}
-                                      className="text-gray-500 text-xs font-semibold no-underline"
+                                      // Lien Mobile Niveau 4 agrandi : text-sm
+                                      className="text-gray-500 text-sm font-semibold no-underline"
                                     >
                                       {subSub.label}
                                     </Link>
