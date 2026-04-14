@@ -6,7 +6,7 @@
  * - Grille de Formations/Services : Affichage via CardFormation avec liens.
  * - VideoSection : Section de présentation vidéo.
  * - TrustSection : Bandeau de logos partenaires cliquables avec défilement infini.
- * - Témoignages : Grille de retours clients.
+ * - Témoignages : Avis type Google avec défilement infini.
  * - Certification : Bandeau de réassurance Qualité.
  * - CTA Final : Appel à l'action pour la prise de contact.
  */
@@ -23,11 +23,12 @@ import CertificationSection from '../components/CertificationSection';
 // Import des données statiques depuis home.js
 import { slides, stats, presentation, services, partenaires, temoignages, certifications } from '../data/home';
 
-
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const doublePartenaires = [...partenaires, ...partenaires];
+  // On quadruple le tableau pour s'assurer que le défilement couvre les très grands écrans
+  const scrollingTemoignages = [...temoignages, ...temoignages, ...temoignages, ...temoignages];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,7 +47,6 @@ export default function HomePage() {
           <motion.div
             key={`bg-${currentSlide}`}
             initial={{ opacity: 0, scale: 1.1 }}
-            // CORRECTION 1 : Opacité augmentée à 0.9 au lieu de 0.65 pour y voir plus clair
             animate={{ opacity: 0.9, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
@@ -73,7 +73,6 @@ export default function HomePage() {
           </motion.div>
         </AnimatePresence>
 
-        {/* CORRECTION 2 : Dégradé beaucoup plus clair pour ne pas masquer l'image (navy/80 -> navy/30) */}
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy/80 via-navy/30 to-transparent" />
 
         <div className="container mx-auto relative z-20 px-6 md:px-[60px]">
@@ -175,9 +174,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 4 : VIDÉO
-      <VideoSection title="Découvrez ALT FORMATIONS en vidéo" /> */}
-
       {/* SECTION 5 : TRUST SECTION (LOGOS PARTENAIRES CLIQUABLES) */}
       <section className="py-[70px] bg-white border-t border-border overflow-hidden">
         <div className="max-w-[1100px] mx-auto px-6 mb-12">
@@ -204,42 +200,55 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-
-        {/* Animation de défilement infini */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-scroll {
-            display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
-          }
-          .animate-scroll:hover {
-            animation-play-state: paused;
-          }
-        `}} />
       </section>
 
-      {/* SECTION 6 : TÉMOIGNAGES */}
-      <section className="py-[70px] px-6 max-w-[1100px] mx-auto">
-        <h2 className="font-heading text-2xl md:text-[32px] font-extrabold text-dark text-center mb-16 uppercase tracking-wider">
-          Témoignages
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {temoignages.map((t, idx) => (
-            <article key={idx} className="bg-white p-8 border-l-4 border-l-orange shadow-sm rounded-r-xl flex flex-col justify-between hover:shadow-md transition-shadow">
-              <blockquote className="text-[15px] italic text-[#555] leading-relaxed mb-8 font-body">
-                "{t.quote}"
-              </blockquote>
-              <div>
-                <p className="font-heading font-bold text-navy text-[16px]">{t.author}</p>
-                <p className="text-orange text-[12px] font-bold uppercase tracking-widest font-body mt-1">{t.role}</p>
-              </div>
-            </article>
-          ))}
+      {/* SECTION 6 : TÉMOIGNAGES AVIS GOOGLE (DÉFILEMENT INFINI) */}
+      <section className="py-[70px] bg-slate-50 border-t border-border overflow-hidden">
+        <div className="max-w-[1100px] mx-auto px-6 mb-12">
+          <h2 className="font-heading text-2xl md:text-[32px] font-extrabold text-navy text-center uppercase tracking-wider">
+            Ce que disent nos apprenants
+          </h2>
+        </div>
+
+        <div className="relative flex overflow-hidden group">
+          {/* Ajout de items-start ici pour empêcher l'étirement vertical */}
+          <div className="flex animate-scroll-reviews py-4 whitespace-nowrap items-start">
+            {scrollingTemoignages.map((t, idx) => (
+              <article
+                key={idx}
+                // Ajout de h-fit pour que la carte colle au texte
+                className="flex-shrink-0 w-[320px] md:w-[450px] h-fit mx-4 bg-white p-6 border border-gray-100 shadow-sm rounded-xl flex flex-col gap-3 whitespace-normal hover:shadow-md transition-shadow"
+              >
+                {/* En-tête : Avatar + Infos */}
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
+                    <img src={t.avatar} alt={t.author} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="font-bold text-gray-900 text-[15px] leading-tight">{t.author}</h3>
+                    <span className="text-[13px] text-gray-500">{t.role}</span>
+                  </div>
+                </div>
+
+                {/* Étoiles et Date */}
+                <div className="flex items-center gap-2 mt-1">
+                  <div className="flex text-[#fbbc04]">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className={`w-[18px] h-[18px] ${i < t.rating ? 'fill-current' : 'fill-gray-300'}`} viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-[13px] text-gray-500">{t.date}</span>
+                </div>
+
+                {/* Texte de l'avis */}
+                <p className="text-[#3c4043] text-[14px] leading-relaxed mt-2 font-body">
+                  {t.quote}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -264,6 +273,32 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Animations CSS partagées */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+          }
+          .animate-scroll:hover {
+            animation-play-state: paused;
+          }
+
+          /* Nouvelle animation pour les avis (légèrement plus lente pour la lecture) */
+          .animate-scroll-reviews {
+            display: flex;
+            width: max-content;
+            animation: scroll 60s linear infinite;
+          }
+          .animate-scroll-reviews:hover {
+            animation-play-state: paused;
+          }
+        `}} />
     </div>
   );
 }

@@ -135,8 +135,24 @@ export default function Navbar() {
       </div>
 
       {/* Menu Mobile */}
-      <div className={`fixed inset-0 bg-navy z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} pt-[70px] px-6 overflow-y-auto`}>
-        <div className="flex flex-col gap-6 py-10 border-t border-white/10">
+      <div className={`fixed inset-0 bg-navy z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} flex flex-col overflow-y-auto`}>
+
+        {/* NOUVEAU : En-tête du menu mobile avec bouton de fermeture (Flèche) */}
+        <div className="flex items-center justify-between px-6 min-h-[70px] border-b border-white/10 shrink-0">
+          <span className="text-white font-heading font-extrabold text-lg tracking-widest uppercase">Menu</span>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-2 text-gray-300 hover:text-white bg-white/5 px-3 py-2 rounded-lg transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span className="text-sm font-semibold uppercase">Retour</span>
+          </button>
+        </div>
+
+        {/* Contenu des liens */}
+        <div className="flex flex-col gap-6 py-10 px-6">
           {navlinks.map((item) => (
             <div key={item.label} className="flex flex-col gap-4 text-left">
               <div className="flex items-center justify-between w-full">
