@@ -24,7 +24,7 @@ export default function CampusPage() {
 
       {/* 2. GRILLE DES CAMPUS */}
       <section className="py-20 px-6">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-container-xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {campus.map((item) => (
               <CardFormation

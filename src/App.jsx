@@ -32,9 +32,9 @@ import GestionCarriere from './pages/GestionCarriere';
 
 function ComingSoon({ title }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 font-heading text-navy">
+    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 font-heading text-primary">
       <h1 className="text-3xl font-extrabold">{title}</h1>
-      <p className="text-muted font-body">Page en cours de construction — en attente du screenshot.</p>
+      <p className="text-content-muted font-body">Page en cours de construction — en attente du screenshot.</p>
     </div>
   );
 }

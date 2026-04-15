@@ -34,17 +34,17 @@ export default function StatsBar({ stats }) {
 
   return (
     <div className="w-full bg-white py-14 border-b border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-container-xl mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, idx) => (
             <div key={idx} className="flex flex-col items-center text-center">
-              <div className="text-orange mb-4">
+              <div className="text-accent mb-4">
                 {iconMap[stat.icon]}
               </div>
-              <div className="text-navy font-black text-3xl md:text-4xl mb-1 tracking-tight">
+              <div className="text-primary font-black text-3xl md:text-4xl mb-1 tracking-tight">
                 {stat.valeur}
               </div>
-              <div className="text-muted text-[13px] md:text-[14px] font-medium uppercase tracking-wide">
+              <div className="text-content-muted text-small md:text-sm font-medium uppercase tracking-wide">
                 {stat.label}
               </div>
             </div>

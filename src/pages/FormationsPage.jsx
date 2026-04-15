@@ -21,7 +21,7 @@ export default function FormationsPage() {
       <Breadcrumb items={[{ label: 'Accueil', to: '/' }, { label: 'Formations' }]} />
 
       {/* ===== CATALOGUE ===== */}
-      <main className="max-w-[1200px] mx-auto py-[80px] px-6" id="main-content">
+      <main className="max-w-container-xl mx-auto py-[80px] px-6" id="main-content">
         {catalogue.map((category, index) => {
           // Alternance : une section sur deux en mode "Navy" (sombre)
           const isDarkSection = index % 2 !== 0;
@@ -32,14 +32,14 @@ export default function FormationsPage() {
               {/* Header de catégorie (Image 9a22e3) */}
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
                 <div className="flex items-center group">
-                  <div className="w-[6px] h-10 bg-orange rounded-full mr-4"></div>
-                  <h2 className="font-heading text-2xl md:text-3xl font-[800] text-navy uppercase tracking-tight">
+                  <div className="w-[6px] h-10 bg-accent rounded-full mr-4"></div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-primary uppercase tracking-tight">
                     {category.label}
                   </h2>
                 </div>
 
                 {/* Bouton "Voir toutes" (Vu sur toutes tes images en haut à droite) */}
-                <button className="btn-orange text-[12px] md:text-[13px] py-2 px-6 opacity-90 hover:opacity-100 self-start">
+                <button className="btn-orange text-xs md:text-small py-2 px-6 opacity-90 hover:opacity-100 self-start">
                   Voir toutes les formations
                 </button>
               </div>

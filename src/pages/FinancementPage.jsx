@@ -24,22 +24,22 @@ export default function FinancementsPage() {
         {/* --- NOUVELLE SECTION : QUESTIONS ORIENTÉES --- */}
         <section className="bg-slate-50 p-8 rounded-3xl border border-gray-100 shadow-sm">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1E2F47] uppercase tracking-wider mb-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-primary-light uppercase tracking-wider mb-3">
               {questionsOrientees.titre}
             </h2>
-            <p className="text-muted text-sm md:text-base max-w-2xl mx-auto">
+            <p className="text-content-muted text-sm md:text-base max-w-2xl mx-auto">
               {questionsOrientees.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {questionsOrientees.items.map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-orange hover:shadow-md transition-all duration-300 group">
+              <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-accent hover:shadow-md transition-all duration-300 group">
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-orange/10 text-orange rounded-full flex items-center justify-center font-bold text-lg group-hover:bg-orange group-hover:text-white transition-colors">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent/10 text-accent rounded-full flex items-center justify-center font-bold text-lg group-hover:bg-accent group-hover:text-white transition-colors">
                     ?
                   </div>
-                  <h3 className="font-bold text-[#1E2F47] text-lg group-hover:text-orange transition-colors">
+                  <h3 className="font-bold text-primary-light text-lg group-hover:text-accent transition-colors">
                     {item.q}
                   </h3>
                 </div>

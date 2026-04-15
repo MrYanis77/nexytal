@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-[100] w-full bg-navy px-6 lg:px-10 flex items-center justify-between h-[70px]">
+    <nav className="sticky top-0 z-[100] w-full bg-primary px-6 lg:px-10 flex items-center justify-between h-[70px]">
 
       {/* Logo - Taille réduite */}
       <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
@@ -26,7 +26,7 @@ export default function Navbar() {
           className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.8))]"
         />
         {/* Texte réduit (text-base md:text-lg) */}
-        <span className="text-white font-heading font-extrabold text-base md:text-lg tracking-widest uppercase drop-shadow-md transition-colors duration-300 group-hover:text-orange">
+        <span className="text-white font-heading font-extrabold text-base md:text-lg tracking-widest uppercase drop-shadow-md transition-colors duration-300 group-hover:text-accent">
           ALT RH & FORMATIONS
         </span>
       </Link>
@@ -37,10 +37,10 @@ export default function Navbar() {
           <div key={item.label} className="relative group py-[25px]">
             <Link
               to={item.href}
-              // Lien principal Desktop agrandi : text-[15px]
-              className={`text-[15px] font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1
+              // Lien principal Desktop agrandi : text-medium
+              className={`text-medium font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1
                 ${location.pathname.startsWith(item.href) && item.href !== "/"
-                  ? "text-orange"
+                  ? "text-accent"
                   : "text-gray-300 group-hover:text-white"
                 }`}
             >
@@ -60,8 +60,8 @@ export default function Navbar() {
                     <div key={sub.label} className="relative group/sub">
                       <Link
                         to={sub.href}
-                        // Sous-menu niveau 1 agrandi : text-[14px]
-                        className="px-5 py-3 text-[14px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading flex w-full items-center justify-between"
+                        // Sous-menu niveau 1 agrandi : text-sm
+                        className="px-5 py-3 text-sm font-bold text-primary hover:bg-accent hover:text-white transition-colors no-underline font-heading flex w-full items-center justify-between"
                       >
                         {sub.label}
                         {sub.submenu && (
@@ -79,8 +79,8 @@ export default function Navbar() {
                               <div key={subItem.label} className="relative group/subItem">
                                 <Link
                                   to={subItem.href}
-                                  // Sous-menu niveau 2 agrandi : text-[14px]
-                                  className="px-5 py-3 text-[14px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading flex items-center justify-between w-full"
+                                  // Sous-menu niveau 2 agrandi : text-sm
+                                  className="px-5 py-3 text-sm font-bold text-primary hover:bg-accent hover:text-white transition-colors no-underline font-heading flex items-center justify-between w-full"
                                 >
                                   {subItem.label}
                                   {subItem.submenu && (
@@ -98,8 +98,8 @@ export default function Navbar() {
                                         <Link
                                           key={subSub.label}
                                           to={subSub.href}
-                                          // Sous-menu niveau 3 agrandi : text-[13px]
-                                          className="px-5 py-3 text-[13px] font-bold text-navy hover:bg-orange hover:text-white transition-colors no-underline font-heading block w-full"
+                                          // Sous-menu niveau 3 agrandi : text-small
+                                          className="px-5 py-3 text-small font-bold text-primary hover:bg-accent hover:text-white transition-colors no-underline font-heading block w-full"
                                         >
                                           {subSub.label}
                                         </Link>
@@ -123,7 +123,7 @@ export default function Navbar() {
 
       {/* Actions */}
       <div className="flex items-center gap-4">
-        <button className="hidden sm:block btn-orange text-[14px] py-2.5 px-5">
+        <button className="hidden sm:block btn-orange text-sm py-2.5 px-5">
           <a href="/connexion">Se connecter</a>
         </button>
 
@@ -135,7 +135,7 @@ export default function Navbar() {
       </div>
 
       {/* Menu Mobile */}
-      <div className={`fixed inset-0 bg-navy z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} flex flex-col overflow-y-auto`}>
+      <div className={`fixed inset-0 bg-primary z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} flex flex-col overflow-y-auto`}>
 
         {/* NOUVEAU : En-tête du menu mobile avec bouton de fermeture (Flèche) */}
         <div className="flex items-center justify-between px-6 min-h-[70px] border-b border-white/10 shrink-0">
@@ -160,7 +160,7 @@ export default function Navbar() {
                   to={item.href}
                   onClick={() => !item.submenu && setIsOpen(false)}
                   // Lien Mobile Niveau 1 agrandi : text-xl
-                  className={`text-xl font-bold font-heading no-underline flex-grow ${location.pathname.startsWith(item.href) && item.href !== "/" ? "text-orange" : "text-white"}`}
+                  className={`text-xl font-bold font-heading no-underline flex-grow ${location.pathname.startsWith(item.href) && item.href !== "/" ? "text-accent" : "text-white"}`}
                 >
                   {item.label}
                 </Link>
@@ -175,7 +175,7 @@ export default function Navbar() {
 
               {/* Niveau 1 (Mobile) */}
               {item.submenu && openMobileMenus[item.label] && (
-                <div className="flex flex-col gap-5 pl-4 border-l-2 border-orange/30">
+                <div className="flex flex-col gap-5 pl-4 border-l-2 border-accent/30">
                   {item.submenu.map((sub) => (
                     <div key={sub.label} className="flex flex-col gap-4">
                       <div className="flex items-center justify-between w-full">
