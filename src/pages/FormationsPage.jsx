@@ -33,7 +33,7 @@ const themes = [
     label: 'Gestion / RH',
     icon: <IconRH />,
     description: "Ressources humaines, comptabilité, gestion administrative — des formations reconnues par l'État pour des carrières stables et évolutives.",
-    categoryIds: ['rh-tertiaire', 'comptabilite-gestion'],
+    categoryIds: ['gestion-rh-compta'],
   },
 ];
 
@@ -61,9 +61,6 @@ export default function FormationsPage() {
       }, 150);
     }
   }, [location.hash]);
-
-  const getThemeCount = (theme) =>
-    theme.categories.reduce((acc, cat) => acc + cat.items.length, 0);
 
   return (
     <div className="bg-surface min-h-screen antialiased">
@@ -97,7 +94,6 @@ export default function FormationsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {themesWithData.map((theme) => {
               const isActive = activeTheme === theme.id;
-              const count = getThemeCount(theme);
               return (
                 <a
                   key={theme.id}
@@ -123,11 +119,7 @@ export default function FormationsPage() {
                     `}>
                       {theme.icon}
                     </div>
-                    <span className={`text-sm font-semibold px-4 py-1.5 rounded-full transition-colors
-                      ${isActive ? 'bg-accent/10 text-accent' : 'bg-surface-soft border border-gray-200 text-content-muted'}
-                    `}>
-                      {count} formations
-                    </span>
+                    {/* Le compteur de formations a été supprimé ici */}
                   </div>
 
                   <h3 className="font-heading text-2xl font-bold text-primary mb-3 group-hover:text-accent transition-colors">
@@ -177,9 +169,7 @@ export default function FormationsPage() {
                           {category.label}
                         </h3>
                       </div>
-                      <div className="text-[15px] text-content-muted font-semibold font-body">
-                        {category.items.length} programme{category.items.length > 1 ? 's' : ''}
-                      </div>
+                      {/* Le compteur de programmes a été supprimé ici */}
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

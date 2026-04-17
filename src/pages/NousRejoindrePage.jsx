@@ -47,14 +47,14 @@ export default function NousRejoindre() {
               className={`px-6 md:px-8 py-2 text-sm rounded-full font-bold transition-all duration-300 cursor-pointer ${view === 'collaborateur' ? 'bg-accent text-white shadow-md' : 'text-gray-500 hover:text-primary'
                 }`}
             >
-              Collaborateur
+              Collaborateurs
             </button>
             <button
               onClick={() => setView('formateur')}
               className={`px-6 md:px-8 py-2 text-sm rounded-full font-bold transition-all duration-300 cursor-pointer ${view === 'formateur' ? 'bg-primary-light text-white shadow-md' : 'text-gray-500 hover:text-primary'
                 }`}
             >
-              Formateur
+              Formateurs
             </button>
           </div>
         </div>

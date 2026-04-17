@@ -7,9 +7,11 @@ const categoryMap = {
   'formations-developpeur-dapplications-multimedia': 'numerique',
   'formations-concepteur-developpeur-dapplications': 'numerique',
   'formations-technicien-superieur-systemes-et-reseaux': 'numerique',
+  'formations-concepteur-designer-ui': 'numerique',
   'formations-lead-developpeur-web': 'numerique',
   'formations-community-manager': 'rh',
   'formations-assistante-ressources-humaines': 'rh',
+  'formations-assistante-de-direction': 'rh',
   'formations-assistante-administratifve': 'rh',
   'formations-assistante-commerciale': 'rh',
   'formations-secretaire-comptable': 'rh',
@@ -76,10 +78,7 @@ export const navlinks = [
     submenu: [
       {
         label: "Formation continue",
-        href: "/e-learning",
-      },
-      {
-        label: "E-learning",
+        href: "/formations",
         submenu: [
           {
             label: "Formations Numériques",
@@ -94,6 +93,7 @@ export const navlinks = [
         ],
       },
 
+
     ],
   },
 
@@ -102,7 +102,6 @@ export const navlinks = [
   { label: "Financements", href: "/financements" },
   {
     label: "Carrières",
-    href: "/carriere",
     submenu: [
       {
         label: "Gestion de carrières",
@@ -151,4 +150,6 @@ export const navlinks = [
   { label: "Nos Campus", href: "/campus" },
   { label: "Contact", href: "/contact" },
   { label: "F.A.Q", href: "/faq" },
+
+
 ];

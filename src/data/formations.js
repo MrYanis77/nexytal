@@ -16,17 +16,17 @@ export const imageMap = {
   'formations-developpeur-web-mobile': '/Assets/images/concepteur_web.jpg',
   'formations-developpeur-dapplications-multimedia': '/Assets/images/designer_app_mobile.jpg',
   'formations-concepteur-developpeur-dapplications': '/Assets/images/concepteur_app.jpg',
+  'formations-concepteur-designer-ui': '/Assets/images/designer_app_mobile.jpg',
   'formations-lead-developpeur-web': '/Assets/images/concepteur_app.jpg',
   'formation-intelligence-artificielle': '/Assets/images/analyste_data.jpg',
 
-  // ── Ressources Humaines & Tertiaire ─────────────────────────────────────
+  // ── RH, Gestion & Comptabilité ──────────────────────────────────────────
   'formations-community-manager': '/Assets/images/designer_app_mobile.jpg',
   'formations-assistante-ressources-humaines': '/Assets/images/responsable_rh.jpg',
+  'formations-assistante-de-direction': '/Assets/images/secretaire_5.png',
   'formations-assistante-administratifve': '/Assets/images/secretaire_5.png',
   'formations-assistante-commerciale': '/Assets/images/secretaire_4.jpg',
   'formations-conseillerere-relation-client-a-distance': '/Assets/images/secretaire_1.jpg',
-
-  // ── Comptabilité & Gestion ───────────────────────────────────────────────
   'formations-secretaire-comptable': '/Assets/images/secretaire_2.jpg',
   'gestionnaire-comptable-fiscal': '/Assets/images/comptable_1.jpg',
   'formations-comptable-assistant': '/Assets/images/comptable2.jpg',
@@ -73,25 +73,21 @@ export const catalogue = [
       'formations-developpeur-web-mobile',
       'formations-developpeur-dapplications-multimedia',
       'formations-concepteur-developpeur-dapplications',
+      'formations-concepteur-designer-ui',
       'formations-lead-developpeur-web',
       'formation-intelligence-artificielle'
     ].map(mapIdToItem).filter(Boolean),
   },
   {
-    id: 'rh-tertiaire',
-    label: 'Ressources Humaines & Tertiaire',
+    id: 'gestion-rh-compta',
+    label: 'RH, Gestion & Comptabilité',
     items: [
       'formations-community-manager',
       'formations-assistante-ressources-humaines',
+      'formations-assistante-de-direction',
       'formations-assistante-administratifve',
       'formations-assistante-commerciale',
-      'formations-conseillerere-relation-client-a-distance'
-    ].map(mapIdToItem).filter(Boolean),
-  },
-  {
-    id: 'comptabilite-gestion',
-    label: 'Comptabilité & Gestion',
-    items: [
+      'formations-conseillerere-relation-client-a-distance',
       'formations-secretaire-comptable',
       'gestionnaire-comptable-fiscal',
       'formations-comptable-assistant'

@@ -23,7 +23,7 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // Limite chaque IP à 10 requêtes par fenêtre (pour les formulaires)
   message: { success: false, error: "Trop de tentatives. Veuillez réessayer dans 15 minutes." },
-  standardHeaders: true, 
+  standardHeaders: true,
   legacyHeaders: false,
 });
 
@@ -48,7 +48,7 @@ app.post('/api/contact', async (req, res) => {
     // - le destinataire (to) DOIT être l'email de votre compte Resend.
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: destinataire || process.env.EMAIL_DESTINATAIRE || 'yanislaldjipro@gmail.com', // Cible
+      to: destinataire || process.env.EMAIL_DESTINATAIRE || 'contact@alt-formations.com', // Cible
       subject: `Nouveau message du site: ${sujet}`,
       html: `
         <div style="font-family: sans-serif; color: #1a202c; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">

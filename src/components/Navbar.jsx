@@ -25,10 +25,7 @@ export default function Navbar() {
           className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-lighten" />
         <div className="flex flex-col justify-center drop-shadow-[0_0_4px_rgba(255,255,255,0.3)] min-w-max">
           <span className="text-white font-heading font-extrabold text-sm md:text-base xl:text-lg leading-none tracking-wide transition-colors duration-300 group-hover:text-accent">
-            ALT <span className="text-accent group-hover:text-white transition-colors duration-300">RH</span>
-          </span>
-          <span className="text-white/70 font-body text-[9px] md:text-micro uppercase tracking-[0.2em] mt-1">
-            & Formations
+            ALT <span className="text-accent group-hover:text-white transition-colors duration-300">FORMATIONS</span>
           </span>
         </div>
       </Link>

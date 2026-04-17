@@ -2272,5 +2272,240 @@
                 }
             ]
         }
+    },
+    "formations-concepteur-designer-ui": {
+        "categorie": "numerique",
+        "hero": {
+            "titre": "Devenez Concepteur Designer UI",
+            "sousTitre": "Le concepteur designer UI conçoit et réalise des interfaces numériques en combinant créativité graphique et compréhension des besoins utilisateurs. Il imagine l'univers visuel, crée des maquettes et définit l'expérience utilisateur (UX/UI).",
+            "video": "/Assets/video/formations/dev-app.mp4"
+        },
+        "stats": [
+            {
+                "label": "Certification",
+                "value": "Titre Professionnel RNCP – Niveau 5 (Bac+2)",
+                "icon": "medal"
+            },
+            {
+                "label": "Code CPF",
+                "value": "288395",
+                "icon": "trend"
+            },
+            {
+                "label": "Salaire débutant",
+                "value": "32 000 – 35 000 € brut/an",
+                "icon": "users"
+            }
+        ],
+        "presentation": {
+            "titre": "Le métier",
+            "paragraphes": "Le concepteur designer UI conçoit et réalise des interfaces numériques (sites web, applications, supports digitaux) en combinant créativité graphique et compréhension des besoins utilisateurs. À partir d'un brief, d'un cahier des charges ou d'une demande client, il analyse les attentes, imagine l'univers visuel, crée des maquettes et définit l'expérience utilisateur (UX/UI). Il conçoit des chartes graphiques, produit des visuels et développe des prototypes interactifs. Il intègre les contenus à l'aide d'outils professionnels, de langages web et de CMS, veille à la cohérence visuelle et à la compatibilité sur tous les supports. Il optimise également l'expérience utilisateur en testant ses réalisations et en analysant les comportements des utilisateurs. 👉 Un métier créatif et technique, au cœur de la transformation digitale des entreprises."
+        },
+        "debouches": {
+            "titre": "Les métiers visés",
+            "sousTitre": "Après cette formation, vous pourrez postuler à des postes variés dans le domaine du design numérique.",
+            "postes": [
+                {
+                    "titre": "Concepteur Designer UI",
+                    "salaire": "32 000 – 35 000 € brut/an (junior)"
+                },
+                {
+                    "titre": "UI Designer",
+                    "salaire": "+ 40 000 € brut/an (après 5 ans)"
+                },
+                {
+                    "titre": "UX/UI Designer",
+                    "salaire": "Selon expérience"
+                },
+                {
+                    "titre": "Intégrateur Web",
+                    "salaire": "Selon expérience"
+                },
+                {
+                    "titre": "Webdesigner",
+                    "salaire": "Selon expérience"
+                },
+                {
+                    "titre": "Expert UI Designer",
+                    "salaire": "+ 50 000 € brut/an"
+                }
+            ],
+            "secteurs": "Agences digitales · Entreprises · Startups · Freelance"
+        },
+        "programme": {
+            "dureeTotale": "Programme complet – voir brochure pour les détails",
+            "modules": [
+                {
+                    "id": 1,
+                    "title": "AT1 – Concevoir les éléments graphiques d'une interface et de supports de communication",
+                    "duration": "À définir",
+                    "description": "Réalisation d'illustrations, graphismes, visuels, interfaces graphiques, prototypes et animations. Création de supports de communication."
+                },
+                {
+                    "id": 2,
+                    "title": "AT2 – Contribuer à la gestion et au suivi d'un projet de communication numérique",
+                    "duration": "À définir",
+                    "description": "Mise en œuvre d'une stratégie webmarketing. Veille professionnelle et développement des compétences collectives de l'équipe."
+                },
+                {
+                    "id": 3,
+                    "title": "AT3 – Réaliser, améliorer et animer des sites Web",
+                    "duration": "À définir",
+                    "description": "Intégration de pages web, adaptation de CMS, optimisation continue des sites web et interfaces."
+                }
+            ]
+        },
+        "infosPratiques": {
+            "modalites": {
+                "titre": "Modalités d'apprentissage",
+                "points": [
+                    "Formation accessible en formation continue ou alternance.",
+                    "Entrées possibles selon calendrier.",
+                    "Financement : CPF (Code 288395)",
+                    "Financement : Alternance",
+                    "Financement : Dispositifs selon situation (à étudier)"
+                ]
+            },
+            "prerequis": {
+                "titre": "Public concerné & Prérequis",
+                "points": [
+                    "Personnes en reconversion vers les métiers du design numérique.",
+                    "Profils créatifs souhaitant structurer leurs compétences graphiques et web.",
+                    "Intérêt pour les interfaces numériques, l'UX/UI et les outils web.",
+                    "Motivation, curiosité et sens esthétique requis."
+                ]
+            }
+        },
+        "competences": [
+            "Création de chartes graphiques et visuels (suite Adobe CC : Photoshop, Illustrator, InDesign, Premiere, After Effects).",
+            "Conception d'interfaces UX/UI et prototypes interactifs.",
+            "Intégration web : HTML / CSS, JavaScript, PHP/MySQL.",
+            "Gestion et personnalisation de CMS (WordPress).",
+            "Référencement naturel (SEO) et marketing digital.",
+            "Stratégie réseaux sociaux.",
+            "Optimisation de l'expérience utilisateur et tests d'ergonomie.",
+            "Veille technologique et créative."
+        ],
+        "ctaFinal": {
+            "titre": "Prêt à devenir Concepteur Designer UI ?",
+            "sousTitre": "Contactez-nous pour en savoir plus sur les prochaines sessions et les modalités de financement.",
+            "boutons": [
+                {
+                    "label": "S'inscrire maintenant",
+                    "url": "/contact"
+                }
+            ]
+        }
+    },
+    "formations-assistante-de-direction": {
+        "hero": {
+            "titre": "Devenez Assistant(e) de Direction",
+            "sousTitre": "L'Assistant(e) de Direction est le bras droit incontournable du dirigeant. Il ou elle coordonne l'activité, gère les informations stratégiques et facilite la prise de décision au sein de l'entreprise.",
+            "video": "/Assets/video/formations/administration.mp4"
+        },
+        "stats": [
+            {
+                "label": "Tarifs",
+                "value": "3 500 € à 12 364 €"
+            },
+            {
+                "label": "Durée de l'examen",
+                "value": "5h45"
+            },
+            {
+                "label": "Certification",
+                "value": "Titre professionnel RNCP (Niveau 5)"
+            }
+        ],
+        "presentation": {
+            "titre": "Le métier",
+            "paragraphes": "L'Assistant(e) de Direction est la collaboratrice directe d'un ou plusieurs dirigeants. Elle centralise les informations, organise les plannings, prépare les réunions et assure le suivi des dossiers confidentiels. Elle est le lien privilégié entre la direction, les équipes internes et les partenaires extérieurs. C'est un métier qui exige une excellente communication, une maîtrise parfaite des outils bureautiques et une grande capacité d'adaptation."
+        },
+        "debouches": {
+            "titre": "Les métiers visés",
+            "sousTitre": "Après cette formation, vous pourrez postuler à des postes clés de l'assistanat.",
+            "postes": [
+                {
+                    "titre": "Assistant(e) de Direction",
+                    "salaire": "Selon expérience"
+                },
+                {
+                    "titre": "Office Manager",
+                    "salaire": "Selon expérience"
+                },
+                {
+                    "titre": "Attaché(e) de Direction",
+                    "salaire": "Selon expérience"
+                }
+            ],
+            "secteurs": "Toutes entreprises (PME, ETI, Grands groupes), Fonction publique, Associations."
+        },
+        "programme": {
+            "dureeTotale": "Dates fixes, de 9h00 à 13h00 et de 14h00 à 17h00",
+            "modules": [
+                {
+                    "id": 1,
+                    "title": "Assister la direction au quotidien",
+                    "description": "Organisation des agendas, gestion des emails, accueil et filtrage.",
+                    "duration": "À définir"
+                },
+                {
+                    "id": 2,
+                    "title": "Organisation des réunions et événements",
+                    "description": "Préparation, logistique, rédaction des comptes rendus.",
+                    "duration": "À définir"
+                },
+                {
+                    "id": 3,
+                    "title": "Traitement et gestion de l'information",
+                    "description": "Maîtrise des outils numériques, rédaction professionnelle et veille.",
+                    "duration": "À définir"
+                },
+                {
+                    "id": 4,
+                    "title": "Préparation à l'examen final (5h45)",
+                    "description": "Mise en situation professionnelle, entretien technique et présentation du dossier au jury.",
+                    "duration": "À définir"
+                }
+            ]
+        },
+        "infosPratiques": {
+            "modalites": {
+                "titre": "Modalités d'apprentissage",
+                "points": [
+                    "Formations mixtes : en présentiel ou en distanciel (sur Zoom).",
+                    "Méthode d'apprentissage : démonstrative, interrogative, expositive et découverte.",
+                    "Ateliers de simulation d'entretien et accompagnement post-formation pendant 9 mois.",
+                    "Financement : CPF, Contrat de Professionnalisation (CP).",
+                    "Financement : France Travail, PSE, PDV ou CSP."
+                ]
+            },
+            "prerequis": {
+                "titre": "Public concerné & Prérequis",
+                "points": [
+                    "Tout Public (salariés, demandeurs d'emploi, individuels et handicapés).",
+                    "Connaissances de l'outil informatique et du français obligatoire.",
+                    "Connaissances en anglais niveau intermédiaire fortement conseillées.",
+                    "Locaux accessibles aux personnes handicapées (Franconville, face à l'Hôtel de Ville)."
+                ]
+            }
+        },
+        "competences": [
+            "Organisation et planification des activités de la direction.",
+            "Conception et rédaction de documents professionnels.",
+            "Communication interne et externe fluide.",
+            "Soutien à la gestion administrative et RH.",
+            "Maîtrise des outils collaboratifs (Zoom, Pack Office...)."
+        ],
+        "ctaFinal": {
+            "titre": "Prêt(e) à devenir Assistant(e) de Direction ?",
+            "sousTitre": "Nos conseillers sont à votre écoute pour vous aider à monter votre dossier (CPF, France Travail, etc.).",
+            "boutons": [
+                {
+                    "label": "S'inscrire maintenant",
+                    "url": "/contact"
+                }
+            ]
+        }
     }
 }
