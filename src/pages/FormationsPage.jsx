@@ -206,10 +206,10 @@ export default function FormationsPage() {
       {/* --- CTA FINAL --- */}
       <CallToAction
         variante="sombre"
-        title="Besoin d'un conseil personnalisé ?"
-        subtitle="Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements."
-        buttonText="PRENDRE RENDEZ-VOUS"
-        onButtonClick={() => window.location.href = 'tel:0123456789'}
+        titre="Besoin d'un conseil personnalisé ?"
+        sousTitre="Nos conseillers sont à votre écoute pour vous orienter vers la formation la plus adaptée à votre profil et vos financements."
+        texteBouton="PRENDRE RENDEZ-VOUS"
+        lienBouton="/contact"
       />
 
     </div>

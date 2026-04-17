@@ -194,6 +194,8 @@ export default function HomePage() {
                 <img
                   src={partenaire.logo}
                   alt={partenaire.nom}
+                  loading="lazy"
+                  decoding="async"
                   className="h-12 md:h-16 w-auto object-contain"
                 />
               </a>
@@ -222,7 +224,7 @@ export default function HomePage() {
                 {/* En-tête : Avatar + Infos */}
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
-                    <img src={t.avatar} alt={t.author} className="w-full h-full object-cover" />
+                    <img src={t.avatar} alt={t.author} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </div>
                   <div className="flex flex-col">
                     <h3 className="font-bold text-gray-900 text-medium leading-tight">{t.author}</h3>
@@ -277,13 +279,14 @@ export default function HomePage() {
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
           }
           .animate-scroll {
             display: flex;
             width: max-content;
             animation: scroll 40s linear infinite;
+            will-change: transform;
           }
           .animate-scroll:hover {
             animation-play-state: paused;
@@ -294,6 +297,7 @@ export default function HomePage() {
             display: flex;
             width: max-content;
             animation: scroll 60s linear infinite;
+            will-change: transform;
           }
           .animate-scroll-reviews:hover {
             animation-play-state: paused;

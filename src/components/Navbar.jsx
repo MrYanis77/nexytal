@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     // CORRECTION : bg-navy remplacé par bg-primary
-    <nav className="sticky top-0 z-[100] w-full bg-primary px-6 lg:px-10 flex items-center justify-between h-[70px]">
+    <nav className="sticky top-0 z-[100] w-full bg-primary px-4 xl:px-8 flex items-center justify-between h-[70px]">
 
       {/* Logo - Design épuré, sans fond, avec ombre blanche */}
       <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
@@ -27,11 +27,11 @@ export default function Navbar() {
           alt="Logo ALT Formations"
           className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-lighten" />
         {/* Texte restructuré sur deux niveaux (avec une très légère ombre pour la lisibilité) */}
-        <div className="flex flex-col justify-center drop-shadow-[0_0_4px_rgba(255,255,255,0.3)]">
-          <span className="text-white font-heading font-extrabold text-base md:text-lg leading-none tracking-wide transition-colors duration-300 group-hover:text-accent">
+          <div className="flex flex-col justify-center drop-shadow-[0_0_4px_rgba(255,255,255,0.3)] min-w-max">
+          <span className="text-white font-heading font-extrabold text-sm md:text-base xl:text-lg leading-none tracking-wide transition-colors duration-300 group-hover:text-accent">
             ALT <span className="text-accent group-hover:text-white transition-colors duration-300">RH</span>
           </span>
-          <span className="text-white/70 font-body text-micro uppercase tracking-[0.2em] mt-1">
+          <span className="text-white/70 font-body text-[9px] md:text-micro uppercase tracking-[0.2em] mt-1">
             & Formations
           </span>
         </div>
@@ -39,13 +39,13 @@ export default function Navbar() {
       </Link>
 
       {/* Menu Desktop */}
-      <div className="hidden lg:flex items-center gap-6">
+      <div className="hidden xl:flex items-center gap-2 2xl:gap-6">
         {navlinks.map((item) => (
           <div key={item.label} className="relative group py-[25px]">
             <Link
               to={item.href}
-              // Lien principal Desktop agrandi : text-medium
-              className={`text-medium font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1
+              // Lien principal Desktop : adapté pour tenir à 9 liens
+              className={`text-[13px] 2xl:text-medium font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1
                 ${location.pathname.startsWith(item.href) && item.href !== "/"
                   // CORRECTION : text-orange remplacé par text-accent
                   ? "text-accent"
@@ -135,7 +135,7 @@ export default function Navbar() {
           <a href="/connexion">Se connecter</a>
         </button>
 
-        <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
+        <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16m-7 6h7" />}
           </svg>
@@ -143,7 +143,7 @@ export default function Navbar() {
       </div>
 
       {/* Menu Mobile */}
-      <div className={`fixed inset-0 bg-primary z-[90] transition-transform duration-300 lg:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} flex flex-col overflow-y-auto`}>
+      <div className={`fixed inset-0 bg-primary z-[90] transition-transform duration-300 xl:hidden ${isOpen ? "translate-y-0" : "-translate-y-full"} flex flex-col overflow-y-auto`}>
 
         {/* NOUVEAU : En-tête du menu mobile avec bouton de fermeture (Flèche) */}
         <div className="flex items-center justify-between px-6 min-h-[70px] border-b border-white/10 shrink-0">

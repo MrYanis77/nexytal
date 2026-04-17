@@ -29,6 +29,8 @@ export default function CardFormation({
         <img
           src={image}
           alt={title}
+          loading="lazy"
+          decoding="async"
           // Utilisation de group-hover pour que l'image zoome quand on survole la carte
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
         />

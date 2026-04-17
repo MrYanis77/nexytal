@@ -150,6 +150,4 @@ export const navlinks = [
   { label: "Nos Campus", href: "/campus" },
   { label: "Contact", href: "/contact" },
   { label: "F.A.Q", href: "/faq" },
-
-
 ];

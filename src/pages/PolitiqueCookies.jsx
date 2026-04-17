@@ -1,6 +1,9 @@
 import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-import { sections, hero } from '../data/politiqueCookies';
+import LegalArticle from '../components/Textes/LegalArticle';
+import legalsData from '../data/json/legals.json';
+
+const { articles } = legalsData.politiqueCookies;
 
 export default function PolitiqueCookies() {
   return (
@@ -11,24 +14,13 @@ export default function PolitiqueCookies() {
       <main className="py-20 px-6 max-w-[900px] mx-auto text-left">
         
         <div className="space-y-16">
-          {sections.map((section) => (
-            <section key={section.id} className="relative group">
-              {/* Ligne latérale orange au survol */}
-              <div className="absolute -left-6 top-0 bottom-0 w-1 bg-gray-100 group-hover:bg-accent transition-colors rounded-full hidden md:block"></div>
-              
-              <div className="mb-4">
-                <span className="text-accent font-bold text-sm tracking-[0.2em] uppercase">
-                  Chapitre 0{section.id}
-                </span>
-                <h2 className="font-heading font-extrabold text-2xl text-primary mt-1 uppercase tracking-tight">
-                  {section.titre}
-                </h2>
-              </div>
-
-              <div className="text-base leading-[1.8] text-content-dark space-y-6">
-                <p className="whitespace-pre-line">{section.contenu}</p>
-              </div>
-            </section>
+          {articles.map((section) => (
+            <LegalArticle 
+              key={section.id}
+              num={`Chapitre 0${section.id}`}
+              titre={section.titre}
+              contenu={section.contenu}
+            />
           ))}
         </div>
 

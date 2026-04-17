@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { formationsArray } from '../data/navdata'; // Importation centralisée avec les catégories sécurisées
-import { allFormations } from '../data/index'; // Importation des 4 formations originelles spécifiques
 import { imageMap } from '../data/formations';
 import { certifications } from '../data/certification';
 
@@ -17,9 +16,8 @@ import Breadcrumb from '../components/Breadcrumb';
 export default function FormationDetail() {
   const { id } = useParams();
 
-  // 1. Cherche dans les 4 pages métiers "Premium" (via FormationsPage) 
-  // 2. Ou sinon, cherche dans le JSON (via le Mega Menu)
-  const data = allFormations[id] || formationsArray.find(f => f.id === id);
+  // 1. Cherche dans le JSON (via le Mega Menu)
+  const data = formationsArray.find(f => f.id === id);
 
   // Chercher la certification correspondante
   const certif = certifications.find(c => c.href === `/formation/${id}`);
@@ -220,9 +218,13 @@ export default function FormationDetail() {
                 <Link key={idx} to={`/formation/${f.id}`} className="block group no-underline">
                   <div className="bg-white p-6 rounded-xl shadow border border-transparent group-hover:border-accent transition-all duration-300">
                     <div className="overflow-hidden rounded-lg mb-4">
-                      {f.hero?.image && (
-                        <img src={f.hero.image} alt={f.hero?.titre || f.id} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
-                      )}
+                      <img 
+                        src={imageMap[f.id] || f.hero?.image || f.presentation?.image || "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80"} 
+                        alt={f.hero?.titre || f.titre || f.id} 
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
                     </div>
                     <span className="text-xs font-bold text-accent uppercase tracking-wider mb-2 block">
                       {f.categorie === 'numerique' ? 'Numérique' : f.categorie === 'rh' ? 'Gestion & RH' : 'Comptabilité'}

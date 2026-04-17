@@ -13,7 +13,7 @@ export default function AdvantageCard({ label, iconeName, index }) {
 
   return (
     <div className={`
-      ${isNavy ? 'bg-primary-light' : 'bg-accent-dark'} 
+      ${isNavy ? 'bg-primary' : 'bg-accent'} 
       rounded-card p-8 flex flex-col items-center justify-center text-center 
       h-full min-h-[200px] transition-transform hover:scale-105 duration-300 shadow-md
     `}>

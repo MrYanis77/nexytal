@@ -1,18 +1,14 @@
 import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-import Hero from '../components/Hero/Hero';
 import TexteSection from '../components/Textes/TexteSection'; // Import du composant flexible
-import { hero, notreHistoire, nosValeurs, certificationsAgrements } from '../data/apropos';
+import aproposData from '../data/json/apropos.json';
 import CallToAction from '../components/CallToAction';
+
+const { notreHistoire, nosValeurs, certificationsAgrements } = aproposData;
 
 export default function AproposPage() {
   return (
     <div className="bg-white min-h-screen font-body antialiased">
-      <Hero
-        title={hero.titre}
-        subtitle={hero.sousTitre}
-        image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
-      />
       <Breadcrumb
         items={[{ label: 'Accueil', to: '/' }, { label: 'À propos' }]}
       />

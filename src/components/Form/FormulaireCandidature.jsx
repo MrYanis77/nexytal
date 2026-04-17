@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { jsPDF } from "jspdf";
 
 export default function FormulaireCandidature({ type }) {
+    const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+    const [serverError, setServerError] = useState('');
+    const [attachment, setAttachment] = useState(null); // { filename, content }
+
     // État pour stocker les données du formulaire
     const [formData, setFormData] = useState({
         prenom: '',
@@ -9,18 +13,77 @@ export default function FormulaireCandidature({ type }) {
         email: '',
         telephone: '',
         specificField: '', // Expertise (formateur) ou type de contrat (collaborateur)
-        message: ''
+        message: '',
+        honeypot: '' // Sécurité : champ invisible pour piéger les bots
     });
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-        // --- 1. Génération du PDF de confirmation ---
-        const doc = new jsPDF();
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const base64Content = event.target.result.split(',')[1];
+            setAttachment({
+                filename: file.name,
+                content: base64Content
+            });
+        };
+        reader.readAsDataURL(file);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        setServerError('');
+
+        // 1. SÉCURITÉ : Vérification du Honeypot (Piège à bots)
+        if (formData.honeypot.length > 0) {
+            console.warn("Detection bot : Honeypot rempli");
+            setStatus('error');
+            setServerError("Une erreur de sécurité a été détectée. Veuillez rafraîchir la page.");
+            return;
+        }
+
+        // 2. SÉCURITÉ : Nettoyage basique des entrées (Anti-XSS / Injection)
+        const illegalChars = /[<>{}""'`;]/g;
+        const hasIllegalChars = Object.values(formData).some(val => typeof val === 'string' && illegalChars.test(val));
+        
+        if (hasIllegalChars) {
+            setStatus('error');
+            setServerError("Caractères non autorisés détectés (<, >, {, }, etc.)");
+            return;
+        }
+
+        const isFormateur = type === 'formateur';
+
+        try {
+            // --- 1. Envoi au serveur API ---
+            const payload = {
+                ...formData,
+                type: isFormateur ? 'formateur' : 'collaborateur',
+                attachment: attachment
+            };
+
+            const response = await fetch('/api/rejoindre', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!result.success) {
+                throw new Error(result.error || "Une erreur est survenue lors de l'envoi.");
+            }
+
+            // --- 2. Génération du PDF de confirmation (Client-side) ---
+            const doc = new jsPDF();
+            // ... (PDF logic remains the same)
 
         // Design de l'en-tête (Couleur Navy)
         doc.setFillColor(30, 47, 71);
@@ -38,7 +101,7 @@ export default function FormulaireCandidature({ type }) {
 
         // Données du candidat
         doc.setFontSize(12);
-        doc.text(`Poste visé : ${type === 'formateur' ? 'Formateur Expert' : 'Collaborateur'}`, 20, 80);
+        doc.text(`Poste visé : ${isFormateur ? 'Formateur Expert' : 'Collaborateur'}`, 20, 80);
         doc.text(`Candidat : ${formData.prenom} ${formData.nom}`, 20, 90);
         doc.text(`Email : ${formData.email}`, 20, 100);
         doc.text(`Téléphone : ${formData.telephone}`, 20, 110);
@@ -57,13 +120,21 @@ export default function FormulaireCandidature({ type }) {
         // Téléchargement du fichier
         doc.save(`Candidature_AltRH_${formData.nom}.pdf`);
 
-        // --- 2. Notification utilisateur (et simulation d'envoi serveur) ---
-        console.log("Candidature soumise :", formData);
-        alert(`Votre candidature a bien été envoyée ! Votre récapitulatif PDF a été téléchargé.`);
-
-        // Optionnel : Réinitialiser le formulaire
+        // --- 3. Notification utilisateur et Reset ---
+        setStatus('success');
         setFormData({ prenom: '', nom: '', email: '', telephone: '', specificField: '', message: '' });
+        setAttachment(null);
+        
+        // On scroll vers le haut du formulaire pour voir le message de succès
+        document.getElementById('postuler')?.scrollIntoView({ behavior: 'smooth' });
+
+        } catch (err) {
+            console.error("Erreur candidature:", err);
+            setServerError(err.message);
+            setStatus('error');
+        }
     };
+
 
     const isFormateur = type === 'formateur';
 
@@ -76,11 +147,34 @@ export default function FormulaireCandidature({ type }) {
                         Postuler en tant que {isFormateur ? 'Formateur' : 'Collaborateur'}
                     </h2>
                     <p className="text-content-muted text-sm">
-                        Remplissez ce formulaire pour nous envoyer votre profil. Notre équipe vous recontactera rapidement.
+                        {status === 'success' 
+                          ? "Merci ! Votre candidature a été transmise avec succès." 
+                          : "Remplissez ce formulaire pour nous envoyer votre profil. Notre équipe vous recontactera rapidement."}
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {status === 'success' ? (
+                    <div className="bg-green-100/50 border border-green-200 p-8 rounded-xl text-center space-y-4">
+                        <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto shadow-lg">
+                            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-green-800">Candidature Envoyée !</h3>
+                        <p className="text-green-700">Votre CV a été transmis à notre service RH. Votre récapitulatif PDF a également été généré.</p>
+                        <button onClick={() => setStatus('idle')} className="text-green-600 font-bold underline hover:text-green-800 transition">Envoyer une autre candidature</button>
+                    </div>
+                ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* Champ Honeypot invisible pour les humains, utilisé pour piéger les bots */}
+                        <div aria-hidden="true" className="hidden">
+                            <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange} tabIndex="-1" autoComplete="off" />
+                        </div>
+
+                        {status === 'error' && (
+                            <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg flex items-start gap-3">
+                                <span className="font-bold">Erreur:</span> {serverError}
+                            </div>
+                        )}
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="prenom" className="block text-sm font-bold text-primary mb-2">Prénom *</label>
@@ -133,8 +227,9 @@ export default function FormulaireCandidature({ type }) {
 
                     <div>
                         <label className="block text-sm font-bold text-primary mb-2">Curriculum Vitae (CV) *</label>
-                        <input type="file" accept=".pdf,.doc,.docx" required
+                        <input type="file" accept=".pdf,.doc,.docx" required onChange={handleFileChange}
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20" />
+                        {attachment && <p className="text-xs text-accent mt-1 font-medium">✓ {attachment.filename} chargé</p>}
                     </div>
 
                     <div>
@@ -145,11 +240,20 @@ export default function FormulaireCandidature({ type }) {
                     </div>
 
                     <div className="pt-4 text-center">
-                        <button type="submit" className="bg-accent text-white px-10 py-4 rounded-lg font-bold uppercase tracking-widest text-sm shadow-md hover:shadow-accent/20 hover:-translate-y-1 transition-all duration-300 w-full md:w-auto">
-                            Envoyer ma candidature
+                        <button type="submit" disabled={status === 'loading'} className="bg-accent text-white px-10 py-4 rounded-lg font-bold uppercase tracking-widest text-sm shadow-md hover:shadow-accent/20 hover:-translate-y-1 transition-all duration-300 w-full md:w-auto flex items-center justify-center gap-2">
+                            {status === 'loading' ? (
+                                <>
+                                  <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24">
+                                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                  Envoi en cours...
+                                </>
+                            ) : "Envoyer ma candidature"}
                         </button>
                     </div>
                 </form>
+                )}
 
             </div>
         </section>

@@ -56,8 +56,8 @@ export default function ContactForm({ variant = "section", title }) {
         destinataire: destinationEmail
       };
 
-      // 🔴 CORRECTION ICI : URL COMPLÈTE POINTANT VERS LE PORT 3001
-      const response = await fetch('http://localhost:3000/api/contact', {
+      // Utilisation d'un chemin relatif pour passer par le proxy Vite (défini dans vite.config.js)
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,6 +1,9 @@
-import React from 'react';;
+import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-import { hero, editeur, prestataires, articlesMentions } from '../data/mentionsLegales';
+import LegalArticle from '../components/Textes/LegalArticle';
+import legalsData from '../data/json/legals.json';
+
+const { editeur, prestataires, articles } = legalsData.mentionsLegales;
 
 export default function MentionsLegales() {
   return (
@@ -54,26 +57,15 @@ export default function MentionsLegales() {
           </div>
         </div>
 
-        {/* ARTICLES JURIDIQUES (DESIGN IDENTIQUE AU RÈGLEMENT INTÉRIEUR) */}
+        {/* ARTICLES JURIDIQUES REFACTORISÉS AVEC LE COMPOSANT DRY */}
         <div className="space-y-16">
-          {articlesMentions.map((article) => (
-            <section key={article.num} className="relative group">
-              {/* Ligne décorative latérale */}
-              <div className="absolute -left-6 top-0 bottom-0 w-1 bg-gray-100 group-hover:bg-accent transition-colors rounded-full hidden md:block"></div>
-              
-              <div className="mb-4">
-                <span className="text-accent font-bold text-sm tracking-[0.2em] uppercase">
-                  Information {article.num}
-                </span>
-                <h2 className="font-heading font-extrabold text-2xl text-primary mt-1 uppercase tracking-tight">
-                  {article.titre}
-                </h2>
-              </div>
-
-              <div className="text-base leading-[1.8] text-content-dark">
-                <p className="whitespace-pre-line">{article.contenu}</p>
-              </div>
-            </section>
+          {articles.map((article) => (
+            <LegalArticle 
+              key={article.num}
+              num={`Information ${article.num}`}
+              titre={article.titre}
+              contenu={article.contenu}
+            />
           ))}
         </div>
 

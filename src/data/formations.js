@@ -8,7 +8,7 @@ export const imageMap = {
   // ── Cybersécurité & Réseaux ─────────────────────────────────────────────
   'formations-administrateur-dinfrastructures-securisees-ais': '/Assets/images/expert_cyber.jpg',
   'formations-technicien-superieur-systemes-et-reseaux': '/Assets/images/Terchnicien_reseau.jpg',
-  'administrateur-reseaux-netops': '/Assets/images/Datacenter.jpg',
+  'administrateur-reseaux-netops': '/Assets/images/admin_system.jpg',
   'administrateursysteme-devops': '/Assets/images/devops.jpg',
   'technicien-reseaux-cybersecurite': '/Assets/images/analyst_soc.jpg',
 
@@ -16,11 +16,11 @@ export const imageMap = {
   'formations-developpeur-web-mobile': '/Assets/images/concepteur_web.jpg',
   'formations-developpeur-dapplications-multimedia': '/Assets/images/designer_app_mobile.jpg',
   'formations-concepteur-developpeur-dapplications': '/Assets/images/concepteur_app.jpg',
-  'formations-lead-developpeur-web': '/Assets/images/analyste_data.jpg',
-  'formations-community-manager': '/Assets/images/admin_system.jpg',
-  'formation-intelligence-artificielle': '/Assets/images/Datacenter.jpg',
+  'formations-lead-developpeur-web': '/Assets/images/concepteur_app.jpg',
+  'formation-intelligence-artificielle': '/Assets/images/analyste_data.jpg',
 
   // ── Ressources Humaines & Tertiaire ─────────────────────────────────────
+  'formations-community-manager': '/Assets/images/designer_app_mobile.jpg',
   'formations-assistante-ressources-humaines': '/Assets/images/responsable_rh.jpg',
   'formations-assistante-administratifve': '/Assets/images/secretaire_5.png',
   'formations-assistante-commerciale': '/Assets/images/secretaire_4.jpg',
@@ -74,7 +74,6 @@ export const catalogue = [
       'formations-developpeur-dapplications-multimedia',
       'formations-concepteur-developpeur-dapplications',
       'formations-lead-developpeur-web',
-      'formations-community-manager',
       'formation-intelligence-artificielle'
     ].map(mapIdToItem).filter(Boolean),
   },
@@ -82,6 +81,7 @@ export const catalogue = [
     id: 'rh-tertiaire',
     label: 'Ressources Humaines & Tertiaire',
     items: [
+      'formations-community-manager',
       'formations-assistante-ressources-humaines',
       'formations-assistante-administratifve',
       'formations-assistante-commerciale',
