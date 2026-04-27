@@ -20,7 +20,7 @@ export default function Navbar() {
       {/* Logo */}
       <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
         <img
-          src="/Assets/logo-ALT.jpg"
+          src="/assets/logo-ALT.jpg"
           alt="Logo ALT Formations"
           className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-lighten"
         />
@@ -232,3 +232,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

@@ -66,13 +66,13 @@ export default function Footer() {
             <div className="mt-8 pt-6 border-t border-[#4a4545] flex flex-col items-start gap-4">
               <div className="bg-white p-2 rounded-xl shadow-md inline-block">
                 <img
-                  src="/Assets/images/qualiopi.png"
+                  src="/assets/images/qualiopi.png"
                   alt="Certification Qualiopi"
                   className="h-20 w-auto object-contain block"
                 />
               </div>
               <a
-                href="/Assets/documents/CERTIFICATION QUALIOPI ALT RH CONSULTING.pdf"
+                href="/assets/documents/CERTIFICATION QUALIOPI ALT RH CONSULTING.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-accent text-xs font-bold hover:underline"
@@ -109,3 +109,4 @@ export default function Footer() {
     </>
   );
 }
+

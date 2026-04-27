@@ -12,7 +12,7 @@
 export const hero = {
   titre: "Financements",
   sousTitre: "Plusieurs solutions de financement pour rendre votre formation accessible",
-  video: "/Assets/video/financement.mp4",
+  video: "/assets/video/financement.mp4",
 };
 
 /**
@@ -21,7 +21,7 @@ export const hero = {
 export const cpf = {
   titre: 'Compte Personnel de Formation (CPF)',
   description: 'Utilisez vos droits à la formation accumulés tout au long de votre carrière. Toutes nos formations certifiantes sont éligibles au CPF.',
-  image: '/Assets/images/Logo/cpf.png', // <-- Ajout de l'image ici
+  image: '/assets/images/Logo/cpf.png', // <-- Ajout de l'image ici
   howTo: {
     label: 'Comment ça marche ?',
     items: [
@@ -45,7 +45,7 @@ export const cpf = {
 export const opco = {
   titre: 'Financement OPCO',
   description: 'Les Opérateurs de Compétences (OPCO) financent les formations des salariés et des entreprises.',
-  image: '/Assets/images/Logo/opco.png', // <-- Ajout de l'image ici
+  image: '/assets/images/Logo/opco.png', // <-- Ajout de l'image ici
   columns: [
     {
       label: 'Pour les salariés',
@@ -77,7 +77,7 @@ export const opco = {
 export const poleEmploi = {
   titre: 'Pôle Emploi (France Travail)',
   description: 'Plusieurs dispositifs sont disponibles pour les demandeurs emploi.',
-  image: '/Assets/images/Logo/france-travail.jpg', // <-- Ajout de l'image ici
+  image: '/assets/images/Logo/france-travail.jpg', // <-- Ajout de l'image ici
   columns: [
     {
       label: 'AIF - Aide Individuelle à la Formation',
@@ -133,3 +133,4 @@ export const questionsOrientees = {
     }
   ]
 };
+

@@ -18,7 +18,7 @@ export const slides = [
     desc: 'Concevez, administrez et sécurisez les infrastructures informatiques pour devenir un pilier stratégique des entreprises.',
     cta: 'Découvrir la formation',
     ctaTo: '/formation/formations-administrateur-dinfrastructures-securisees-ais',
-    video: '/Assets/video/formations/infra-reseau.mp4'
+    video: '/assets/video/formations/infra-reseau.mp4'
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const slides = [
     desc: 'Concevez la partie visible et technique d\'applications web et mobiles, en veillant à la performance et à l’expérience utilisateur.',
     cta: 'Découvrir la formation',
     ctaTo: '/formation/formations-developpeur-web-mobile',
-    video: '/Assets/video/formations/dev-web-mobile.mp4'
+    video: '/assets/video/formations/dev-web-mobile.mp4'
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ export const slides = [
     desc: 'Participez activement à la gestion administrative du personnel, au recrutement, à la formation et au bon climat social.',
     cta: 'Découvrir la formation',
     ctaTo: '/formation/formations-assistante-ressources-humaines',
-    video: '/Assets/video/formations/rh.mp4'
+    video: '/assets/video/formations/rh.mp4'
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ export const slides = [
     desc: 'Assurez la lisibilité financière de la structure, de la saisie des opérations courantes jusqu\'à l\'élaboration de la liasse fiscale.',
     cta: 'Découvrir la formation',
     ctaTo: '/formations/gestionnaire-comptable-fiscal',
-    video: '/Assets/video/formations/comptable.mp4'
+    video: '/assets/video/formations/comptable.mp4'
   }
 ];
 
@@ -70,7 +70,7 @@ export const services = [
   {
     titre: 'Formations certifiantes',
     href: '/formations',
-    image: '/Assets/images/certification.jpg',
+    image: '/assets/images/certification.jpg',
     items: [
       'Titres RNCP reconnus par l\'État',
       'Parcours personnalisés selon vos objectifs',
@@ -81,7 +81,7 @@ export const services = [
   {
     titre: 'Alternance & emploi',
     href: '/alternance',
-    image: '/Assets/images/emploi.jpg',
+    image: '/assets/images/emploi.jpg',
     items: [
       'Réseau d\'entreprises partenaires actif',
       'Aide au placement en entreprise',
@@ -92,7 +92,7 @@ export const services = [
   {
     titre: 'Solutions entreprises',
     href: '/carriere',
-    image: '/Assets/images/entreprise.jpg',
+    image: '/assets/images/entreprise.jpg',
     items: [
       'Formation sur-mesure pour vos équipes',
       'Audit de compétences et accompagnement RH',
@@ -106,21 +106,21 @@ export const services = [
  * Logos partenaires avec liens vers leurs sites officiels.
  */
 export const partenaires = [
-  { nom: 'agefiph', logo: '/Assets/partenaires/agefiph.png' },
-  { nom: 'akto', logo: '/Assets/partenaires/akto.png' },
-  { nom: 'bnp-paribas', logo: '/Assets/partenaires/bnp-paribas.png' },
-  { nom: 'cic', logo: '/Assets/partenaires/cic.png' },
-  { nom: 'credit-agricole', logo: '/Assets/partenaires/credit-agricole.png' },
-  { nom: 'edf', logo: '/Assets/partenaires/edf.png' },
-  { nom: 'france-compétence', logo: '/Assets/partenaires/france-compétence.png' },
-  { nom: 'france-travail', logo: '/Assets/partenaires/france-travail.png' },
-  { nom: 'région ile de france', logo: '/Assets/partenaires/idf.png' },
-  { nom: 'microsoft', logo: '/Assets/partenaires/microsoft.png' },
-  { nom: 'orange', logo: '/Assets/partenaires/orange.png' },
-  { nom: 'pennylane', logo: '/Assets/partenaires/pennylane.png' },
-  { nom: 'uniformation', logo: '/Assets/partenaires/uniformation.png' },
-  { nom: 'verisure', logo: '/Assets/partenaires/verisure.png' },
-  { nom: 'veolia', logo: '/Assets/partenaires/veolia.png' },
+  { nom: 'agefiph', logo: '/assets/partenaires/agefiph.png' },
+  { nom: 'akto', logo: '/assets/partenaires/akto.png' },
+  { nom: 'bnp-paribas', logo: '/assets/partenaires/bnp-paribas.png' },
+  { nom: 'cic', logo: '/assets/partenaires/cic.png' },
+  { nom: 'credit-agricole', logo: '/assets/partenaires/credit-agricole.png' },
+  { nom: 'edf', logo: '/assets/partenaires/edf.png' },
+  { nom: 'france-compétence', logo: '/assets/partenaires/france-compétence.png' },
+  { nom: 'france-travail', logo: '/assets/partenaires/france-travail.png' },
+  { nom: 'région ile de france', logo: '/assets/partenaires/idf.png' },
+  { nom: 'microsoft', logo: '/assets/partenaires/microsoft.png' },
+  { nom: 'orange', logo: '/assets/partenaires/orange.png' },
+  { nom: 'pennylane', logo: '/assets/partenaires/pennylane.png' },
+  { nom: 'uniformation', logo: '/assets/partenaires/uniformation.png' },
+  { nom: 'verisure', logo: '/assets/partenaires/verisure.png' },
+  { nom: 'veolia', logo: '/assets/partenaires/veolia.png' },
 ];
 
 /**
@@ -191,7 +191,7 @@ export const certifications = {
   badges: [
     {
       nom: "Qualiopi",
-      image: "/Assets/images/qualiopi.png"
+      image: "/assets/images/qualiopi.png"
     }
     // Vous pouvez ajouter d'autres badges ici (RNCP, etc.)
   ]
@@ -215,3 +215,4 @@ export const presentation = {
   },
   conclusion: "Rejoindre ALT-FORMATIONS, c’est choisir une formation reconnue, concrète et tournée vers l’avenir professionnel."
 };
+

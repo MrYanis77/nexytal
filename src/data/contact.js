@@ -5,7 +5,7 @@
 export const hero = {
   titre: "Contactez-nous",
   sousTitre: "Notre équipe est à votre écoute pour répondre à toutes vos questions",
-  video: "/Assets/video/contact.mp4",
+  video: "/assets/video/contact.mp4",
 };
 
 export const contactData = {
@@ -53,3 +53,4 @@ export const contactData = {
     boutonLabel: "Envoyer le message"
   }
 };
+

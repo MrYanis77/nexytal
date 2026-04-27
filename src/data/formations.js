@@ -2,34 +2,34 @@ import formationData from './json/formation.json';
 
 /**
  * Mapping explicite des images locales par ID de formation.
- * Les fichiers se trouvent dans /public/Assets/images/
+ * Les fichiers se trouvent dans /public/assets/images/
  */
 export const imageMap = {
   // ── Cybersécurité & Réseaux ─────────────────────────────────────────────
-  'formations-administrateur-dinfrastructures-securisees-ais': '/Assets/images/expert_cyber.jpg',
-  'formations-technicien-superieur-systemes-et-reseaux': '/Assets/images/Terchnicien_reseau.jpg',
-  'administrateur-reseaux-netops': '/Assets/images/admin_system.jpg',
-  'administrateursysteme-devops': '/Assets/images/devops.jpg',
-  'technicien-reseaux-cybersecurite': '/Assets/images/analyst_soc.jpg',
+  'formations-administrateur-dinfrastructures-securisees-ais': '/assets/images/expert_cyber.jpg',
+  'formations-technicien-superieur-systemes-et-reseaux': '/assets/images/Terchnicien_reseau.jpg',
+  'administrateur-reseaux-netops': '/assets/images/admin_system.jpg',
+  'administrateursysteme-devops': '/assets/images/devops.jpg',
+  'technicien-reseaux-cybersecurite': '/assets/images/analyst_soc.jpg',
 
   // ── Digital & Développement Web ─────────────────────────────────────────
-  'formations-developpeur-web-mobile': '/Assets/images/concepteur_web.jpg',
-  'formations-developpeur-dapplications-multimedia': '/Assets/images/designer_app_mobile.jpg',
-  'formations-concepteur-developpeur-dapplications': '/Assets/images/concepteur_app.jpg',
-  'formations-concepteur-designer-ui': '/Assets/images/designer_app_mobile.jpg',
-  'formations-lead-developpeur-web': '/Assets/images/concepteur_app.jpg',
-  'formation-intelligence-artificielle': '/Assets/images/analyste_data.jpg',
+  'formations-developpeur-web-mobile': '/assets/images/concepteur_web.jpg',
+  'formations-developpeur-dapplications-multimedia': '/assets/images/designer_app_mobile.jpg',
+  'formations-concepteur-developpeur-dapplications': '/assets/images/concepteur_app.jpg',
+  'formations-concepteur-designer-ui': '/assets/images/designer_app_mobile.jpg',
+  'formations-lead-developpeur-web': '/assets/images/concepteur_app.jpg',
+  'formation-intelligence-artificielle': '/assets/images/analyste_data.jpg',
 
   // ── RH, Gestion & Comptabilité ──────────────────────────────────────────
-  'formations-community-manager': '/Assets/images/designer_app_mobile.jpg',
-  'formations-assistante-ressources-humaines': '/Assets/images/responsable_rh.jpg',
-  'formations-assistante-de-direction': '/Assets/images/secretaire_5.png',
-  'formations-assistante-administratifve': '/Assets/images/secretaire_5.png',
-  'formations-assistante-commerciale': '/Assets/images/secretaire_4.jpg',
-  'formations-conseillerere-relation-client-a-distance': '/Assets/images/secretaire_1.jpg',
-  'formations-secretaire-comptable': '/Assets/images/secretaire_2.jpg',
-  'gestionnaire-comptable-fiscal': '/Assets/images/comptable_1.jpg',
-  'formations-comptable-assistant': '/Assets/images/comptable2.jpg',
+  'formations-community-manager': '/assets/images/designer_app_mobile.jpg',
+  'formations-assistante-ressources-humaines': '/assets/images/responsable_rh.jpg',
+  'formations-assistante-de-direction': '/assets/images/secretaire_5.png',
+  'formations-assistante-administratifve': '/assets/images/secretaire_5.png',
+  'formations-assistante-commerciale': '/assets/images/secretaire_4.jpg',
+  'formations-conseillerere-relation-client-a-distance': '/assets/images/secretaire_1.jpg',
+  'formations-secretaire-comptable': '/assets/images/secretaire_2.jpg',
+  'gestionnaire-comptable-fiscal': '/assets/images/comptable_1.jpg',
+  'formations-comptable-assistant': '/assets/images/comptable2.jpg',
 };
 
 // Fallback si un ID n'est pas encore dans le mapping
@@ -51,7 +51,7 @@ const mapIdToItem = (id) => {
 export const hero = {
   titre: "Nos formations",
   sousTitre: "Des parcours certifiants adaptés à vos ambitions professionnelles",
-  video: "/Assets/video/formations/dev-web-mobile.mp4",
+  video: "/assets/video/formations/dev-web-mobile.mp4",
 };
 
 export const catalogue = [
@@ -94,3 +94,4 @@ export const catalogue = [
     ].map(mapIdToItem).filter(Boolean),
   }
 ];
+

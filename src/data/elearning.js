@@ -7,7 +7,7 @@
 export const hero = {
   titre: "E-learning",
   sousTitre: "Formez-vous à votre rythme avec notre plateforme d'apprentissage en ligne",
-  video: "/Assets/video/formations/cyber.mp4",
+  video: "/assets/video/formations/cyber.mp4",
 };
 
 export const features = [
@@ -58,3 +58,5 @@ export const stats = [
   { value: '92%',   label: 'Taux de complétion' },
   { value: '4.8/5', label: 'Satisfaction apprenants' },
 ];
+
+

@@ -5,7 +5,7 @@
 export const heroHub = {
     titre: "Votre réussite professionnelle",
     sousTitre: "Découvrez nos solutions personnalisées pour propulser votre carrière ou décrocher votre prochain emploi.",
-    video: "/Assets/video/carriere.mp4",
+    video: "/assets/video/carriere.mp4",
 };
 
 export const parcours = {
@@ -46,3 +46,4 @@ export const parcours = {
         couleur: "accent"
     }
 };
+

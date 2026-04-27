@@ -4,7 +4,7 @@
 export const hero = {
   titre: "Nos Campus",
   sousTitre: "Retrouvez-nous dans toute l'Île-de-France. Des infrastructures modernes au service de votre réussite.",
-  video: "/Assets/video/campus.mp4"
+  video: "/assets/video/campus.mp4"
 };
 
 export const campus = [
@@ -73,3 +73,4 @@ export const campus = [
     mapLink: "https://maps.app.goo.gl/k9roCdPP5f8ZapFx8"
   }
 ];
+

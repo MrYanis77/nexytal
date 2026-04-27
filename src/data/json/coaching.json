@@ -3,7 +3,7 @@
         "hero": {
             "titre": "Coaching Emploi",
             "sousTitre": "Un accompagnement personnalisé pour booster votre recherche d'emploi, renforcer votre posture professionnelle et réussir votre insertion.",
-            "video": "/Assets/video/carriere.mp4"
+            "video": "/assets/video/carriere.mp4"
         },
         "titre": "Coaching Emploi",
         "image": "https://alt-formations.com/wp-content/uploads/2026/01/bilan-competences.webp",
@@ -108,3 +108,4 @@
         ]
     }
 }
+

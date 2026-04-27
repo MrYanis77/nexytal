@@ -3,7 +3,7 @@
         "hero": {
             "titre": "Gestion de Carrière & Bilan",
             "sousTitre": "Faites le point sur vos compétences et définissez sereinement votre avenir professionnel avec notre équipe.",
-            "video": "/Assets/video/carriere.mp4"
+            "video": "/assets/video/carriere.mp4"
         },
         "titre": "Gestion de Carrière",
         "url": "https://alt-formations.com/gestion-de-carriere/",
@@ -115,3 +115,4 @@
         ]
     }
 }
+

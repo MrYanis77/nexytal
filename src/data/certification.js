@@ -1,7 +1,7 @@
 export const hero = {
   titre: "Certifications",
   sousTitre: "Plusieurs solutions de financement pour rendre votre formation accessible",
-  video: "public/Assets/video/certification.mp4",
+  video: "/assets/video/certification.mp4",
 };
 
 // Liste des catégories pour le filtre
@@ -22,7 +22,7 @@ export const certifications = [
     category: "Digital & Web",
     href: "/formation/formations-developpeur-web-mobile",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/37674/",
-    imageUrl: "/Assets/images/concepteur_web.jpg"
+    imageUrl: "/assets/images/concepteur_web.jpg"
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ export const certifications = [
     category: "Digital & Web",
     href: "/formation/formations-concepteur-developpeur-dapplications",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/37625/",
-    imageUrl: "/Assets/images/concepteur_app.jpg"
+    imageUrl: "/assets/images/concepteur_app.jpg"
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ export const certifications = [
     category: "Systèmes & Réseaux",
     href: "/formation/formations-technicien-superieur-systemes-et-reseaux",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/37682/",
-    imageUrl: "/Assets/images/Terchnicien_reseau.jpg"
+    imageUrl: "/assets/images/Terchnicien_reseau.jpg"
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const certifications = [
     category: "Digital & Web",
     href: "/formation/formations-community-manager",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/37682/",
-    imageUrl: "/Assets/images/designer_app_mobile.jpg"
+    imageUrl: "/assets/images/designer_app_mobile.jpg"
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ export const certifications = [
     category: "RH & Gestion",
     href: "/formation/formations-assistante-ressources-humaines",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/36612/",
-    imageUrl: "/Assets/images/responsable_rh.jpg"
+    imageUrl: "/assets/images/responsable_rh.jpg"
   },
   {
     id: 6,
@@ -72,7 +72,7 @@ export const certifications = [
     category: "RH & Gestion",
     href: "/formation/gestionnaire-comptable-fiscal",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/37948/",
-    imageUrl: "/Assets/images/comptable_1.jpg"
+    imageUrl: "/assets/images/comptable_1.jpg"
   },
   {
     id: 7,
@@ -82,7 +82,7 @@ export const certifications = [
     category: "RH & Gestion",
     href: "/formation/formations-secretaire-comptable",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/36434/",
-    imageUrl: "/Assets/images/secretaire_1.jpg"
+    imageUrl: "/assets/images/secretaire_1.jpg"
   },
   {
     id: 9,
@@ -92,7 +92,7 @@ export const certifications = [
     category: "Relation Client",
     href: "/formation/formations-conseillerere-relation-client-a-distance",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/35304/",
-    imageUrl: "/Assets/images/secretaire_2.jpg"
+    imageUrl: "/assets/images/secretaire_2.jpg"
   },
   {
     id: 10,
@@ -102,6 +102,7 @@ export const certifications = [
     category: "Systèmes & Réseaux",
     href: "/formation/administrateursysteme-devops",
     lienFranceCompetence: "https://www.francecompetences.fr/recherche/rncp/36061/",
-    imageUrl: "/Assets/images/devops.jpg"
+    imageUrl: "/assets/images/devops.jpg"
   }
 ];
+

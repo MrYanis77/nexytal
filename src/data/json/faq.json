@@ -3,7 +3,7 @@
         "hero": {
             "titre": "Foire Aux Questions",
             "sousTitre": "Trouvez rapidement les réponses à vos questions sur nos formations, financements et services.",
-            "video": "/Assets/video/formations/administration.mp4"
+            "video": "/assets/video/formations/administration.mp4"
         }
     },
     {
@@ -161,3 +161,4 @@
         ]
     }
 ]
+

@@ -7,7 +7,7 @@ export const dataNousRejoindre = {
         hero: {
             titre: "Rejoignez l'équipe Alt Formations",
             sousTitre: "Développez votre carrière au sein d'un organisme en pleine croissance.",
-            video: "public/Assets/video/nous-rejoindre.mp4",
+            video: "/assets/video/nous-rejoindre.mp4",
         },
         pourquoiNousRejoindre: {
             titre: "Pourquoi rejoindre ALT FORMATIONS ?",
@@ -48,7 +48,7 @@ export const dataNousRejoindre = {
         hero: {
             titre: "Devenez Intervenant Expert",
             sousTitre: "Partagez votre savoir-faire et formez les talents de demain.",
-            video: "public/Assets/video/intervenant.mp4",
+            video: "public/assets/video/intervenant.mp4",
         },
         pourquoiNousRejoindre: {
             titre: "Transmettez votre expertise",
@@ -85,3 +85,4 @@ export const dataNousRejoindre = {
         }
     }
 };
+

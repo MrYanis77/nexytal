@@ -2,7 +2,7 @@
 export const hero = {
   titre: "Alternance",
   sousTitre: "Conjuguez théorie et pratique avec nos formations en alternance reconnues par l'État",
-  video: "/Assets/video/formations/manager.mp4",
+  video: "/assets/video/formations/manager.mp4",
 };
 
 export const benefits = [
@@ -58,3 +58,5 @@ export const steps = [
   { num: '3', titre: 'Recherche',   desc: 'Nous vous aidons à trouver votre entreprise' },
   { num: '4', titre: 'Démarrage',   desc: 'Commencez votre parcours' },
 ];
+
+

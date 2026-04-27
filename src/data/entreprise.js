@@ -16,7 +16,7 @@
 export const hero = {
   titre: "Solutions Entreprises",
   sousTitre: "Plusieurs solutions de financement pour rendre votre formation accessible",
-  video: "public/Assets/video/entreprise.mp4",
+  video: "/assets/video/entreprise.mp4",
 };
 export const formationSurMesure = {
   titre: 'Formations sur-mesure',
@@ -115,3 +115,4 @@ export const stats = [
   { value: '72h', label: 'Délai de réponse moyen' },
   { value: '100%', label: 'Financement OPCO' },
 ];
+
