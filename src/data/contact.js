@@ -19,7 +19,7 @@ export const contactData = {
       },
       {
         type: "Email",
-        valeur: "contact@Nexytal.com",
+        valeur: "contact@alt-formations.com",
         icon: "✉️"
       },
       {

@@ -7,12 +7,16 @@ import { contactData } from '../../data/contact';
 // === SÉCURITÉ : SCHÉMA ZOD STRICT ===
 const noHtmlRegex = /^[^<>{}"'`]*$/;
 
-const contactSchema = z.object({
+// Le sujet n'est requis que sur le variant "page" (formulaire complet).
+// Sur le variant "section" (sans champ Sujet), un sujet par défaut est injecté.
+const buildContactSchema = (requireSujet) => z.object({
   nom: z.string().min(2, "Le nom est trop court").max(50).regex(noHtmlRegex, "Caractères illégaux détectés"),
   prenom: z.string().min(2, "Le prénom est trop court").max(50).regex(noHtmlRegex, "Caractères illégaux détectés"),
   email: z.string().email("Veuillez saisir un format d'email valide").max(100),
   telephone: z.string().max(20).regex(noHtmlRegex, "Format invalide").optional().or(z.literal('')),
-  sujet: z.string().min(2, "Sujet requis").max(100).regex(noHtmlRegex, "Caractères illégaux détectés"),
+  sujet: requireSujet
+    ? z.string().min(2, "Sujet requis").max(100).regex(noHtmlRegex, "Caractères illégaux détectés")
+    : z.string().max(100).regex(noHtmlRegex, "Caractères illégaux détectés").optional().or(z.literal('')),
   message: z.string().min(10, "Message trop court (10 caractères mini)").max(1500).regex(noHtmlRegex, "Caractères illégaux détectés"),
   honeypot: z.string().max(0, "Bot détecté")
 });
@@ -31,7 +35,7 @@ export default function ContactForm({ variant = "section", title }) {
     reset,
     formState: { errors }
   } = useForm({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(buildContactSchema(!isSection)),
     defaultValues: {
       nom: '',
       prenom: '',
@@ -43,40 +47,45 @@ export default function ContactForm({ variant = "section", title }) {
     }
   });
 
-  const onSubmit = async (data) => {
+  // Ouvre le client mail de l'utilisateur avec un brouillon pré-rempli.
+  // Aucune API d'envoi n'est utilisée : la soumission est confiée à l'utilisateur.
+  const onSubmit = (data) => {
     setStatus('loading');
     setServerError('');
 
     try {
       const emailItem = contactData.coordonnees.items.find(item => item.type === "Email");
-      const destinationEmail = emailItem ? emailItem.valeur : 'formations@nexytal.fr';
+      const destinationEmail = emailItem ? emailItem.valeur : 'contact@nexytal.fr';
 
-      const payload = {
-        ...data,
-        destinataire: destinationEmail
-      };
+      const sujet = (data.sujet && data.sujet.trim())
+        ? data.sujet.trim()
+        : `Demande de contact – ${data.prenom} ${data.nom}`;
 
-      // Utilisation d'un chemin relatif pour passer par le proxy Vite (défini dans vite.config.js)
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+      const corps = [
+        `Nom : ${data.nom}`,
+        `Prénom : ${data.prenom}`,
+        `Email : ${data.email}`,
+        `Téléphone : ${data.telephone || 'Non renseigné'}`,
+        `Sujet : ${sujet}`,
+        '',
+        'Message :',
+        data.message,
+        '',
+        '— Envoyé depuis le formulaire de contact du site Nexytal'
+      ].join('\n');
 
-      const responseData = await response.json();
+      const mailtoUrl = `mailto:${destinationEmail}`
+        + `?subject=${encodeURIComponent(sujet)}`
+        + `&body=${encodeURIComponent(corps)}`;
 
-      if (responseData.success) {
-        setStatus('success');
-        reset();
-      } else {
-        throw new Error(responseData.error || "Erreur lors de l'envoi");
-      }
+      window.location.href = mailtoUrl;
+
+      setStatus('success');
+      reset();
     } catch (err) {
-      console.error("Erreur serveur:", err);
+      console.error("Erreur ouverture client mail:", err);
       setStatus('error');
-      setServerError("Impossible de joindre le serveur ou erreur interne.");
+      setServerError("Impossible d'ouvrir votre client mail. Veuillez nous écrire directement à l'adresse indiquée ci-dessus.");
     }
   };
 
@@ -115,12 +124,12 @@ export default function ContactForm({ variant = "section", title }) {
             </svg>
             {isSection ? (
               <p className="text-success font-semibold text-sm" role="alert">
-                ✓ Votre message a bien été envoyé ! Nous vous répondrons dans les plus brefs délais.<br />
+                ✓ Votre client mail s'est ouvert avec votre message pré-rempli. Il ne vous reste plus qu'à confirmer l'envoi.<br />
               </p>
             ) : (
               <div>
-                <h3 className="font-bold text-xl text-green-800">Message sécurisé envoyé !</h3>
-                <p className="text-green-600 mt-2">Nous reviendrons vers vous rapidement.</p>
+                <h3 className="font-bold text-xl text-green-800">Votre client mail s'est ouvert</h3>
+                <p className="text-green-600 mt-2">Vérifiez les informations puis confirmez l'envoi depuis votre messagerie.</p>
               </div>
             )}
             <button onClick={resetStatus} className={isSection ? "mt-2 text-xs text-success underline hover:text-white transition" : "mt-6 px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition shadow-sm"}>
@@ -203,9 +212,9 @@ export default function ContactForm({ variant = "section", title }) {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Sécurisation et Envoi...
+                    Ouverture du client mail...
                   </>
-                ) : "Envoyer"}
+                ) : "Ouvrir mon client mail"}
               </button>
             </div>
           </form>
