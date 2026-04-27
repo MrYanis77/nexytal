@@ -48,7 +48,7 @@ app.post('/api/contact', async (req, res) => {
     // - le destinataire (to) DOIT être l'email de votre compte Resend.
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: destinataire || process.env.EMAIL_DESTINATAIRE || 'contact@alt-formations.com', // Cible
+      to: destinataire || process.env.EMAIL_DESTINATAIRE || 'contact@Nexytal.com', // Cible
       subject: `Nouveau message du site: ${sujet}`,
       html: `
         <div style="font-family: sans-serif; color: #1a202c; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">

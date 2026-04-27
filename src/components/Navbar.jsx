@@ -15,14 +15,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-[100] w-full bg-primary px-4 xl:px-8 flex items-center justify-between h-[70px]">
+    <nav className="sticky top-0 z-[100] w-full bg-primary px-4 xl:px-8 flex items-center justify-between h-[104px]">
 
       {/* Logo */}
       <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
         <img
-          src="/assets/logo-ALT.jpg"
-          alt="Logo ALT Formations"
-          className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-lighten"
+          src="/assets/logo-nexytal-dark.png"
+          alt="Logo Nexytal"
+          className="h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
         />
       </Link>
 

@@ -26,7 +26,7 @@ export const cpf = {
     label: 'Comment ça marche ?',
     items: [
       'Consultez vos droits sur moncompteformation.gouv.fr',
-      'Recherchez la formation ALT FORMATIONS souhaitée',
+      'Recherchez la formation Nexytal souhaitée',
       'Inscrivez-vous directement en ligne',
       'Nous gérons le reste avec votre compte CPF',
     ],

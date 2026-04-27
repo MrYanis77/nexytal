@@ -49,7 +49,7 @@ export default function ContactForm({ variant = "section", title }) {
 
     try {
       const emailItem = contactData.coordonnees.items.find(item => item.type === "Email");
-      const destinationEmail = emailItem ? emailItem.valeur : 'formations@alt-rh.com';
+      const destinationEmail = emailItem ? emailItem.valeur : 'formations@nexytal.fr';
 
       const payload = {
         ...data,
