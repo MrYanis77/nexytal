@@ -26,6 +26,8 @@ export default function ContactForm({ variant = "section", title }) {
 
   const [status, setStatus] = useState('idle');
   const [serverError, setServerError] = useState('');
+  const [draft, setDraft] = useState(null); // { destinataire, sujet, corps, mailtoUrl }
+  const [copied, setCopied] = useState(null); // 'email' | 'sujet' | 'corps' | 'tout'
 
   const formRef = useRef(null);
 
@@ -47,49 +49,70 @@ export default function ContactForm({ variant = "section", title }) {
     }
   });
 
-  // Ouvre le client mail de l'utilisateur avec un brouillon pré-rempli.
+  // Construit un brouillon mailto à partir des données du formulaire.
   // Aucune API d'envoi n'est utilisée : la soumission est confiée à l'utilisateur.
   const onSubmit = (data) => {
-    setStatus('loading');
     setServerError('');
 
+    const emailItem = contactData.coordonnees.items.find(item => item.type === "Email");
+    const destinataire = emailItem ? emailItem.valeur : 'contact@nexytal.fr';
+
+    const sujet = (data.sujet && data.sujet.trim())
+      ? data.sujet.trim()
+      : `Demande de contact – ${data.prenom} ${data.nom}`;
+
+    const corps = [
+      `Nom : ${data.nom}`,
+      `Prénom : ${data.prenom}`,
+      `Email : ${data.email}`,
+      `Téléphone : ${data.telephone || 'Non renseigné'}`,
+      `Sujet : ${sujet}`,
+      '',
+      'Message :',
+      data.message,
+      '',
+      '— Envoyé depuis le formulaire de contact du site Nexytal'
+    ].join('\n');
+
+    const mailtoUrl = `mailto:${destinataire}`
+      + `?subject=${encodeURIComponent(sujet)}`
+      + `&body=${encodeURIComponent(corps)}`;
+
+    setDraft({ destinataire, sujet, corps, mailtoUrl });
+
+    // Tentative d'ouverture du client mail.
+    // Selon l'environnement (pas de client mail desktop, webmail), il se peut que rien ne s'ouvre :
+    // l'écran de succès affiche alors les informations à copier manuellement.
     try {
-      const emailItem = contactData.coordonnees.items.find(item => item.type === "Email");
-      const destinationEmail = emailItem ? emailItem.valeur : 'contact@nexytal.fr';
-
-      const sujet = (data.sujet && data.sujet.trim())
-        ? data.sujet.trim()
-        : `Demande de contact – ${data.prenom} ${data.nom}`;
-
-      const corps = [
-        `Nom : ${data.nom}`,
-        `Prénom : ${data.prenom}`,
-        `Email : ${data.email}`,
-        `Téléphone : ${data.telephone || 'Non renseigné'}`,
-        `Sujet : ${sujet}`,
-        '',
-        'Message :',
-        data.message,
-        '',
-        '— Envoyé depuis le formulaire de contact du site Nexytal'
-      ].join('\n');
-
-      const mailtoUrl = `mailto:${destinationEmail}`
-        + `?subject=${encodeURIComponent(sujet)}`
-        + `&body=${encodeURIComponent(corps)}`;
-
-      window.location.href = mailtoUrl;
-
-      setStatus('success');
-      reset();
+      const link = document.createElement('a');
+      link.href = mailtoUrl;
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (err) {
       console.error("Erreur ouverture client mail:", err);
-      setStatus('error');
-      setServerError("Impossible d'ouvrir votre client mail. Veuillez nous écrire directement à l'adresse indiquée ci-dessus.");
+    }
+
+    setStatus('success');
+    reset();
+  };
+
+  const copyToClipboard = async (text, key) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(key);
+      setTimeout(() => setCopied(null), 2000);
+    } catch (err) {
+      console.error("Erreur copie presse-papiers:", err);
     }
   };
 
-  const resetStatus = () => setStatus('idle');
+  const resetStatus = () => {
+    setStatus('idle');
+    setDraft(null);
+    setCopied(null);
+  };
 
   const FormWrapper = isSection ? "section" : "div";
   const wrapperClass = isSection ? "bg-content-dark py-[60px] px-10 text-center" : "w-full";
@@ -116,25 +139,61 @@ export default function ContactForm({ variant = "section", title }) {
       )}
 
       <div className={containerClass}>
-        {status === 'success' && (
-          <div className={isSection ? "bg-green-100/10 border border-success/30 p-5 rounded-md mb-6 transition-all flex flex-col items-center gap-2" : "bg-green-50 border border-green-200 text-green-700 p-6 sm:p-10 rounded-xl flex flex-col items-center justify-center text-center gap-4 transition-all"}>
-            <svg className={isSection ? "w-8 h-8 text-success mb-1" : "w-16 h-16 text-green-500"} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            {isSection ? (
-              <p className="text-success font-semibold text-sm" role="alert">
-                ✓ Votre client mail s'est ouvert avec votre message pré-rempli. Il ne vous reste plus qu'à confirmer l'envoi.<br />
-              </p>
-            ) : (
+        {status === 'success' && draft && (
+          <div className={isSection ? "bg-white text-content-dark p-6 rounded-md text-left" : "bg-green-50/30 border border-green-200 text-content-dark p-6 sm:p-8 rounded-xl text-left"}>
+            <div className="flex items-start gap-3 mb-5">
+              <svg className="w-8 h-8 shrink-0 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
               <div>
-                <h3 className="font-bold text-xl text-green-800">Votre client mail s'est ouvert</h3>
-                <p className="text-green-600 mt-2">Vérifiez les informations puis confirmez l'envoi depuis votre messagerie.</p>
+                <h3 className="font-bold text-lg text-primary">Votre message est prêt à être envoyé</h3>
+                <p className="text-sm text-content-muted mt-1">
+                  Votre client mail devrait s'ouvrir automatiquement avec un brouillon pré-rempli.
+                  S'il ne s'ouvre pas, copiez les informations ci-dessous et envoyez-les manuellement.
+                </p>
               </div>
-            )}
-            <button onClick={resetStatus} className={isSection ? "mt-2 text-xs text-success underline hover:text-white transition" : "mt-6 px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition shadow-sm"}>
-              Nouveau message
-            </button>
+            </div>
+
+            <div className="space-y-3 text-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span className="font-bold text-primary min-w-[110px]">Destinataire :</span>
+                <code className="flex-1 bg-gray-100 px-3 py-2 rounded font-mono text-content-dark break-all">{draft.destinataire}</code>
+                <button type="button" onClick={() => copyToClipboard(draft.destinataire, 'email')} className="text-xs font-bold uppercase px-3 py-2 rounded bg-primary text-white hover:bg-primary-light transition whitespace-nowrap">
+                  {copied === 'email' ? 'Copié ✓' : 'Copier'}
+                </button>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span className="font-bold text-primary min-w-[110px]">Sujet :</span>
+                <code className="flex-1 bg-gray-100 px-3 py-2 rounded font-mono text-content-dark break-all">{draft.sujet}</code>
+                <button type="button" onClick={() => copyToClipboard(draft.sujet, 'sujet')} className="text-xs font-bold uppercase px-3 py-2 rounded bg-primary text-white hover:bg-primary-light transition whitespace-nowrap">
+                  {copied === 'sujet' ? 'Copié ✓' : 'Copier'}
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-primary">Message :</span>
+                  <button type="button" onClick={() => copyToClipboard(draft.corps, 'corps')} className="text-xs font-bold uppercase px-3 py-2 rounded bg-primary text-white hover:bg-primary-light transition">
+                    {copied === 'corps' ? 'Copié ✓' : 'Copier le message'}
+                  </button>
+                </div>
+                <pre className="bg-gray-100 px-3 py-2 rounded font-mono text-content-dark text-xs whitespace-pre-wrap break-words max-h-48 overflow-auto">{draft.corps}</pre>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a
+                href={draft.mailtoUrl}
+                className="flex-1 bg-accent hover:bg-accent-dark text-white font-bold py-3 px-5 rounded-lg text-center transition no-underline uppercase tracking-wide text-sm"
+              >
+                Ouvrir mon client mail
+              </a>
+              <button type="button" onClick={resetStatus} className="flex-1 sm:flex-none px-5 py-3 border border-gray-300 text-content-dark hover:bg-gray-50 font-medium rounded-lg transition text-sm">
+                Nouveau message
+              </button>
+            </div>
           </div>
         )}
 
