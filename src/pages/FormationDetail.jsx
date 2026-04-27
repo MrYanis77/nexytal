@@ -127,12 +127,18 @@ export default function FormationDetail() {
         <section className="py-20 px-6 bg-surface-soft">
           <div className="max-w-container-2xl mx-auto">
             <div className="text-center mb-14">
-              <span className="inline-block text-accent font-bold text-xs uppercase tracking-[0.2em] mb-3">Parcours pédagogique</span>
-              <h2 className="text-primary text-2xl md:text-h1 font-extrabold uppercase tracking-wider">
-                Programme de la formation
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full text-accent font-bold text-xs uppercase tracking-widest mb-6">
+                <GraduationCap className="w-4 h-4" />
+                Votre parcours vers la réussite
+              </div>
+              <h2 className="text-primary text-3xl md:text-4xl font-extrabold uppercase tracking-tight mb-4">
+                Programme détaillé
               </h2>
+              <div className="w-24 h-1.5 bg-accent mx-auto rounded-full mb-6"></div>
               {data.programme.dureeTotale && (
-                <p className="text-content-muted text-sm mt-3 max-w-xl mx-auto">{data.programme.dureeTotale}</p>
+                <p className="text-content-muted text-base max-w-2xl mx-auto leading-relaxed">
+                  {data.programme.dureeTotale}
+                </p>
               )}
             </div>
             <div className="max-w-[700px] mx-auto">

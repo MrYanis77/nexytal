@@ -2,26 +2,42 @@ import formationsData from './json/formation.json';
 
 // Mapping local en sécurité au cas où le fichier JSON est écrasé sans les catégories
 const categoryMap = {
-  'formations-administrateur-dinfrastructures-securisees-ais': 'numerique',
-  'formations-developpeur-web-mobile': 'numerique',
-  'formations-developpeur-dapplications-multimedia': 'numerique',
-  'formations-concepteur-developpeur-dapplications': 'numerique',
-  'formations-technicien-superieur-systemes-et-reseaux': 'numerique',
-  'formations-concepteur-designer-ui': 'numerique',
-  'formations-lead-developpeur-web': 'numerique',
-  'formations-community-manager': 'rh',
-  'formations-assistante-ressources-humaines': 'rh',
-  'formations-assistante-de-direction': 'rh',
-  'formations-assistante-administratifve': 'rh',
-  'formations-assistante-commerciale': 'rh',
-  'formations-secretaire-comptable': 'rh',
-  'formations-conseillerere-relation-client-a-distance': 'rh',
-  'administrateur-reseaux-netops': 'numerique',
-  'administrateursysteme-devops': 'numerique',
-  'technicien-reseaux-cybersecurite': 'numerique',
-  'formation-intelligence-artificielle': 'numerique',
-  'gestionnaire-comptable-fiscal': 'rh',
-  'formations-comptable-assistant': 'rh'
+  // Cybersécurité
+  'formations-administrateur-dinfrastructures-securisees-ais': 'cybersecurite-reseaux',
+  'formations-technicien-superieur-systemes-et-reseaux': 'cybersecurite-reseaux',
+  'administrateur-reseaux-netops': 'cybersecurite-reseaux',
+  'administrateursysteme-devops': 'cybersecurite-reseaux',
+  'technicien-reseaux-cybersecurite': 'cybersecurite-reseaux',
+  'formation-initiation-cybersecurite': 'cybersecurite-reseaux',
+  'formation-implementer-politique-cybersecurite': 'cybersecurite-reseaux',
+  'formation-cisco-configuration-administration': 'cybersecurite-reseaux',
+
+  // Développement
+  'formations-developpeur-web-mobile': 'digital-developpement',
+  'formations-developpeur-dapplications-multimedia': 'digital-developpement',
+  'formations-concepteur-developpeur-dapplications': 'digital-developpement',
+  'formations-concepteur-designer-ui': 'digital-developpement',
+  'formations-lead-developpeur-web': 'digital-developpement',
+  'formation-responsive-web-design': 'digital-developpement',
+  'formation-php': 'digital-developpement',
+  'executive-mastere-ingenierie-logiciel': 'digital-developpement',
+
+  // IA
+  'formation-intelligence-artificielle': 'ia-data',
+  'formation-python-tosa': 'ia-data',
+
+  // RH
+  'formations-assistante-ressources-humaines': 'ressources-humaines',
+  'formations-assistante-de-direction': 'ressources-humaines',
+  'formations-assistante-administratifve': 'ressources-humaines',
+  'formations-assistante-commerciale': 'ressources-humaines',
+  'formations-conseillerere-relation-client-a-distance': 'ressources-humaines',
+
+  // Compta & Gestion
+  'formations-community-manager': 'comptabilite-gestion',
+  'formations-secretaire-comptable': 'comptabilite-gestion',
+  'gestionnaire-comptable-fiscal': 'comptabilite-gestion',
+  'formations-comptable-assistant': 'comptabilite-gestion'
 };
 
 // Conversion du JSON en tableau et ajout dynamique de la catégorie si manquante
@@ -81,23 +97,34 @@ export const navlinks = [
         href: "/formations",
         submenu: [
           {
-            label: "Formations Numériques",
-            href: "/formations#numerique",
-            submenu: getSubMenu('numerique')
+            label: "Cybersécurité",
+            href: "/formations#cybersecurite-reseaux",
+            submenu: getSubMenu('cybersecurite-reseaux')
           },
           {
-            label: "Formations Gestion/RH",
-            href: "/formations#gestion-rh",
-            submenu: getSubMenu('rh')
+            label: "Développement Web",
+            href: "/formations#digital-developpement",
+            submenu: getSubMenu('digital-developpement')
+          },
+          {
+            label: "IA & Data",
+            href: "/formations#ia-data",
+            submenu: getSubMenu('ia-data')
+          },
+          {
+            label: "Ressources Humaines",
+            href: "/formations#ressources-humaines",
+            submenu: getSubMenu('ressources-humaines')
+          },
+          {
+            label: "Gestion & Compta",
+            href: "/formations#comptabilite-gestion",
+            submenu: getSubMenu('comptabilite-gestion')
           }
         ],
       },
-
-
     ],
   },
-
-
   { label: "Certifications", href: "/certification" },
   { label: "Financements", href: "/financements" },
   {
@@ -116,40 +143,14 @@ export const navlinks = [
   {
     label: "Ressources",
     submenu: [
-
-      // {
-      //   label: "Fiches métier",
-      //   href: "/ressources-ia",
-      // },
       {
         label: "IA",
         href: "/ressources-ia",
       },
-      // {
-      //   label: "Cybersécurité",
-      //   href: "/cybersécurité",
-      // },
-
     ],
   },
-  // {
-  //   label: "Entreprises",
-  //   href: "/entreprise",
-  //   submenu: [
-  //     {
-  //       label: "Solutions recrutement",
-  //       href: "/bilans-carriere",
-  //     },
-  //     {
-  //       label: "Formation collaborateurs",
-  //       href: "/coaching-emploi",
-  //     },
-  //   ],
-  // },
   { label: "Nous rejoindre", href: "/nous-rejoindre" },
   { label: "Nos Campus", href: "/campus" },
   { label: "Contact", href: "/contact" },
   { label: "F.A.Q", href: "/faq" },
-
-
 ];

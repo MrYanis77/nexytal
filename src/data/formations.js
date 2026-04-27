@@ -11,6 +11,9 @@ export const imageMap = {
   'administrateur-reseaux-netops': '/assets/images/admin_system.jpg',
   'administrateursysteme-devops': '/assets/images/devops.jpg',
   'technicien-reseaux-cybersecurite': '/assets/images/analyst_soc.jpg',
+  'formation-initiation-cybersecurite': '/assets/images/expert_cyber.jpg',
+  'formation-implementer-politique-cybersecurite': '/assets/images/analyst_soc.jpg',
+  'formation-cisco-configuration-administration': '/assets/images/Terchnicien_reseau.jpg',
 
   // ── Digital & Développement Web ─────────────────────────────────────────
   'formations-developpeur-web-mobile': '/assets/images/concepteur_web.jpg',
@@ -19,6 +22,10 @@ export const imageMap = {
   'formations-concepteur-designer-ui': '/assets/images/designer_app_mobile.jpg',
   'formations-lead-developpeur-web': '/assets/images/concepteur_app.jpg',
   'formation-intelligence-artificielle': '/assets/images/analyste_data.jpg',
+  'formation-python-tosa': '/assets/images/concepteur_app.jpg',
+  'formation-responsive-web-design': '/assets/images/concepteur_web.jpg',
+  'formation-php': '/assets/images/concepteur_app.jpg',
+  'executive-mastere-ingenierie-logiciel': '/assets/images/concepteur_app.jpg',
 
   // ── RH, Gestion & Comptabilité ──────────────────────────────────────────
   'formations-community-manager': '/assets/images/designer_app_mobile.jpg',
@@ -63,35 +70,53 @@ export const catalogue = [
       'formations-technicien-superieur-systemes-et-reseaux',
       'administrateur-reseaux-netops',
       'administrateursysteme-devops',
-      'technicien-reseaux-cybersecurite'
+      'technicien-reseaux-cybersecurite',
+      'formation-initiation-cybersecurite',
+      'formation-implementer-politique-cybersecurite',
+      'formation-cisco-configuration-administration'
     ].map(mapIdToItem).filter(Boolean),
   },
   {
     id: 'digital-developpement',
-    label: 'Digital & Développement Web',
+    label: 'Développement Web',
     items: [
       'formations-developpeur-web-mobile',
       'formations-developpeur-dapplications-multimedia',
       'formations-concepteur-developpeur-dapplications',
       'formations-concepteur-designer-ui',
       'formations-lead-developpeur-web',
-      'formation-intelligence-artificielle'
+      'formation-responsive-web-design',
+      'formation-php',
+      'executive-mastere-ingenierie-logiciel'
     ].map(mapIdToItem).filter(Boolean),
   },
   {
-    id: 'gestion-rh-compta',
-    label: 'RH, Gestion & Comptabilité',
+    id: 'ia-data',
+    label: 'Intelligence Artificielle',
     items: [
-      'formations-community-manager',
+      'formation-intelligence-artificielle',
+      'formation-python-tosa'
+    ].map(mapIdToItem).filter(Boolean),
+  },
+  {
+    id: 'ressources-humaines',
+    label: 'Ressources Humaines',
+    items: [
       'formations-assistante-ressources-humaines',
       'formations-assistante-de-direction',
       'formations-assistante-administratifve',
       'formations-assistante-commerciale',
       'formations-conseillerere-relation-client-a-distance',
+    ].map(mapIdToItem).filter(Boolean),
+  },
+  {
+    id: 'comptabilite-gestion',
+    label: 'Comptabilité & Gestion',
+    items: [
+      'formations-community-manager',
       'formations-secretaire-comptable',
       'gestionnaire-comptable-fiscal',
       'formations-comptable-assistant'
     ].map(mapIdToItem).filter(Boolean),
   }
 ];
-

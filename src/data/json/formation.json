@@ -2406,7 +2406,7 @@
         "stats": [
             {
                 "label": "Tarifs",
-                "value": "3 500 € à 12 364 €"
+                "value": "3 450 € à 12 314 €"
             },
             {
                 "label": "Durée de l'examen",
@@ -2507,6 +2507,1352 @@
                 }
             ]
         }
+    },
+    "formation-python-tosa": {
+        "categorie": "numerique",
+        "hero": {
+            "titre": "Programmer et automatiser des tâches avec Python",
+            "sousTitre": "La programmation Python s’impose aujourd’hui comme un outil incontournable dans de nombreux domaines : automatisation, analyse de données, développement web ou encore scripts pour les opérations IT.",
+            "video": "/assets/video/formations/dev-app.mp4"
+        },
+        "stats": [
+            {
+                "label": "Certification",
+                "value": "Certification TOSA « Programmer et automatiser des tâches avec Python »",
+                "icon": "medal"
+            },
+            {
+                "label": "Tarif de base",
+                "value": "1246 € (Finançable jusqu'à 100%)",
+                "icon": "trend"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "30 heures",
+                "icon": "users"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation du cycle de formation",
+            "paragraphes": [
+                "Ce cycle de formation vous guide pas à pas dans l’apprentissage de la syntaxe de base du langage, la manipulation des structures de données, l’application de la programmation orientée objet et l’utilisation des modules et packages pour structurer vos projets. Vous êtes également formé(e) à l’optimisation du code afin de garantir des scripts performants et maintenables.",
+                "Conçu pour les professionnels en reconversion ou en évolution de carrière, ce programme vous permet de développer des compétences immédiatement opérationnelles, tout en vous donnant l’opportunité de valider la certification TOSA.",
+                "Le saviez-vous ? Python est aujourd’hui le langage de programmation le plus enseigné dans les universités à travers le monde. Il est aussi régulièrement classé numéro 1 dans les classements des langages les plus populaires, notamment grâce à sa simplicité et sa polyvalence."
+            ]
+        },
+        "objectifs": {
+            "titre": "Objectifs de la certification",
+            "points": [
+                "Maîtriser la syntaxe de base du langage Python",
+                "Manipuler les structures de données et appliquer la programmation orientée objet",
+                "Utiliser les modules et packages pour structurer un projet",
+                "Optimiser le code en termes de performance et de lisibilité"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "description": "Ce cycle s’adresse aux professionnels souhaitant acquérir des compétences solides en programmation Python, qu’il s’agisse de profils techniques débutants, de professionnels de la donnée, ou de métiers souhaitant automatiser des tâches ou développer des outils internes."
+        },
+        "programme": {
+            "dureeTotale": "30 heures (estimées)",
+            "modules": [
+                {
+                    "id": 1,
+                    "title": "Maîtriser l’environnement de développement et les fondamentaux",
+                    "details": [
+                        "Installation de Python, prise en main de l’environnement (VS Code, Jupyter, etc.)",
+                        "Création, organisation et exécution de scripts Python",
+                        "Syntaxe de base : variables, types, opérateurs, conditions, boucles",
+                        "Fonctions, portée des variables, gestion des erreurs"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Travailler avec les structures de données et l’orienté objet",
+                    "details": [
+                        "Manipulation des listes, dictionnaires, tuples, ensembles",
+                        "Création et modification de structures complexes",
+                        "Conception de classes, héritage, encapsulation, polymorphisme",
+                        "Utilisation de bibliothèques standard pour le traitement de données"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Utiliser les modules, packages et bibliothèques spécifiques",
+                    "details": [
+                        "Importation et création de modules personnalisés",
+                        "Structuration de projets avec des packages",
+                        "Utilisation de bibliothèques comme pandas, numpy, matplotlib",
+                        "Gestion des dépendances, environnement virtuel, packaging et distribution"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Assurer la qualité, l’optimisation et l’automatisation",
+                    "details": [
+                        "Profiling du code, optimisation des performances",
+                        "Écriture de tests unitaires et d’intégration avec pytest",
+                        "Débogage efficace avec outils intégrés",
+                        "Automatisation des tâches répétitives et intégration dans des workflows (CI/CD)"
+                    ]
+                }
+            ]
+        },
+        "infosPratiques": {
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller et évaluation des connaissances à l’entrée.",
+                "dates": "Rentrées trimestrielles.",
+                "durée_plateforme": "Accès plateforme 1 mois.",
+                "suivi": "100% en ligne, digital learning avec suivi synchrone et asynchrone (Accompagnement Premium)."
+            },
+            "evaluations": {
+                "intermediaires": "QCM et exercices d’évaluation par module.",
+                "finale": "Certification TOSA (test adaptatif à distance, score sur 1000, 35 questions, 90 minutes)."
+            },
+            "prerequis": [
+                "Aucun prérequis technique exigé.",
+                "Bonne maîtrise de l’environnement informatique.",
+                "Appétence pour la logique de programmation."
+            ],
+            "materiel_requis": [
+                "Python 3.10 ou ultérieur.",
+                "VS Code, PyCharm ou Jupyter Notebook.",
+                "8 Go de RAM minimum, processeur multi-cœurs.",
+                "Casque, micro et webcam (recommandée)."
+            ]
+        },
+        "financement": {
+            "titre": "Financer sa formation",
+            "description": "Plusieurs dispositifs de financement sont possibles en fonction de votre statut professionnel et peuvent financer jusqu’à 100% votre formation.",
+            "lien_guide": "https://academy.visiplus.com/financement"
+        },
+        "avantages_visiplus": [
+            {
+                "titre": "Plateforme digital learning dédiée",
+                "description": "Apprentissage à votre rythme sur tous vos appareils connectés."
+            },
+            {
+                "titre": "Suivi personnalisé",
+                "description": "Accompagnement par des experts de l'élaboration du dossier à la certification."
+            },
+            {
+                "titre": "Communauté active",
+                "description": "Échanges quotidiens avec vos pairs et formateurs."
+            },
+            {
+                "titre": "Employabilité renforcée",
+                "description": "Formations conçues par des professionnels pour les besoins du marché."
+            },
+            {
+                "titre": "Réseau Alumni",
+                "description": "Accès à un cercle de plus de 20 000 diplômés."
+            }
+        ],
+        "accueil_psh": "VISIPLUS accompagne les participants en situation de handicap. Un livret d'accueil dédié est disponible en téléchargement.",
+        "competences": [
+            "Maîtrise de la syntaxe Python",
+            "Automatisation de tâches",
+            "Analyse de données de base"
+        ],
+        "ctaFinal": {
+            "titre": "Prêt à maîtriser Python ?",
+            "sousTitre": "Recevez une documentation complète ou contactez un conseiller pour étudier votre financement.",
+            "boutons": [
+                {
+                    "label": "Recevoir la documentation",
+                    "url": "/documentation"
+                },
+                {
+                    "label": "Contacter un conseiller",
+                    "url": "/contact"
+                }
+            ]
+        }
+    },
+    "formation-responsive-web-design": {
+        "categorie": "Développement Web / Informatique",
+        "hero": {
+            "titre": "Responsive Web Design",
+            "sousTitre": "Offrez aux visiteurs l’expérience utilisateur la plus confortable et ergonomique possible sur tous les supports (ordinateur, mobile, tablette, TV).",
+            "video": "/assets/video/formations/dev-web-mobile.mp4",
+            "ch iffre_cle": "37,4 millions de Français naviguent chaque jour sur le web avec leur smartphone !"
+        },
+        "stats": [
+            {
+                "label": "Tarif de base",
+                "value": "850 € (Finançable jusqu'à 100%)",
+                "icon": "price"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "15 heures",
+                "icon": "clock"
+            },
+            {
+                "label": "Accès plateforme",
+                "value": "1 mois",
+                "icon": "calendar"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation de la formation",
+            "description": "L’essor incroyable du web mobile et le nombre croissant de terminaux ont bouleversé les comportements des internautes. Il devient crucial pour les entreprises d’optimiser leur site pour qu’il s’adapte aux différentes résolutions d’écran. Cette formation vous donne les clés pour appréhender les enjeux du Responsive Web Design, en termes de techniques, de design, et de bonnes pratiques.",
+            "pourquoi": {
+                "titre": "Pourquoi réaliser une Formation Responsive Web Design ?",
+                "points": [
+                    "Concevoir un site unique compatible quel que soit le support.",
+                    "Éviter le développement de plusieurs versions ou d'applications natives.",
+                    "Temps de maintenance réduit et contenu unique (URL unique).",
+                    "Coûts de développement moins élevés.",
+                    "Maîtriser les contraintes techniques lourdes de l'adaptative web design."
+                ]
+            }
+        },
+        "objectifs": {
+            "titre": "Objectifs de la formation",
+            "points": [
+                "Appréhender les enjeux du Responsive Web Design",
+                "Mettre en œuvre les techniques de conception de sites web responsive",
+                "Maîtriser les contraintes ergonomiques et graphiques liées au RWD",
+                "Optimiser les performances d’un site responsive"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "public_cible": [
+                "Webmasters",
+                "Webdesigners",
+                "Chefs de projets web",
+                "Chefs de produits",
+                "Responsables communication",
+                "Responsables Web Marketing",
+                "Infographistes",
+                "Tout professionnel souhaitant acquérir les bonnes pratiques du RWD"
+            ]
+        },
+        "programme": {
+            "modules": [
+                {
+                    "id": 1,
+                    "titre": "Panorama du web mobile",
+                    "details": [
+                        "Chiffres clés",
+                        "Lexique (périphériques, OS, navigateurs)",
+                        "Standards HTML5/CSS3",
+                        "Résolution vs taille d’affichage"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "titre": "Définitions du Responsive Web Design",
+                    "details": [
+                        "Impacts sur le design classique",
+                        "UI et UX",
+                        "Rapprochement mobile-desktop",
+                        "Contraintes ergonomiques"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "titre": "Les principes fondamentaux",
+                    "details": [
+                        "Points de rupture",
+                        "Mobile First / Progressive enhancement",
+                        "Optimisation de performance (chargements superflus)"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "titre": "Créer une grille d’affichage flexible",
+                    "details": [
+                        "Pixels vs Pourcentage",
+                        "Unités fluides (% et em)",
+                        "Formule cible / contexte = résultat",
+                        "Layout avec CSS3"
+                    ]
+                },
+                {
+                    "id": 5,
+                    "titre": "Utiliser des médias flexibles",
+                    "details": [
+                        "Images et vidéos adaptatives",
+                        "Menus, tableaux et formulaires flexibles",
+                        "Gestion des anciens navigateurs (polyfill)"
+                    ]
+                },
+                {
+                    "id": 6,
+                    "titre": "Appliquer des Media Queries",
+                    "details": [
+                        "Viewport vs screen",
+                        "Règles conditionnelles (orientation, device-width)",
+                        "Résolution Retina"
+                    ]
+                },
+                {
+                    "id": 7,
+                    "titre": "Javascript pour le Responsive Web Design",
+                    "details": [
+                        "Tester les media queries et le viewport",
+                        "Modification dynamique des contenus",
+                        "Redirection par Javascript"
+                    ]
+                },
+                {
+                    "id": 8,
+                    "titre": "Les frameworks Responsive Web Design",
+                    "details": [
+                        "État des lieux (Bootstrap, Foundation, 960 grid)",
+                        "Zoom sur Bootstrap"
+                    ]
+                },
+                {
+                    "id": 9,
+                    "titre": "Tester son site responsive",
+                    "details": [
+                        "Émulateurs et solutions en ligne",
+                        "Tests en temps réel sur terminaux"
+                    ]
+                }
+            ]
+        },
+        "infosPratiques": {
+            "prerequis": "Nous vous recommandons de suivre en amont le module : JavaScript, PHP.",
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller formation.",
+                "entree": "Ouverte tout au long de l'année.",
+                "format": "100% en ligne (Plateforme Digital Learning) avec suivi synchrone et asynchrone."
+            },
+            "evaluations": [
+                "QCM d’évaluation des connaissances",
+                "Exercice de mise en pratique professionnelle"
+            ],
+            "materiel": "Ordinateur, connexion Internet stable, casque audio recommandé.",
+            "accueil_psh": "Accompagnement spécifique pour les participants en situation de handicap (Livret PSH disponible)."
+        },
+        "financement": {
+            "titre": "Financer sa formation",
+            "description": "Plusieurs dispositifs de financement sont possibles (jusqu'à 100%) selon votre statut professionnel."
+        },
+        "cycle_associe": {
+            "titre": "Web Designer / UX Designer",
+            "niveau": "Titre certifié de niveau 6 reconnu par l'État",
+            "debouches": [
+                "Développeur web",
+                "Intégrateur web",
+                "Webdesigner",
+                "Webmaster"
+            ]
+        },
+        "avis_clients": [
+            {
+                "auteur": "Lydie A.",
+                "poste": "Responsable communication",
+                "commentaire": "Discours qui va à l’essentiel."
+            },
+            {
+                "auteur": "Laetitia G.",
+                "poste": "Graphiste intégrateur",
+                "commentaire": "Formateur très professionnel."
+            },
+            {
+                "auteur": "Jérôme M.",
+                "poste": "Webmaster",
+                "commentaire": "La formation est véritablement intéressante."
+            }
+        ],
+        "avantages_visiplus": [
+            {
+                "titre": "Plateforme digital learning",
+                "desc": "Suivez vos modules partout, à votre rythme."
+            },
+            {
+                "titre": "Suivi personnalisé",
+                "desc": "Accompagnement par des experts à chaque étape."
+            },
+            {
+                "titre": "Communauté et Alumni",
+                "desc": "Réseau de 20 000 diplômés pour networker."
+            },
+            {
+                "titre": "Employabilité",
+                "desc": "Compétences en phase avec le marché du travail."
+            }
+        ],
+        "competences": [
+            "Maîtrise du HTML5 et CSS3",
+            "Flexbox et CSS Grid",
+            "Design adaptatif (Mobile-First)"
+        ],
+        "ctaFinal": {
+            "bouton": "RECEVOIR UNE DOCUMENTATION",
+            "url": "/contact"
+        }
+    },
+    "formation-php": {
+        "categorie": "Développement Web / Informatique",
+        "hero": {
+            "titre": "Formation PHP",
+            "sousTitre": "Apprenez à créer des applications dynamiques, des applications web, un site web vitrine ou encore e-commerce avec le langage de programmation PHP.",
+            "video": "/assets/video/formations/dev-app.mp4",
+            "chiffre_cle": "79 % de tous les sites web utilisent le langage PHP"
+        },
+        "stats": [
+            {
+                "label": "Tarif de base",
+                "value": "850 € (Finançable jusqu'à 100%)",
+                "icon": "price"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "15 heures",
+                "icon": "clock"
+            },
+            {
+                "label": "Accès plateforme",
+                "value": "1 mois",
+                "icon": "calendar"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation de la formation",
+            "description": "Le langage de programmation PHP permet de générer dynamiquement des pages Web, notamment en lien avec une base de données. Très populaire en raison de sa nature open-source et de ses multi fonctionnalités, il dispose d’une forte communauté et d’une grande part de marché. C’est par exemple avec PHP qu’est écrit le très connu CMS WordPress. Le PHP est un langage assez simple pour les débutants, et les programmeurs professionnels peuvent également l’utiliser pour des fonctions plus avancées.",
+            "pourquoi": {
+                "titre": "Pourquoi réaliser une Formation PHP ?",
+                "points": [
+                    "Le langage PHP est un véritable standard pour les hébergeurs (plus de 13 millions de sites).",
+                    "Créer des applications dynamiques et exploiter une base de données.",
+                    "Générer des images, des fichiers PDF, des applications e-commerce, des animations Flash, des emails, etc.",
+                    "Travailler sur tous types de projets web demandant des compétences PHP."
+                ]
+            }
+        },
+        "objectifs": {
+            "titre": "Objectifs de la formation PHP",
+            "points": [
+                "Comprendre l’utilité & l’usage de PHP dans le Web",
+                "Appréhender ce nouveau langage de programmation",
+                "Découvrir son intégration avec les systèmes extérieurs (serveur web & bases de données)",
+                "Développer des compétences de programmation avec le langage PHP"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "public_cible": [
+                "Toute personne souhaitant acquérir des compétences en communication digitale",
+                "Développeur web",
+                "Webdesigner",
+                "Graphiste web",
+                "Directeur Artistique Web",
+                "Chefs de projets web",
+                "Webmaster"
+            ]
+        },
+        "programme": {
+            "modules": [
+                {
+                    "id": 1,
+                    "titre": "Introduction aux langages du Web"
+                },
+                {
+                    "id": 2,
+                    "titre": "Introduction au Web Dynamique"
+                },
+                {
+                    "id": 3,
+                    "titre": "Introduction à PHP"
+                },
+                {
+                    "id": 4,
+                    "titre": "La structure du langage PHP"
+                },
+                {
+                    "id": 5,
+                    "titre": "Les types de données & opérateurs"
+                },
+                {
+                    "id": 6,
+                    "titre": "Les structures de contrôle"
+                },
+                {
+                    "id": 7,
+                    "titre": "Les fonctions"
+                },
+                {
+                    "id": 8,
+                    "titre": "Les chaînes de caractères"
+                },
+                {
+                    "id": 9,
+                    "titre": "Les tableaux"
+                },
+                {
+                    "id": 10,
+                    "titre": "La programmation orientée-objet"
+                },
+                {
+                    "id": 11,
+                    "titre": "La gestion « date & heure »"
+                },
+                {
+                    "id": 12,
+                    "titre": "Utilisation conjointe à HTTP"
+                },
+                {
+                    "id": 13,
+                    "titre": "Gestion des entrées/sorties de données"
+                },
+                {
+                    "id": 14,
+                    "titre": "La connexion à une base de donnée MySQL"
+                },
+                {
+                    "id": 15,
+                    "titre": "La gestion des erreurs"
+                },
+                {
+                    "id": 16,
+                    "titre": "Composer et la gestion de dépendances"
+                },
+                {
+                    "id": 17,
+                    "titre": "Les web services"
+                },
+                {
+                    "id": 18,
+                    "titre": "La sécurité"
+                },
+                {
+                    "id": 19,
+                    "titre": "Les frameworks de développement PHP (Laravel, Symfony, Zend, etc.)"
+                }
+            ]
+        },
+        "infosPratiques": {
+            "prerequis": "Aucun prérequis, ce module s’adresse à tous.",
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller formation (étude du profil et du projet du participant).",
+                "entree": "Les dates d’entrée en formation sont ouvertes tout au long de l’année.",
+                "format": "Formation 100% en ligne grâce à une plateforme digital Learning dédiée avec suivi synchrone et asynchrone."
+            },
+            "evaluations": [
+                "QCM d’évaluation des connaissances",
+                "Exercice de mise en pratique professionnelle"
+            ],
+            "materiel": "Ordinateur et connexion Internet (un casque audio est également recommandé).",
+            "accueil_psh": "VISIPLUS accompagne les participants en situation de handicap (étude de la situation, adaptations possibles, livret d’accueil disponible)."
+        },
+        "financement": {
+            "titre": "Financer sa formation en Développement Web / Informatique",
+            "description": "Plusieurs dispositifs de financement sont possibles en fonction de votre statut professionnel et peuvent financer jusqu’à 100% votre formation."
+        },
+        "cycle_associe": {
+            "titre": "Web Designer / UX Designer",
+            "description": "La formation PHP fait partie du cycle long de formation (diplômante) Web Designer/UX Designer.",
+            "niveau": "Titre Certifié Web Designer / UX Designer",
+            "debouches": [
+                "Chef de projet web",
+                "Graphiste web",
+                "Intégrateur web",
+                "Responsable communication",
+                "Webdesigner",
+                "Webmaster"
+            ]
+        },
+        "avantages_visiplus": [
+            {
+                "titre": "Une plateforme digital learning dédiée",
+                "desc": "Suivez vos modules de formation depuis un appareil connecté où que vous soyez et à votre propre rythme."
+            },
+            {
+                "titre": "Un suivi personnalisé",
+                "desc": "Conseillers formation, coordinateurs pédagogiques, formateurs, mentors individuels à votre disposition."
+            },
+            {
+                "titre": "Le soutien de toute une communauté",
+                "desc": "Echangez au quotidien avec vos pairs, vos formateurs et toute notre équipe pédagogique."
+            },
+            {
+                "titre": "Votre employabilité renforcée",
+                "desc": "Des formations conçues spécifiquement pour des professionnels, par des professionnels experts."
+            },
+            {
+                "titre": "Un réseau d’Alumni pour échanger",
+                "desc": "Cercle Alumni de plus de 20 000 diplômés pour élargir votre réseau professionnel."
+            }
+        ],
+        "competences": [
+            "Développement backend PHP",
+            "Gestion des bases de données MySQL",
+            "Création de sites dynamiques"
+        ],
+        "ctaFinal": {
+            "bouton": "RECEVOIR UNE DOCUMENTATION",
+            "url": "/contact"
+        }
+    },
+    "formation-initiation-cybersecurite": {
+        "categorie": "Développement Web / Informatique",
+        "hero": {
+            "titre": "Initiation à la Cybersécurité",
+            "sousTitre": "Identifiez les pièges dans l’espace numérique pour vous en protéger au travail ou à titre personnel.",
+            "video": "/assets/video/formations/cyber.mp4",
+            "chiffre_cle": "5,6 millions de données personnelles sont piratées ou perdues chaque année, soit 65 par seconde !"
+        },
+        "stats": [
+            {
+                "label": "Tarif de base",
+                "value": "850 € (Finançable jusqu'à 100%)",
+                "icon": "price"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "15 heures",
+                "icon": "clock"
+            },
+            {
+                "label": "Accès plateforme",
+                "value": "1 mois",
+                "icon": "calendar"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation de la formation",
+            "description": "Que ce soit dans le monde de l’entreprise ou dans la vie courante, le numérique occupe une place conséquente de notre quotidien : emails, réseaux sociaux, banque, impôts, applications, télétravail, etc. Tout cela attire des individus qui peuvent désormais commettre leurs actes malveillants à distance et subtiliser vos informations personnelles, usurper votre identité, prendre en otage vos données ou encore vous voler vos coordonnées bancaires. À la fin de cette formation, vous serez en mesure d’identifier les pièges dans l’espace numérique.",
+            "pourquoi": {
+                "titre": "Pourquoi réaliser une Formation Initiation à la Cybersécurité ?",
+                "points": [
+                    "La digitalisation des entreprises les rend vulnérables aux menaces et aux cyberattaques.",
+                    "Assurer la continuité de l'activité en prévenant et gérant les risques quotidiens.",
+                    "Protéger les outils numériques (ordinateur, smartphone, emails, clé USB…).",
+                    "Adopter une approche globale pour cerner et évaluer les risques du système informatique."
+                ]
+            }
+        },
+        "objectifs": {
+            "titre": "Objectifs de la formation Initiation à la Cybersécurité",
+            "points": [
+                "Prendre conscience des risques cybercriminels",
+                "Connaitre les principes fondamentaux de la cybersécurité",
+                "Acquérir les bons réflexes pour se protéger dans l’espace numérique",
+                "Savoir réagir face à un acte cybercriminel"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "public_cible": [
+                "Tous les profils souhaitant être sensibilisés aux enjeux de la cybersécurité",
+                "Personnes sans connaissances techniques ou autres prérequis"
+            ]
+        },
+        "programme": {
+            "modules": [
+                {
+                    "id": 1,
+                    "titre": "L'informatique et internet"
+                },
+                {
+                    "id": 2,
+                    "titre": "Les Cybercriminels"
+                },
+                {
+                    "id": 3,
+                    "titre": "Le Cybercrime"
+                },
+                {
+                    "id": 4,
+                    "titre": "La Cybersécurité"
+                },
+                {
+                    "id": 5,
+                    "titre": "Le Phishing"
+                },
+                {
+                    "id": 6,
+                    "titre": "La sécurité sur les sites internet"
+                },
+                {
+                    "id": 7,
+                    "titre": "La sécurité des mots de passe"
+                },
+                {
+                    "id": 8,
+                    "titre": "Les arnaques et fraudes"
+                },
+                {
+                    "id": 9,
+                    "titre": "Les téléchargements et virus"
+                },
+                {
+                    "id": 10,
+                    "titre": "Les pièges sur les réseaux sociaux"
+                },
+                {
+                    "id": 11,
+                    "titre": "Les paiements en ligne"
+                },
+                {
+                    "id": 12,
+                    "titre": "Sécurité des smartphones, tablettes et objets connectés"
+                },
+                {
+                    "id": 13,
+                    "titre": "La sécurité en voyage"
+                },
+                {
+                    "id": 14,
+                    "titre": "Réagir à un acte cybercriminel"
+                },
+                {
+                    "id": 15,
+                    "titre": "Pour aller plus loin"
+                }
+            ]
+        },
+        "infosPratiques": {
+            "prerequis": "Aucun prérequis, ce module s’adresse à tous.",
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller formation (étude du profil et du projet du participant).",
+                "entree": "Les dates d’entrée en formation sont ouvertes tout au long de l’année.",
+                "format": "Formation 100% en ligne grâce à une plateforme digital Learning dédiée avec suivi synchrone et asynchrone."
+            },
+            "evaluations": [
+                "QCM d’évaluation des connaissances",
+                "Exercice de mise en pratique professionnelle"
+            ],
+            "materiel": "Ordinateur et connexion Internet (un casque audio est également recommandé).",
+            "accueil_psh": "VISIPLUS accompagne les participants en situation de handicap (étude de la situation, adaptations possibles, livret d’accueil disponible)."
+        },
+        "financement": {
+            "titre": "Financer sa formation en Développement Web / Informatique",
+            "description": "Plusieurs dispositifs de financement sont possibles en fonction de votre statut professionnel et peuvent financer jusqu’à 100% votre formation."
+        },
+        "avantages_visiplus": [
+            {
+                "titre": "Une plateforme digital learning dédiée",
+                "desc": "Suivez vos modules de formation depuis un appareil connecté où que vous soyez et à votre propre rythme."
+            },
+            {
+                "titre": "Un suivi personnalisé",
+                "desc": "Conseillers formation, coordinateurs pédagogiques, formateurs, mentors individuels à votre disposition."
+            },
+            {
+                "titre": "Le soutien de toute une communauté",
+                "desc": "Echangez au quotidien avec vos pairs, vos formateurs et toute notre équipe pédagogique."
+            },
+            {
+                "titre": "Votre employabilité renforcée",
+                "desc": "Des formations conçues spécifiquement pour des professionnels, par des professionnels experts."
+            },
+            {
+                "titre": "Un réseau d’Alumni pour échanger",
+                "desc": "Cercle Alumni de plus de 20 000 diplômés pour élargir votre réseau professionnel."
+            }
+        ],
+        "competences": [
+            "Fondamentaux de la sécurité",
+            "Protection des données",
+            "Hygiène informatique"
+        ],
+        "ctaFinal": {
+            "bouton": "RECEVOIR UNE DOCUMENTATION",
+            "url": "/contact"
+        }
+    },
+    "executive-mastere-ingenierie-logiciel": {
+        "categorie": "Développement Web / Informatique",
+        "hero": {
+            "titre": "Executive Mastère Ingénierie Avancée du Logiciel",
+            "sousTitre": "Pilotez des projets de développement complexes en intégrant les enjeux de performance, de qualité logicielle et de collaboration agile.",
+            "video": "/assets/video/formations/dev-app.mp4",
+            "certification": "Titre Certifié Manager de l’ingénierie numérique de niveau 7 (Bac+5) reconnu par l'État"
+        },
+        "stats": [
+            {
+                "label": "Tarif de base",
+                "value": "9910 € (Finançable jusqu'à 100%)",
+                "icon": "price"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "820 heures",
+                "icon": "clock"
+            },
+            {
+                "label": "Accès plateforme",
+                "value": "12 mois",
+                "icon": "calendar"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation du cycle de formation",
+            "paragraphes": [
+                "Dans un contexte de transformation numérique accélérée, les entreprises recherchent des professionnels capables de piloter des projets de développement complexes, en intégrant les enjeux de performance, de qualité logicielle et de collaboration agile.",
+                "Ce cycle de formation vous donne toutes les clés pour analyser les besoins d’un client, concevoir et déployer une architecture technique adaptée, et encadrer efficacement des équipes de développement. Que vous soyez déjà développeur, chef de projet technique ou en reconversion vers des fonctions plus stratégiques, ce programme vous permet de renforcer vos compétences dans des environnements modernes (DevOps, architectures distribuées, cloud computing).",
+                "Vous serez en mesure de gérer un projet de bout en bout, depuis l’expression du besoin jusqu’à la mise en production continue."
+            ],
+            "partenaire": {
+                "titre": "Les rendez-vous Virtual Labs",
+                "description": "Ce parcours est éligible à une sélection de Séances Live exclusives sur les nouveaux défis du développement informatique. Les Virtual Labs ont pour objectif de renforcer votre maîtrise des outils et langages du web, tout en vous aidant à suivre les évolutions constantes du secteur. Aux côtés d’un expert, plongez dans des sessions interactives pour explorer les enjeux actuels et les meilleures pratiques du développement."
+            }
+        },
+        "objectifs": {
+            "titre": "Objectifs de l'executive mastère Ingénierie Avancée du Logiciel",
+            "points": [
+                "Analyser les besoins du client en termes d’architectures techniques",
+                "Concevoir et développer des architectures techniques",
+                "Manager des équipes de développement informatique",
+                "Piloter un projet de développement informatique avec DevOps"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "public_cible": [
+                "Professionnels de l’informatique ou du numérique souhaitant accéder à des fonctions à haute responsabilité dans la conception, le développement et le pilotage de projets logiciels complexes."
+            ]
+        },
+        "debouches": {
+            "titre": "Débouchés",
+            "postes_vises": [
+                "Lead full-stack developer",
+                "Lead web developer",
+                "Consultant ou ingénieur DevOps",
+                "Consultant architecte technique",
+                "Software engineer"
+            ]
+        },
+        "programme": {
+            "dureeTotale": "820 heures",
+            "blocs_competences": [
+                {
+                    "titre": "Analyse des besoins du client en termes d’architectures techniques",
+                    "modules": [
+                        "Analyse fonctionnelle d'un projet SI",
+                        "Initier efficacement un projet SI",
+                        "Droit des contrats informatiques",
+                        "UX/Wireframing",
+                        "Design Thinking",
+                        "Figma",
+                        "Structure des données",
+                        "Algorithmie avancée",
+                        "NoSQL",
+                        "Introduction au Machine Learning",
+                        "Conception d’application complexe avec UML",
+                        "Rédiger un cahier des charges fonctionnel et technique pour un projet digital",
+                        "Mener une veille efficace"
+                    ]
+                },
+                {
+                    "titre": "Conception et développement des architectures techniques",
+                    "modules": [
+                        "Fondamentaux du Cloud Computing (IaaS / PaaS / SaaS)",
+                        "JavaScript : initiation et programmation orientée objet",
+                        "JavaScript : programmation événementielle et asynchrone",
+                        "Développer vos applications web avec TypeScript",
+                        "Git avancé : GitHub et GitLab",
+                        "Maîtriser Java SE",
+                        "Fondamentaux du développement Front-end avec Angular",
+                        "Développer en Java avec Spring et Hibernate",
+                        "Construire une API REST avec Spring Boot",
+                        "Architecture logicielle",
+                        "Principe SOLID en Java",
+                        "Design pattern en Java",
+                        "Programmation fonctionnelle en Scala",
+                        "Architecture distribuée et Big Data",
+                        "Sécurité des applications web"
+                    ]
+                },
+                {
+                    "titre": "Management des équipes de développement",
+                    "modules": [
+                        "Leadership et Management",
+                        "Management transversal",
+                        "Animer et encadrer une équipe",
+                        "Les fondamentaux de la GEPP"
+                    ]
+                },
+                {
+                    "titre": "Gestion du projet de développement avec DevOps",
+                    "modules": [
+                        "Le métier de développeur à l’ère du DevOps, du Cloud et de l'IA",
+                        "Déployer et orchestrer des architectures Cloud",
+                        "Exécuter et piloter la réalisation d'un projet",
+                        "Génie logiciel",
+                        "Méthodes agiles avancées / Scrum",
+                        "Communiquer en Mode Projet",
+                        "Devenez DevOps avec Docker",
+                        "Kubernetes pour orchestrer ses conteneurs",
+                        "Déploiement d'une application",
+                        "Plans de tests d'une application",
+                        "Contrôle budgétaire et budget prévisionnel",
+                        "Ethique et gouvernance de l'IA"
+                    ]
+                }
+            ]
+        },
+        "infosPratiques": {
+            "prerequis": {
+                "standard": "Avoir validé un diplôme ou un Titre RNCP de niveau 6 (Bac+3) dans le secteur visé.",
+                "vap": [
+                    "Validation des acquis professionnels sur instruction et validation du dossier : avoir validé le Baccalauréat ou Titre RNCP de niveau 4 et justifier d’une expérience professionnelle de 5 ans minimum sur des fonctions d’encadrement (statut cadre) sur les métiers visés.",
+                    "Avoir validé un diplôme ou Titre RNCP de niveau 5 (Bac+2) et justifier d’une expérience professionnelle de 3 ans minimum sur les métiers visés."
+                ]
+            },
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller formation et évaluation des connaissances à l’entrée en formation. Adaptation de la durée possible selon profil.",
+                "entree": "Les dates d’entrée en formation sont ouvertes tout au long de l’année.",
+                "format": "Formation 100% en ligne (Plateforme Digital Learning) avec suivi synchrone et asynchrone, accompagnement par un mentor spécialisé, ateliers collectifs et rendez-vous synchrones."
+            },
+            "evaluations": {
+                "intermediaires": [
+                    "Étude de cas à réaliser pour chaque bloc de compétences",
+                    "QCM d’évaluation des connaissances pour chaque module et chaque bloc de compétences",
+                    "Passage de la certification Google Cloud leader",
+                    "Participation à 1 atelier du Lab virtuel"
+                ],
+                "finale": "Examen final en distanciel : Présentation du dossier projet de fin d'études",
+                "validation_partielle": "Une validation partielle du titre par blocs de compétences est possible (RNCP38590BC01, RNCP35584BC01, RNCP38004BC03, RNCP38590BC04, RNCP35584BC02)."
+            },
+            "materiel": "Ordinateur et connexion Internet (casque audio recommandé).",
+            "accueil_psh": "VISIPLUS accompagne les participants en situation de handicap (étude de la situation, adaptations, livret d'accueil)."
+        },
+        "financement": {
+            "titre": "Financer sa formation en Développement Web / Informatique",
+            "description": "Plusieurs dispositifs de financement sont possibles en fonction de votre statut professionnel et peuvent financer jusqu’à 100% votre formation."
+        },
+        "avantages_visiplus": [
+            {
+                "titre": "Une plateforme digital learning dédiée",
+                "desc": "Suivez l’intégralité de nos formations au format e-learning à votre propre rythme."
+            },
+            {
+                "titre": "Un suivi personnalisé",
+                "desc": "Conseillers, formateurs et mentors individuels à votre disposition à chaque étape de votre parcours."
+            },
+            {
+                "titre": "Le soutien de toute une communauté",
+                "desc": "Echangez au quotidien avec vos pairs et notre équipe pédagogique."
+            },
+            {
+                "titre": "Votre employabilité renforcée",
+                "desc": "Des formations conçues par des professionnels experts pour répondre aux besoins du marché."
+            },
+            {
+                "titre": "Un réseau d’Alumni pour échanger",
+                "desc": "Cercle Alumni de plus de 20 000 diplômés pour networker et élargir votre réseau professionnel."
+            }
+        ],
+        "competences": [
+            "Architecture logicielle avancée",
+            "Gestion de projets agiles",
+            "Développement Fullstack expert"
+        ],
+        "ctaFinal": {
+            "bouton": "RECEVOIR UNE DOCUMENTATION",
+            "url": "/contact"
+        }
+    },
+    "formation-implementer-politique-cybersecurite": {
+        "categorie": "Développement Web / Informatique",
+        "hero": {
+            "titre": "Implémenter une politique de Cybersécurité",
+            "sousTitre": "Maîtrisez les concepts liés à l'organisation et à la mise en place d'une cybersécurité efficace en entreprise pour faire face aux menaces numériques.",
+            "video": "/assets/video/formations/cyber.mp4",
+            "chiffre_cle": "En France, 9 entreprises sur 10 sont touchées par des attaques ou tentatives d’attaques. 43% d’entre elles sont des PME, or seulement 17% disposent de moyens de défense."
+        },
+        "stats": [
+            {
+                "label": "Tarif de base",
+                "value": "850 € (Finançable jusqu'à 100%)",
+                "icon": "price"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "15 heures",
+                "icon": "clock"
+            },
+            {
+                "label": "Accès plateforme",
+                "value": "1 mois",
+                "icon": "calendar"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation de la formation",
+            "description": "Une cyberattaque peut avoir des impacts catastrophiques sur une entreprise : vol de données, impacts sur la réputation, pertes financières, etc. Ce quelle que soit la taille de sa structure. Pour autant, il n'existe pas de fatalité : lorsque la simple bonne volonté des employés ne suffit plus à maintenir un niveau de sécurité adéquat, il est temps de passer à la vitesse supérieure ! Cette formation vous permettra ainsi de maîtriser les concepts liés à l'organisation et à la mise en place d'une cybersécurité efficace en entreprise.",
+            "pourquoi": {
+                "titre": "Pourquoi réaliser une Formation Implémenter une politique de Cybersécurité ?",
+                "points": [
+                    "Croissance du numérique oblige, les cyberattaques sont de plus en plus importantes, tant en nombre qu’en intensité.",
+                    "Il est devenu essentiel de protéger toutes les données en circulation sur le web.",
+                    "La cybersécurité est devenue un enjeu majeur pour toutes les organisations publiques ou privées.",
+                    "Implémentez une stratégie sécuritaire efficace au sein de votre organisation !"
+                ]
+            }
+        },
+        "objectifs": {
+            "titre": "Objectifs de la formation Implémenter une politique de Cybersécurité",
+            "points": [
+                "Appréhender les méthodes pour organiser durablement la cybersécurité en entreprise",
+                "Mettre en place une hygiène cybersécurité de base en entreprise",
+                "Prévoir et réagir à une cyberattaque",
+                "Identifier les prestations de cybersécurité adaptées à ses besoins"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "public_cible": [
+                "DSI",
+                "Administrateurs Sécurité",
+                "Techniciens Sécurité",
+                "Analystes Cybersécurité",
+                "Spécialistes et Évaluateurs Sécurité",
+                "Professionnels en charge de la sécurité d'un système d'information"
+            ]
+        },
+        "programme": {
+            "modules": [
+                {
+                    "id": 1,
+                    "titre": "Les systèmes d'informations"
+                },
+                {
+                    "id": 2,
+                    "titre": "Les cyber-attaques contre des entreprises"
+                },
+                {
+                    "id": 3,
+                    "titre": "Paysage institutionnel de la cybersécurité"
+                },
+                {
+                    "id": 4,
+                    "titre": "Implémenter la cybersécurité en entreprise"
+                },
+                {
+                    "id": 5,
+                    "titre": "Organisation de la cybersécurité"
+                },
+                {
+                    "id": 6,
+                    "titre": "Sensibiliser les collaborateurs à la cybersécurité"
+                },
+                {
+                    "id": 7,
+                    "titre": "Sécuriser l'accès aux ressources"
+                },
+                {
+                    "id": 8,
+                    "titre": "Sauvegarder les données"
+                },
+                {
+                    "id": 9,
+                    "titre": "Sécuriser un réseau informatique"
+                },
+                {
+                    "id": 10,
+                    "titre": "Maintenir un parc à jour"
+                },
+                {
+                    "id": 11,
+                    "titre": "Sécuriser les postes de travail"
+                },
+                {
+                    "id": 12,
+                    "titre": "Sécuriser un site web"
+                },
+                {
+                    "id": 13,
+                    "titre": "Réagir à un incident de cybersécurité"
+                },
+                {
+                    "id": 14,
+                    "titre": "Souscrire une assurance cyber"
+                },
+                {
+                    "id": 15,
+                    "titre": "Faire appel à des prestations de cybersécurité"
+                },
+                {
+                    "id": 16,
+                    "titre": "Effectuer une veille cybersécurité"
+                }
+            ]
+        },
+        "infosPratiques": {
+            "prerequis": "Aucun prérequis, ce module s’adresse à tous.",
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller formation (étude du profil et du projet du participant).",
+                "entree": "Les dates d’entrée en formation sont ouvertes tout au long de l’année.",
+                "format": "Formation 100% en ligne grâce à une plateforme digital Learning dédiée avec suivi synchrone et asynchrone."
+            },
+            "evaluations": [
+                "QCM d’évaluation des connaissances",
+                "Exercice de mise en pratique professionnelle"
+            ],
+            "materiel": "Ordinateur et connexion Internet (un casque audio est également recommandé).",
+            "accueil_psh": "VISIPLUS accompagne les participants en situation de handicap (étude de la situation, adaptations possibles, livret d’accueil disponible)."
+        },
+        "financement": {
+            "titre": "Financer sa formation en Développement Web / Informatique",
+            "description": "Plusieurs dispositifs de financement sont possibles en fonction de votre statut professionnel et peuvent financer jusqu’à 100% votre formation."
+        },
+        "avantages_visiplus": [
+            {
+                "titre": "Une plateforme digital learning dédiée",
+                "desc": "Suivez vos modules de formation depuis un appareil connecté où que vous soyez et à votre propre rythme."
+            },
+            {
+                "titre": "Un suivi personnalisé",
+                "desc": "Conseillers formation, coordinateurs pédagogiques, formateurs, mentors individuels à votre disposition."
+            },
+            {
+                "titre": "Le soutien de toute une communauté",
+                "desc": "Echangez au quotidien avec vos pairs, vos formateurs et toute notre équipe pédagogique."
+            },
+            {
+                "titre": "Votre employabilité renforcée",
+                "desc": "Des formations conçues spécifiquement pour des professionnels, par des professionnels experts."
+            },
+            {
+                "titre": "Un réseau d’Alumni pour échanger",
+                "desc": "Cercle Alumni de plus de 20 000 diplômés pour élargir votre réseau professionnel."
+            }
+        ],
+        "competences": [
+            "Gouvernance de la sécurité",
+            "Gestion des risques (EBIOS)",
+            "Conformité RGPD"
+        ],
+        "ctaFinal": {
+            "bouton": "RECEVOIR UNE DOCUMENTATION",
+            "url": "/contact"
+        }
+    },
+    "formation-cisco-configuration-administration": {
+        "categorie": "Développement Web / Informatique",
+        "hero": {
+            "titre": "Configuration et administration d’équipements réseaux CISCO",
+            "sousTitre": "Apprenez à configurer les équipements Cisco et à mettre en œuvre les principaux services réseaux pour administrer efficacement les infrastructures de votre entreprise.",
+            "video": "/assets/video/formations/infra-reseau.mp4",
+            "chiffre_cle": "Plus de la moitié des entreprises font confiance aux solutions CISCO pour leur matériel informatique et réseau."
+        },
+        "stats": [
+            {
+                "label": "Tarif de base",
+                "value": "850 € (Finançable jusqu'à 100%)",
+                "icon": "price"
+            },
+            {
+                "label": "Durée estimée",
+                "value": "15 heures",
+                "icon": "clock"
+            },
+            {
+                "label": "Accès plateforme",
+                "value": "1 mois",
+                "icon": "calendar"
+            }
+        ],
+        "presentation": {
+            "titre": "Présentation de la formation",
+            "description": "Cisco est un constructeur informatique de matériel réseau de référence depuis les débuts d’internet. En proposant un grand nombre d’équipements permettant d’équiper informatiquement les entreprises, il s’impose comme un leader du marché de l’administration réseau pour les professionnels. Cette formation permettra aux futurs techniciens système et réseau d'administrer les équipements réseaux Cisco dans le cadre de leurs missions professionnelles.",
+            "pourquoi": {
+                "titre": "Pourquoi réaliser une Formation Configuration et administration d’équipements réseaux CISCO ?",
+                "points": [
+                    "Les équipements réseaux sont aujourd’hui majoritairement construits par Cisco.",
+                    "La capacité à configurer ces équipements est l'une des compétences premières recherchées par les employeurs.",
+                    "Connecter des réseaux entre eux à l’aide de routeurs et de switchs Cisco.",
+                    "Mettre en place des protocoles de routages efficaces en fonction des différents besoins de votre structure."
+                ]
+            }
+        },
+        "objectifs": {
+            "titre": "Objectifs de la formation Configuration et administration d’équipements réseaux CISCO",
+            "points": [
+                "Effectuer la configuration de base de tous les principaux équipements Cisco",
+                "Gérer la configuration des VLANs sur les switches Cisco",
+                "Mettre en oeuvre les principaux services réseaux, le DHCP et le NAT sur les équipements Cisco",
+                "Les bonnes pratiques en matière de configuration de l'interconnexion vers les postes de travail (ntp, cdp, stp, portsecurity)",
+                "Configurer les routeurs Cisco pour implémenter du routage statique et dynamique"
+            ]
+        },
+        "pour_qui": {
+            "titre": "Pour qui ?",
+            "public_cible": [
+                "Futurs techniciens informatiques",
+                "Techniciens systèmes et réseaux",
+                "Techniciens sécurité"
+            ]
+        },
+        "programme": {
+            "modules": [
+                {
+                    "id": 1,
+                    "titre": "Introduction au cours"
+                },
+                {
+                    "id": 2,
+                    "titre": "Les équipements réseaux"
+                },
+                {
+                    "id": 3,
+                    "titre": "Téléchargement et installation de Packet Tracer"
+                },
+                {
+                    "id": 4,
+                    "titre": "Prise en main de l'environnement Cisco Packet Tracer"
+                },
+                {
+                    "id": 5,
+                    "titre": "Téléchargement et installation de Cisco Modeling Lab"
+                },
+                {
+                    "id": 6,
+                    "titre": "Prise en main de l'environnement Cisco Modeling Lab"
+                },
+                {
+                    "id": 7,
+                    "titre": "Accès et navigation au sein de l’IOS Cisco"
+                },
+                {
+                    "id": 8,
+                    "titre": "Structure des commandes IOS"
+                },
+                {
+                    "id": 9,
+                    "titre": "Configuration initiale des équipements Cisco"
+                },
+                {
+                    "id": 10,
+                    "titre": "Comment administrer les équipements réseaux à distance"
+                },
+                {
+                    "id": 11,
+                    "titre": "Les fichiers de configuration"
+                },
+                {
+                    "id": 12,
+                    "titre": "La structure d’un réseau"
+                },
+                {
+                    "id": 13,
+                    "titre": "Configuration des interfaces d’un équipement"
+                },
+                {
+                    "id": 14,
+                    "titre": "Concepts et fondamentaux des VLANs"
+                },
+                {
+                    "id": 15,
+                    "titre": "Configuration des VLANs sur un commutateur"
+                },
+                {
+                    "id": 16,
+                    "titre": "Routage inter-VLAN"
+                },
+                {
+                    "id": 17,
+                    "titre": "Administration centralisée des VLANs avec VTP"
+                },
+                {
+                    "id": 18,
+                    "titre": "Configuration de l’agent relais et du serveur DHCP"
+                },
+                {
+                    "id": 19,
+                    "titre": "Services d’Infrastructure Réseau – Journalisation, Synchronisation et Sauvegarde"
+                },
+                {
+                    "id": 20,
+                    "titre": "Protocoles de découverte de voisinage (CDP et LLDP)"
+                },
+                {
+                    "id": 21,
+                    "titre": "Prévention des boucles de couche 2 : STP, RSTP et MSTP"
+                },
+                {
+                    "id": 22,
+                    "titre": "Mise en place du NAT"
+                },
+                {
+                    "id": 23,
+                    "titre": "Introduction au routage"
+                },
+                {
+                    "id": 24,
+                    "titre": "Routage statique et routage par défaut"
+                },
+                {
+                    "id": 25,
+                    "titre": "Routage dynamique, présentation et configuration"
+                },
+                {
+                    "id": 26,
+                    "titre": "Conclusion"
+                }
+            ]
+        },
+        "infosPratiques": {
+            "prerequis": "Aucun prérequis particulier n'est nécessaire, même s'il est fortement conseillé d'avoir suivi la formation \"Comprendre les réseaux informatiques\".",
+            "modalites_acces": {
+                "positionnement": "Entretien obligatoire avec un conseiller formation (étude du profil et du projet du participant).",
+                "entree": "Les dates d’entrée en formation sont ouvertes tout au long de l’année.",
+                "format": "Formation 100% en ligne grâce à une plateforme digital Learning dédiée avec suivi synchrone et asynchrone."
+            },
+            "evaluations": [
+                "QCM d’évaluation des connaissances",
+                "Exercice de mise en pratique professionnelle"
+            ],
+            "materiel": "Ordinateur et connexion Internet (un casque audio est également recommandé).",
+            "accueil_psh": "VISIPLUS accompagne les participants en situation de handicap (étude de la situation, adaptations possibles, livret d’accueil disponible)."
+        },
+        "financement": {
+            "titre": "Financer sa formation en Développement Web / Informatique",
+            "description": "Plusieurs dispositifs de financement sont possibles en fonction de votre statut professionnel et peuvent financer jusqu’à 100% votre formation."
+        },
+        "cycle_associe": {
+            "titre": "Technicien Systèmes, réseaux et sécurité",
+            "niveau": "Titre Certifié de niveau 5",
+            "description": "Ce module de formation est dispensé dans le cadre du cycle long diplômant \"Technicien Systèmes, réseaux et sécurité\", permettant d'acquérir un large spectre de compétences en hardware, software et notions transversales clés.",
+            "debouches": [
+                "Gestionnaire de parc informatique",
+                "Technicien sécurité informatique",
+                "Technicien informatique et réseaux",
+                "Technicien support utilisateur",
+                "Technicien systèmes et réseaux",
+                "Assistant administration systèmes, réseaux"
+            ]
+        },
+        "avantages_visiplus": [
+            {
+                "titre": "Une plateforme digital learning dédiée",
+                "desc": "Suivez vos modules de formation depuis un appareil connecté où que vous soyez et à votre propre rythme."
+            },
+            {
+                "titre": "Un suivi personnalisé",
+                "desc": "Conseillers formation, coordinateurs pédagogiques, formateurs, mentors individuels à votre disposition."
+            },
+            {
+                "titre": "Le soutien de toute une communauté",
+                "desc": "Echangez au quotidien avec vos pairs, vos formateurs et toute notre équipe pédagogique."
+            },
+            {
+                "titre": "Votre employabilité renforcée",
+                "desc": "Des formations conçues spécifiquement pour des professionnels, par des professionnels experts."
+            },
+            {
+                "titre": "Un réseau d’Alumni pour échanger",
+                "desc": "Cercle Alumni de plus de 20 000 diplômés pour élargir votre réseau professionnel."
+            }
+        ],
+        "competences": [
+            "Configuration de switchs et routeurs",
+            "Protocoles de routage (OSPF, BGP)",
+            "Sécurisation des réseaux Cisco"
+        ],
+        "ctaFinal": {
+            "bouton": "RECEVOIR UNE DOCUMENTATION",
+            "url": "/contact"
+        }
     }
 }
-
