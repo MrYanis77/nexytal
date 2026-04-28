@@ -33,10 +33,7 @@ const RessourcesIAPages = lazy(() => import('./pages/RessourcesIAPages'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
 const GestionCarriere = lazy(() => import('./pages/GestionCarriere'));
 const CoachingPage = lazy(() => import('./pages/CoachingPage'));
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
 const FormationsCortesPage = lazy(() => import('./pages/FormationsCortesPage'));
 

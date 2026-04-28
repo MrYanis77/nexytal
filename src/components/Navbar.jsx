@@ -1,25 +1,7 @@
-<<<<<<< Updated upstream
-import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { navlinks } from "../data/navdata";
-import { useAuth } from "../context/AuthContext";
-
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [openMobileMenus, setOpenMobileMenus] = useState({});
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { user, isAdmin, logout } = useAuth();
-
-  const handleLogout = async () => {
-    await logout();
-    setIsOpen(false);
-    navigate("/accueil");
-  };
-=======
 import { useState, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navlinks, megaMenuFormations } from "../data/navdata";
+import { useAuth } from "../context/AuthContext";
 
 // ── Mega Menu Formations ───────────────────────────────────────────────────────
 function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
@@ -27,7 +9,6 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
   const [hoveredCatId, setHoveredCatId] = useState(
     megaMenuFormations.diplomantes[0]?.id
   );
->>>>>>> Stashed changes
 
   const allCats =
     activeTab === "diplomantes"
@@ -215,6 +196,14 @@ export default function Navbar() {
   const [formationsOpen, setFormationsOpen] = useState(false);
   const closeTimer = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isAdmin, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    setIsOpen(false);
+    navigate("/accueil");
+  };
 
   const toggleMobileMenu = (label) => {
     setOpenMobileMenus((prev) => ({ ...prev, [label]: !prev[label] }));
@@ -361,7 +350,14 @@ export default function Navbar() {
         })}
       </div>
 
-<<<<<<< Updated upstream
+      {/* ── Mega Menu Formations ── */}
+      {formationsOpen && (
+        <FormationsMegaMenu
+          onMouseEnter={openMega}
+          onMouseLeave={scheduleMegaClose}
+        />
+      )}
+
       {/* Actions */}
       <div className="flex items-center gap-3">
         {user ? (
@@ -393,22 +389,6 @@ export default function Navbar() {
             Se connecter
           </Link>
         )}
-
-=======
-      {/* ── Mega Menu Formations (rendu dans le nav pour absolute top-full) ── */}
-      {formationsOpen && (
-        <FormationsMegaMenu
-          onMouseEnter={openMega}
-          onMouseLeave={scheduleMegaClose}
-        />
-      )}
-
-      {/* ── Actions ── */}
-      <div className="flex items-center gap-4">
-        <button className="hidden sm:block btn-orange text-sm py-2.5 px-5">
-          <a href="/connexion">Se connecter</a>
-        </button>
->>>>>>> Stashed changes
         <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
