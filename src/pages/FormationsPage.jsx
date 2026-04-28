@@ -4,8 +4,8 @@ import Breadcrumb from '../components/Breadcrumb';
 import Hero from '../components/Hero/Hero';
 import CardFormation from '../components/Card/CardFormation';
 import CallToAction from '../components/CallToAction';
-import { hero, catalogue } from '../data/formations';
-import { Search, Filter, HardDrive, Code, Brain, Users, Calculator, Briefcase } from 'lucide-react';
+import { hero, catalogue, catalogueCourtes } from '../data/formations';
+import { Search, Filter, HardDrive, Code, Brain, Users, Calculator, Briefcase, Cpu } from 'lucide-react';
 
 // ── Icônes associées aux nouveaux domaines ──────────────────────────────────────
 const domainIcons = {
@@ -15,6 +15,7 @@ const domainIcons = {
   'ressources-humaines': <Users className="w-6 h-6" />,
   'comptabilite-gestion': <Calculator className="w-6 h-6" />,
   'relation-client': <Briefcase className="w-6 h-6" />,
+  'systemes-embarques-iot': <Cpu className="w-6 h-6" />,
 };
 
 // ── Nouveaux domaines plus précis ───────────────────────────────────────────────
@@ -268,6 +269,49 @@ export default function FormationsPage() {
             </button>
           </div>
         )}
+      </div>
+
+      {/* ===== FORMATIONS COURTES / E-LEARNING ===== */}
+      <div id="formations-courtes" className="scroll-mt-[180px] py-12 bg-primary/5">
+        <div className="max-w-container-3xl mx-auto px-6 mb-10">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent">
+              <Cpu className="w-6 h-6" />
+            </div>
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-primary uppercase tracking-wide">
+                E-Learning & Formations Courtes
+              </h2>
+              <p className="text-content-muted text-sm font-body">
+                Formations spécialisées courtes pour monter rapidement en compétences.
+              </p>
+            </div>
+          </div>
+          <div className="w-full h-px bg-gray-200"></div>
+        </div>
+
+        {catalogueCourtes.map((category) => (
+          <div key={category.id} className="mb-10 px-6">
+            <div className="max-w-container-3xl mx-auto">
+              <h3 className="font-heading text-lg font-bold text-primary mb-6 uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 bg-accent rounded-full inline-block"></span>
+                {category.label}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {category.items.map((item, idx) => (
+                  <CardFormation
+                    key={idx}
+                    title={item.titre}
+                    image={item.imageUrl || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800"}
+                    points={item.features}
+                    variant="white"
+                    href={item.href}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* --- CTA FINAL --- */}

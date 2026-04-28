@@ -33,7 +33,12 @@ const RessourcesIAPages = lazy(() => import('./pages/RessourcesIAPages'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
 const GestionCarriere = lazy(() => import('./pages/GestionCarriere'));
 const CoachingPage = lazy(() => import('./pages/CoachingPage'));
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
+const FormationsCortesPage = lazy(() => import('./pages/FormationsCortesPage'));
 
 const UserDashboard = lazy(() => import('./pages/UserDashboard'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
@@ -73,6 +78,7 @@ function AppShell() {
             <Route path="/inscription" element={<InscriptionPage />} />
             <Route path="/connexion" element={<ConnexionPage />} />
             <Route path="/formation/:id" element={<FormationDetail />} />
+            <Route path="/formations-courtes" element={<FormationsCortesPage />} />
             <Route path="/campus" element={<CampusPage />} />
             <Route path="/certification" element={<CertificationPage />} />
 

@@ -1,4 +1,6 @@
 import formationsData from './json/formation.json';
+import formationsCortesData from './json/formation-courtes.json';
+import { imageMap } from './formations';
 
 // Mapping local en sécurité au cas où le fichier JSON est écrasé sans les catégories
 const categoryMap = {
@@ -42,7 +44,7 @@ const categoryMap = {
 
 // Conversion du JSON en tableau et ajout dynamique de la catégorie si manquante
 // On fait également correspondre la structure du JSON (anglais) à celle des composants (français)
-export const formationsArray = Object.entries(formationsData).map(([id, data]) => {
+const longFormationsArray = Object.entries(formationsData).map(([id, data]) => {
 
   // 1. Adapter stats (value -> valeur) et ajouter des icônes de fallback s'il n'y en a pas
   const statsFormatted = data.stats?.map((stat, idx) => ({
@@ -68,11 +70,50 @@ export const formationsArray = Object.entries(formationsData).map(([id, data]) =
   return {
     id,
     categorie: data.categorie || categoryMap[id] || 'autre',
+    type: 'longue',
     ...data,
     stats: statsFormatted || data.stats,
     programme: programmeFormatted || data.programme
   };
 });
+
+// Conversion du JSON des formations courtes en tableau
+const formatEntry = (id, data) => {
+  const statsFormatted = data.stats?.map((stat, idx) => ({
+    label: stat.label,
+    valeur: stat.valeur || stat.value,
+    icon: stat.icon || (idx === 0 ? 'clock' : idx === 1 ? 'medal' : idx === 2 ? 'users' : 'trend')
+  }));
+
+  let programmeFormatted = data.programme;
+  if (programmeFormatted && programmeFormatted.modules) {
+    programmeFormatted = {
+      ...programmeFormatted,
+      modules: programmeFormatted.modules.map(mod => ({
+        id: mod.id,
+        titre: mod.titre || mod.title,
+        duree: mod.duree || mod.duration,
+        description: mod.description
+      }))
+    };
+  }
+
+  return {
+    id,
+    categorie: data.categorie || 'autre',
+    type: data.type || 'longue',
+    ...data,
+    stats: statsFormatted || data.stats,
+    programme: programmeFormatted || data.programme
+  };
+};
+
+export const formationsCortesArray = Object.entries(formationsCortesData).map(([id, data]) =>
+  formatEntry(id, data)
+);
+
+// Fusion des formations longues et courtes dans un tableau unique
+export const formationsArray = [...longFormationsArray, ...formationsCortesArray];
 
 // Filtrage pour récupérer chaque groupe et générer le sous-sous-menu
 const getSubMenu = (categoryKey) => {
@@ -80,8 +121,16 @@ const getSubMenu = (categoryKey) => {
     .filter(f => f.categorie === categoryKey)
     .map(f => ({
       label: f.hero?.titre || f.titre || f.id,
-      href: `/formation/${f.id}` // Le lien pointant vers /formation/:id
+      href: `/formation/${f.id}`
     }));
+};
+
+// Sous-menu des formations courtes (E-Learning)
+const getFormationsCortesSubMenu = () => {
+  return formationsCortesArray.map(f => ({
+    label: f.hero?.titre || f.titre || f.id,
+    href: `/formation/${f.id}`
+  }));
 };
 
 /**
@@ -123,6 +172,11 @@ export const navlinks = [
           }
         ],
       },
+      {
+        label: "E-Learning",
+        href: "/formations-courtes",
+        submenu: getFormationsCortesSubMenu(),
+      },
     ],
   },
   { label: "Certifications", href: "/certification" },
@@ -154,3 +208,77 @@ export const navlinks = [
   { label: "Contact", href: "/contact" },
   { label: "F.A.Q", href: "/faq" },
 ];
+
+// ── Mega Menu Formations ───────────────────────────────────────────────────────
+const FALLBACK_IMG = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=400';
+
+const categoryImages = {
+  'cybersecurite-reseaux':         '/assets/images/expert_cyber.jpg',
+  'digital-developpement':         '/assets/images/concepteur_web.jpg',
+  'ia-data':                       '/assets/images/analyste_data.jpg',
+  'ressources-humaines':           '/assets/images/responsable_rh.jpg',
+  'comptabilite-gestion':          '/assets/images/comptable_1.jpg',
+  'cybersecurite':                 '/assets/images/analyst_soc.jpg',
+  'management':                    '/assets/images/responsable_rh.jpg',
+  'devops-devsecops':              '/assets/images/devops.jpg',
+  'informatique-systemes-reseaux': '/assets/images/admin_system.jpg',
+  'systemes-embarques-iot':        '/assets/images/concepteur_app.jpg',
+};
+
+const cortesLabels = {
+  'cybersecurite':                 'Cybersécurité',
+  'digital-developpement':         'Développement & Big Data',
+  'management':                    'Management',
+  'devops-devsecops':              'DevOps / DevSecOps',
+  'informatique-systemes-reseaux': 'Informatique & Systèmes',
+  'systemes-embarques-iot':        'Systèmes Embarqués & IOT',
+};
+
+const buildMegaCategory = (categoryKey, label, href) => ({
+  id: categoryKey,
+  label,
+  href,
+  image: categoryImages[categoryKey] || FALLBACK_IMG,
+  formations: formationsArray
+    .filter(f => f.categorie === categoryKey)
+    .map(f => ({
+      label: f.hero?.titre || f.titre || f.id,
+      href:  `/formation/${f.id}`,
+      image: imageMap[f.id] || categoryImages[categoryKey] || FALLBACK_IMG,
+      video: f.hero?.video || null,
+    })),
+});
+
+const buildElearningCategories = () => {
+  const grouped = {};
+  formationsCortesArray.forEach(f => {
+    const cat = f.categorie || 'autre';
+    if (!grouped[cat]) {
+      grouped[cat] = {
+        id:         cat,
+        label:      cortesLabels[cat] || cat,
+        href:       `/formations-courtes#${cat}`,
+        image:      categoryImages[cat] || FALLBACK_IMG,
+        formations: [],
+      };
+    }
+    grouped[cat].formations.push({
+      label: f.hero?.titre || f.id,
+      href:  `/formation/${f.id}`,
+      image: imageMap[f.id] || categoryImages[f.categorie] || FALLBACK_IMG,
+      video: f.hero?.video || null,
+    });
+  });
+  return Object.values(grouped);
+};
+
+export const megaMenuFormations = {
+  diplomantes: [
+    buildMegaCategory('cybersecurite-reseaux',  'Cybersécurité & Réseaux',  '/formations#cybersecurite-reseaux'),
+    buildMegaCategory('digital-developpement',  'Développement Web',        '/formations#digital-developpement'),
+    buildMegaCategory('ia-data',                'IA & Data',                '/formations#ia-data'),
+    buildMegaCategory('ressources-humaines',    'Ressources Humaines',      '/formations#ressources-humaines'),
+    buildMegaCategory('comptabilite-gestion',   'Comptabilité & Gestion',   '/formations#comptabilite-gestion'),
+  ],
+  elearning: buildElearningCategories(),
+};

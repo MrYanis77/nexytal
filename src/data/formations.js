@@ -1,4 +1,5 @@
 import formationData from './json/formation.json';
+import formationCortesData from './json/formation-courtes.json';
 
 /**
  * Mapping explicite des images locales par ID de formation.
@@ -47,10 +48,21 @@ const mapIdToItem = (id) => {
   const data = formationData[id];
   if (!data) return null;
   return {
-    // On nettoie le titre pour l'affichage dans les cartes
     titre: data.hero.titre.replace(/^Devenez\s+/i, '').replace(/^Faites votre Formation en\s+/i, ''),
-    features: (data.competences || []).slice(0, 3), // On prend au max les 3 premières compétences
+    features: (data.competences || []).slice(0, 3),
     imageUrl: imageMap[id] || data.hero.image || FALLBACK_IMAGE,
+    href: `/formation/${id}`
+  };
+};
+
+// Fonction d'aide pour les formations courtes
+const mapCourteIdToItem = (id) => {
+  const data = formationCortesData[id];
+  if (!data) return null;
+  return {
+    titre: data.hero.titre,
+    features: (data.competences || []).slice(0, 3),
+    imageUrl: imageMap[id] || FALLBACK_IMAGE,
     href: `/formation/${id}`
   };
 };
@@ -120,3 +132,47 @@ export const catalogue = [
     ].map(mapIdToItem).filter(Boolean),
   }
 ];
+
+const categoriesCourtes = {
+  'cybersecurite': {
+    label: 'Cybersécurité',
+    description: 'Pentest, audit mobile, exploit dev et certifications cloud.',
+  },
+  'digital-developpement': {
+    label: 'Développement & Big Data',
+    description: 'Java, Big Data et stratégies marketing digitales.',
+  },
+  'management': {
+    label: 'Management',
+    description: 'Management situationnel, agile, RSE et gestion de projet.',
+  },
+  'devops-devsecops': {
+    label: 'DevOps / DevSecOps',
+    description: 'Conteneurisation, CI/CD et culture DevOps avec Docker.',
+  },
+  'informatique-systemes-reseaux': {
+    label: 'Informatique & Systèmes',
+    description: 'Administration Windows Server et infrastructure réseau.',
+  },
+  'systemes-embarques-iot': {
+    label: 'Systèmes Embarqués & IOT',
+    description: 'Android embarqué, noyau Linux et périphériques IoT.',
+  },
+};
+
+export const catalogueCourtes = (() => {
+  const grouped = {};
+  Object.entries(formationCortesData).forEach(([id, data]) => {
+    const cat = data.categorie || 'autre';
+    if (!grouped[cat]) grouped[cat] = [];
+    const item = mapCourteIdToItem(id);
+    if (item) grouped[cat].push(item);
+  });
+
+  return Object.entries(grouped).map(([id, items]) => ({
+    id,
+    label: categoriesCourtes[id]?.label || id,
+    description: categoriesCourtes[id]?.description || '',
+    items,
+  }));
+})();
