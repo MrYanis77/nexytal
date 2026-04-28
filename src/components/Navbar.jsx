@@ -393,6 +393,7 @@ export default function Navbar() {
           </Link>
         )}
 
+
         <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
