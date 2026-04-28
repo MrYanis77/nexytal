@@ -1,25 +1,7 @@
-<<<<<<< Updated upstream
-import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { navlinks } from "../data/navdata";
-import { useAuth } from "../context/AuthContext";
-
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [openMobileMenus, setOpenMobileMenus] = useState({});
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { user, isAdmin, logout } = useAuth();
-
-  const handleLogout = async () => {
-    await logout();
-    setIsOpen(false);
-    navigate("/accueil");
-  };
-=======
 import { useState, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navlinks, megaMenuFormations } from "../data/navdata";
+import { useAuth } from "../context/AuthContext";
 
 // ── Mega Menu Formations ───────────────────────────────────────────────────────
 function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
@@ -27,7 +9,6 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
   const [hoveredCatId, setHoveredCatId] = useState(
     megaMenuFormations.diplomantes[0]?.id
   );
->>>>>>> Stashed changes
 
   const allCats =
     activeTab === "diplomantes"
@@ -83,7 +64,7 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
             </div>
           </div>
 
-          {/* Category list */}
+          {/* Liste des catégories */}
           <div className="flex-1 overflow-y-auto py-2">
             {allCats.map((cat) => (
               <button
@@ -110,7 +91,7 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
             ))}
           </div>
 
-          {/* Bottom CTA */}
+          {/* CTA bas */}
           <div className="p-4 border-t border-gray-100 shrink-0">
             <Link
               to={activeTab === "diplomantes" ? "/formations" : "/formations-courtes"}
@@ -128,11 +109,11 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
           </div>
         </div>
 
-        {/* ── RIGHT: detail de la catégorie ── */}
+        {/* ── RIGHT: détail catégorie ── */}
         {currentCat && (
           <div className="flex-1 flex flex-col overflow-hidden">
 
-            {/* Category header avec image */}
+            {/* Header catégorie avec image */}
             <div className="flex items-center gap-5 px-8 py-5 border-b border-gray-100 bg-white shrink-0">
               <div className="relative w-32 h-[72px] rounded-xl overflow-hidden shadow-md shrink-0">
                 <img
@@ -166,7 +147,7 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
               </div>
             </div>
 
-            {/* Formations grid avec images + badge vidéo */}
+            {/* Grille formations avec images + badge vidéo */}
             <div className="flex-1 overflow-y-auto p-6">
               <div className="grid grid-cols-2 xl:grid-cols-3 gap-3">
                 {currentCat.formations.map((f, i) => (
@@ -175,7 +156,6 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
                     to={f.href}
                     className="flex items-center gap-3 p-2.5 rounded-xl border border-gray-100 hover:border-accent/40 hover:bg-orange-50/50 transition-all no-underline group"
                   >
-                    {/* Miniature image + badge vidéo */}
                     <div className="relative w-14 h-11 shrink-0 rounded-lg overflow-hidden bg-gray-100">
                       <img
                         src={f.image}
@@ -193,7 +173,6 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
                         </div>
                       )}
                     </div>
-                    {/* Titre */}
                     <span className="text-[11px] font-semibold text-primary group-hover:text-accent transition-colors line-clamp-2 leading-snug flex-1">
                       {f.label}
                     </span>
@@ -208,25 +187,81 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
   );
 }
 
+function GenericMegaMenu({ item, onMouseEnter, onMouseLeave }) {
+  if (!item?.submenu?.length) return null;
+
+  return (
+    <div
+      className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t-[3px] border-accent z-[99]"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="max-w-container-3xl mx-auto px-8 py-6">
+        <p className="text-[10px] font-extrabold text-accent uppercase tracking-widest mb-4">
+          {item.label}
+        </p>
+
+        <div className={`grid gap-4 ${item.submenu.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+          {item.submenu.map((sub) => (
+            <Link
+              key={sub.label}
+              to={sub.href || "#"}
+              className="flex items-center gap-4 p-3 rounded-xl border border-gray-100 hover:border-accent/40 hover:bg-orange-50/50 transition-all no-underline group"
+            >
+              {sub.image && (
+                <div className="w-16 h-14 shrink-0 rounded-lg overflow-hidden">
+                  <img
+                    src={sub.image}
+                    alt=""
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
+              <div className="min-w-0">
+                <p className="text-sm font-extrabold text-primary group-hover:text-accent transition-colors truncate">
+                  {sub.label}
+                </p>
+                {sub.description && (
+                  <p className="text-xs text-content-muted mt-0.5 line-clamp-2 leading-snug">
+                    {sub.description}
+                  </p>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Navbar principale ──────────────────────────────────────────────────────────
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openMobileMenus, setOpenMobileMenus] = useState({});
-  const [formationsOpen, setFormationsOpen] = useState(false);
+  const [activeMegaLabel, setActiveMegaLabel] = useState(null);
   const closeTimer = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isAdmin, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    setIsOpen(false);
+    navigate("/accueil");
+  };
 
   const toggleMobileMenu = (label) => {
     setOpenMobileMenus((prev) => ({ ...prev, [label]: !prev[label] }));
   };
 
-  const openMega = () => {
+  const openMega = (label) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setFormationsOpen(true);
+    setActiveMegaLabel(label);
   };
 
   const scheduleMegaClose = () => {
-    closeTimer.current = setTimeout(() => setFormationsOpen(false), 180);
+    closeTimer.current = setTimeout(() => setActiveMegaLabel(null), 180);
   };
 
   return (
@@ -244,125 +279,89 @@ export default function Navbar() {
       {/* ── Menu Desktop ── */}
       <div className="hidden xl:flex items-center gap-2 2xl:gap-6">
         {navlinks.map((item) => {
-          /* Formations → Mega Menu */
-          if (item.label === "Formations") {
+          if (item.submenu) {
             return (
               <div
                 key={item.label}
                 className="self-stretch flex items-center"
-                onMouseEnter={openMega}
+                onMouseEnter={() => openMega(item.label)}
                 onMouseLeave={scheduleMegaClose}
               >
-                <Link
-                  to={item.href}
-                  className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
-                    location.pathname.startsWith(item.href) && item.href !== "/"
-                      ? "text-accent"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                  <svg
-                    className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
-                      formationsOpen ? "rotate-180" : ""
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
+                      item.href !== "/" && location.pathname.startsWith(item.href)
+                        ? "text-accent"
+                        : "text-gray-300 hover:text-white"
                     }`}
-                    viewBox="0 0 20 20"
                   >
-                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                  </svg>
-                </Link>
+                    {item.label}
+                    <svg
+                      className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
+                        activeMegaLabel === item.label ? "rotate-180" : ""
+                      }`}
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                    </svg>
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 font-heading flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 ${
+                      activeMegaLabel === item.label
+                        ? "text-accent"
+                        : "text-gray-300 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                    <svg
+                      className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
+                        activeMegaLabel === item.label ? "rotate-180" : ""
+                      }`}
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                    </svg>
+                  </button>
+                )}
               </div>
             );
           }
 
-          /* Autres items → dropdown classique */
           return (
-            <div key={item.label} className="relative group py-[25px]">
+            <div key={item.label} className="py-[25px]">
               <Link
                 to={item.href}
                 className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
-                  location.pathname.startsWith(item.href) && item.href !== "/"
+                  item.href !== "/" && location.pathname.startsWith(item.href)
                     ? "text-accent"
-                    : "text-gray-300 group-hover:text-white"
+                    : "text-gray-300 hover:text-white"
                 }`}
               >
                 {item.label}
-                {item.submenu && (
-                  <svg className="w-3.5 h-3.5 fill-current opacity-50 group-hover:rotate-180 transition-transform" viewBox="0 0 20 20">
-                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                  </svg>
-                )}
               </Link>
-
-              {/* Dropdown Niveau 1 */}
-              {item.submenu && (
-                <div className="absolute top-[70px] left-0 w-[260px] bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50">
-                  <div className="flex flex-col py-2">
-                    {item.submenu.map((sub) => (
-                      <div key={sub.label} className="relative group/sub">
-                        <Link
-                          to={sub.href}
-                          className="px-5 py-3 text-nav font-bold text-primary hover:bg-accent hover:text-white transition-colors no-underline font-heading flex w-full items-center justify-between"
-                        >
-                          {sub.label}
-                          {sub.submenu && (
-                            <svg className="w-3.5 h-3.5 fill-current opacity-50" viewBox="0 0 20 20">
-                              <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
-                            </svg>
-                          )}
-                        </Link>
-
-                        {/* Dropdown Niveau 2 */}
-                        {sub.submenu && (
-                          <div className="absolute top-0 left-full ml-0 w-[260px] bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 translate-x-[-10px] group-hover/sub:translate-x-0 z-[60]">
-                            <div className="flex flex-col py-2">
-                              {sub.submenu.map((subItem) => (
-                                <div key={subItem.label} className="relative group/subItem">
-                                  <Link
-                                    to={subItem.href}
-                                    className="px-5 py-3 text-nav font-bold text-primary hover:bg-accent hover:text-white transition-colors no-underline font-heading flex items-center justify-between w-full"
-                                  >
-                                    {subItem.label}
-                                    {subItem.submenu && (
-                                      <svg className="w-3.5 h-3.5 fill-current opacity-50" viewBox="0 0 20 20">
-                                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
-                                      </svg>
-                                    )}
-                                  </Link>
-
-                                  {/* Dropdown Niveau 3 */}
-                                  {subItem.submenu && (
-                                    <div className="absolute top-0 left-full ml-0 w-[260px] bg-white shadow-xl rounded-lg overflow-hidden opacity-0 invisible group-hover/subItem:opacity-100 group-hover/subItem:visible transition-all duration-300 translate-x-[-10px] group-hover/subItem:translate-x-0 z-50">
-                                      <div className="flex flex-col py-2">
-                                        {subItem.submenu.map((subSub) => (
-                                          <Link
-                                            key={subSub.label}
-                                            to={subSub.href}
-                                            className="px-5 py-3 text-sm font-bold text-primary hover:bg-accent hover:text-white transition-colors no-underline font-heading block w-full"
-                                          >
-                                            {subSub.label}
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           );
         })}
       </div>
 
-<<<<<<< Updated upstream
-      {/* Actions */}
+      {activeMegaLabel === "Formations" && (
+        <FormationsMegaMenu
+          onMouseEnter={() => openMega("Formations")}
+          onMouseLeave={scheduleMegaClose}
+        />
+      )}
+      {activeMegaLabel && activeMegaLabel !== "Formations" && (
+        <GenericMegaMenu
+          item={navlinks.find((n) => n.label === activeMegaLabel)}
+          onMouseEnter={() => openMega(activeMegaLabel)}
+          onMouseLeave={scheduleMegaClose}
+        />
+      )}
+
+      {/* ── Actions desktop ── */}
       <div className="flex items-center gap-3">
         {user ? (
           <div className="hidden sm:flex items-center gap-2">
@@ -394,21 +393,6 @@ export default function Navbar() {
           </Link>
         )}
 
-=======
-      {/* ── Mega Menu Formations (rendu dans le nav pour absolute top-full) ── */}
-      {formationsOpen && (
-        <FormationsMegaMenu
-          onMouseEnter={openMega}
-          onMouseLeave={scheduleMegaClose}
-        />
-      )}
-
-      {/* ── Actions ── */}
-      <div className="flex items-center gap-4">
-        <button className="hidden sm:block btn-orange text-sm py-2.5 px-5">
-          <a href="/connexion">Se connecter</a>
-        </button>
->>>>>>> Stashed changes
         <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
@@ -443,17 +427,23 @@ export default function Navbar() {
           {navlinks.map((item) => (
             <div key={item.label} className="flex flex-col gap-4 text-left">
               <div className="flex items-center justify-between w-full">
-                <Link
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-xl font-bold font-heading no-underline flex-grow ${
-                    location.pathname.startsWith(item.href) && item.href !== "/"
-                      ? "text-accent"
-                      : "text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-xl font-bold font-heading no-underline flex-grow ${
+                      location.pathname.startsWith(item.href) && item.href !== "/"
+                        ? "text-accent"
+                        : "text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span className="text-xl font-bold font-heading flex-grow text-white">
+                    {item.label}
+                  </span>
+                )}
                 {item.submenu && (
                   <button onClick={() => toggleMobileMenu(item.label)} className="p-2 text-white">
                     <svg
@@ -468,13 +458,13 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Mobile Niveau 1 */}
+              {/* Mobile sous-menu */}
               {item.submenu && openMobileMenus[item.label] && (
                 <div className="flex flex-col gap-5 pl-4 border-l-2 border-accent/30">
-                  {/* Pour Formations, affiche Diplômantes + E-Learning directement */}
+
+                  {/* Formations : affichage spécial avec images */}
                   {item.label === "Formations" ? (
                     <>
-                      {/* Section Diplômantes */}
                       <p className="text-xs font-extrabold text-accent uppercase tracking-widest">
                         Formations Diplômantes
                       </p>
@@ -485,11 +475,7 @@ export default function Navbar() {
                           onClick={() => setIsOpen(false)}
                           className="flex items-center gap-3 text-gray-300 text-base font-semibold no-underline hover:text-white"
                         >
-                          <img
-                            src={cat.image}
-                            alt=""
-                            className="w-8 h-8 object-cover rounded-md shrink-0"
-                          />
+                          <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
                           {cat.label}
                           <span className="ml-auto text-xs text-gray-500 bg-white/10 px-1.5 py-0.5 rounded-full">
                             {cat.formations.length}
@@ -497,7 +483,6 @@ export default function Navbar() {
                         </Link>
                       ))}
 
-                      {/* Section E-Learning */}
                       <p className="text-xs font-extrabold text-accent uppercase tracking-widest mt-2">
                         E-Learning
                       </p>
@@ -515,11 +500,7 @@ export default function Navbar() {
                           onClick={() => setIsOpen(false)}
                           className="flex items-center gap-3 text-gray-300 text-base font-semibold no-underline hover:text-white"
                         >
-                          <img
-                            src={cat.image}
-                            alt=""
-                            className="w-8 h-8 object-cover rounded-md shrink-0"
-                          />
+                          <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
                           {cat.label}
                           <span className="ml-auto text-xs text-gray-500 bg-white/10 px-1.5 py-0.5 rounded-full">
                             {cat.formations.length}
@@ -528,7 +509,7 @@ export default function Navbar() {
                       ))}
                     </>
                   ) : (
-                    /* Autres items avec sous-menu classique */
+                    /* Autres menus : accordion classique */
                     item.submenu.map((sub) => (
                       <div key={sub.label} className="flex flex-col gap-4">
                         <div className="flex items-center justify-between w-full">

@@ -187,10 +187,14 @@ export const navlinks = [
       {
         label: "Gestion de carrières",
         href: "/gestion-carrieres",
+        image: "/assets/images/emploi.jpg",
+        description: "Bilan de compétences, orientation et évolution professionnelle.",
       },
       {
         label: "Coaching emploi",
         href: "/coaching-emploi",
+        image: "/assets/images/responsable_rh.jpg",
+        description: "Accompagnement personnalisé pour décrocher votre poste idéal.",
       },
     ],
   },
@@ -198,8 +202,10 @@ export const navlinks = [
     label: "Ressources",
     submenu: [
       {
-        label: "IA",
+        label: "IA & Ressources numériques",
         href: "/ressources-ia",
+        image: "/assets/images/analyste_data.jpg",
+        description: "Fiches pratiques, outils IA et ressources pédagogiques gratuites.",
       },
     ],
   },
