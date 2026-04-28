@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navlinks } from "../data/navdata";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openMobileMenus, setOpenMobileMenus] = useState({});
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isAdmin, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    setIsOpen(false);
+    navigate("/accueil");
+  };
 
   const toggleMobileMenu = (label) => {
     setOpenMobileMenus((prev) => ({
@@ -113,10 +122,36 @@ export default function Navbar() {
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-4">
-        <button className="hidden sm:block btn-orange text-sm py-2.5 px-5">
-          <a href="/connexion">Se connecter</a>
-        </button>
+      <div className="flex items-center gap-3">
+        {user ? (
+          <div className="hidden sm:flex items-center gap-2">
+            {isAdmin ? (
+              <Link
+                to="/admin"
+                className="text-xs sm:text-sm font-bold text-primary bg-accent hover:bg-accent-dark hover:text-white px-3 py-2 rounded-lg no-underline transition-colors"
+              >
+                Admin · {user.prenom}
+              </Link>
+            ) : (
+              <Link
+                to="/mon-espace"
+                className="text-xs sm:text-sm font-bold text-primary bg-white hover:bg-gray-100 px-3 py-2 rounded-lg no-underline transition-colors"
+              >
+                {user.prenom}
+              </Link>
+            )}
+            <button
+              onClick={handleLogout}
+              className="text-xs sm:text-sm font-bold text-white hover:text-accent px-2 py-2 transition-colors"
+            >
+              Déconnexion
+            </button>
+          </div>
+        ) : (
+          <Link to="/connexion" className="hidden sm:block btn-orange text-sm py-2.5 px-5 no-underline">
+            Se connecter
+          </Link>
+        )}
 
         <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,6 +262,54 @@ export default function Navbar() {
               )}
             </div>
           ))}
+
+          {/* Auth mobile */}
+          <div className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-3">
+            {user ? (
+              <>
+                {isAdmin ? (
+                  <Link
+                    to="/admin"
+                    onClick={() => setIsOpen(false)}
+                    className="bg-accent text-white text-center py-3 px-5 rounded-lg font-bold no-underline"
+                  >
+                    Tableau de bord admin ({user.prenom})
+                  </Link>
+                ) : (
+                  <Link
+                    to="/mon-espace"
+                    onClick={() => setIsOpen(false)}
+                    className="bg-white text-primary text-center py-3 px-5 rounded-lg font-bold no-underline"
+                  >
+                    Mon espace ({user.prenom})
+                  </Link>
+                )}
+                <button
+                  onClick={handleLogout}
+                  className="border border-white/30 text-white text-center py-3 px-5 rounded-lg font-bold"
+                >
+                  Déconnexion
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/connexion"
+                  onClick={() => setIsOpen(false)}
+                  className="btn-orange text-center py-3 px-5 no-underline"
+                >
+                  Se connecter
+                </Link>
+                <Link
+                  to="/inscription"
+                  onClick={() => setIsOpen(false)}
+                  className="border border-white/30 text-white text-center py-3 px-5 rounded-lg font-bold no-underline"
+                >
+                  Créer un compte
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </nav>

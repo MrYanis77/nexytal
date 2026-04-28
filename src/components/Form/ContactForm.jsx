@@ -1,33 +1,40 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { contactData } from '../../data/contact';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
-// === SÉCURITÉ : SCHÉMA ZOD STRICT ===
-const noHtmlRegex = /^[^<>{}"'`]*$/;
+// Detecte un payload HTML/JS evident (script, iframe, on=...) sans bloquer
+// la ponctuation francaise (apostrophes, guillemets, accents).
+const looksLikeInjection = (v) =>
+  /<\s*\/?\s*(script|iframe|object|embed|svg|img)\b/i.test(v) || /\bon\w+\s*=/i.test(v);
 
-// Le sujet n'est requis que sur le variant "page" (formulaire complet).
-// Sur le variant "section" (sans champ Sujet), un sujet par défaut est injecté.
+const safeStr = (min, max, label) =>
+  z.string()
+    .min(min, `${label} : ${min} caractères minimum`)
+    .max(max, `${label} : ${max} caractères maximum`)
+    .refine((v) => !looksLikeInjection(v), { message: 'Contenu invalide détecté' });
+
 const buildContactSchema = (requireSujet) => z.object({
-  nom: z.string().min(2, "Le nom est trop court").max(50).regex(noHtmlRegex, "Caractères illégaux détectés"),
-  prenom: z.string().min(2, "Le prénom est trop court").max(50).regex(noHtmlRegex, "Caractères illégaux détectés"),
+  nom: safeStr(2, 50, 'Nom'),
+  prenom: safeStr(2, 50, 'Prénom'),
   email: z.string().email("Veuillez saisir un format d'email valide").max(100),
-  telephone: z.string().max(20).regex(noHtmlRegex, "Format invalide").optional().or(z.literal('')),
+  telephone: z.string().max(20).refine((v) => !v || !looksLikeInjection(v), 'Format invalide').optional().or(z.literal('')),
   sujet: requireSujet
-    ? z.string().min(2, "Sujet requis").max(100).regex(noHtmlRegex, "Caractères illégaux détectés")
-    : z.string().max(100).regex(noHtmlRegex, "Caractères illégaux détectés").optional().or(z.literal('')),
-  message: z.string().min(10, "Message trop court (10 caractères mini)").max(1500).regex(noHtmlRegex, "Caractères illégaux détectés"),
-  honeypot: z.string().max(0, "Bot détecté")
+    ? safeStr(2, 100, 'Sujet')
+    : z.string().max(100).refine((v) => !v || !looksLikeInjection(v), 'Format invalide').optional().or(z.literal('')),
+  message: safeStr(10, 1500, 'Message'),
+  honeypot: z.string().max(0, 'Bot détecté'),
 });
 
-export default function ContactForm({ variant = "section", title }) {
-  const isSection = variant === "section";
+export default function ContactForm({ variant = 'section', title }) {
+  const isSection = variant === 'section';
+  const { user } = useAuth();
 
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [serverError, setServerError] = useState('');
-  const [draft, setDraft] = useState(null); // { destinataire, sujet, corps, mailtoUrl }
-  const [copied, setCopied] = useState(null); // 'email' | 'sujet' | 'corps' | 'tout'
+  const [contactId, setContactId] = useState(null);
 
   const formRef = useRef(null);
 
@@ -35,7 +42,8 @@ export default function ContactForm({ variant = "section", title }) {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    setValue,
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(buildContactSchema(!isSection)),
     defaultValues: {
@@ -45,168 +53,121 @@ export default function ContactForm({ variant = "section", title }) {
       telephone: '',
       sujet: '',
       message: '',
-      honeypot: ''
-    }
+      honeypot: '',
+    },
   });
 
-  // Construit un brouillon mailto à partir des données du formulaire.
-  // Aucune API d'envoi n'est utilisée : la soumission est confiée à l'utilisateur.
-  const onSubmit = (data) => {
-    setServerError('');
-
-    const emailItem = contactData.coordonnees.items.find(item => item.type === "Email");
-    const destinataire = emailItem ? emailItem.valeur : 'contact@nexytal.fr';
-
-    const sujet = (data.sujet && data.sujet.trim())
-      ? data.sujet.trim()
-      : `Demande de contact – ${data.prenom} ${data.nom}`;
-
-    const corps = [
-      `Nom : ${data.nom}`,
-      `Prénom : ${data.prenom}`,
-      `Email : ${data.email}`,
-      `Téléphone : ${data.telephone || 'Non renseigné'}`,
-      `Sujet : ${sujet}`,
-      '',
-      'Message :',
-      data.message,
-      '',
-      '— Envoyé depuis le formulaire de contact du site Nexytal'
-    ].join('\n');
-
-    const mailtoUrl = `mailto:${destinataire}`
-      + `?subject=${encodeURIComponent(sujet)}`
-      + `&body=${encodeURIComponent(corps)}`;
-
-    setDraft({ destinataire, sujet, corps, mailtoUrl });
-
-    // Tentative d'ouverture du client mail.
-    // Selon l'environnement (pas de client mail desktop, webmail), il se peut que rien ne s'ouvre :
-    // l'écran de succès affiche alors les informations à copier manuellement.
-    try {
-      const link = document.createElement('a');
-      link.href = mailtoUrl;
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (err) {
-      console.error("Erreur ouverture client mail:", err);
+  useEffect(() => {
+    if (user) {
+      setValue('nom', user.nom || '');
+      setValue('prenom', user.prenom || '');
+      setValue('email', user.email || '');
+      if (user.telephone) setValue('telephone', user.telephone);
     }
+  }, [user, setValue]);
 
-    setStatus('success');
-    reset();
-  };
+  const onSubmit = async (data) => {
+    setServerError('');
+    setStatus('loading');
 
-  const copyToClipboard = async (text, key) => {
     try {
-      await navigator.clipboard.writeText(text);
-      setCopied(key);
-      setTimeout(() => setCopied(null), 2000);
+      const sujet = (data.sujet && data.sujet.trim())
+        ? data.sujet.trim()
+        : `Demande de contact – ${data.prenom} ${data.nom}`;
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom: data.nom,
+          prenom: data.prenom,
+          email: data.email,
+          telephone: data.telephone,
+          sujet,
+          message: data.message,
+          honeypot: data.honeypot,
+        }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Erreur lors de l'envoi");
+      }
+
+      setContactId(json.contactId);
+      setStatus('success');
+      reset();
     } catch (err) {
-      console.error("Erreur copie presse-papiers:", err);
+      setServerError(err.message || 'Erreur réseau');
+      setStatus('error');
     }
   };
 
   const resetStatus = () => {
     setStatus('idle');
-    setDraft(null);
-    setCopied(null);
+    setContactId(null);
+    setServerError('');
   };
 
-  const FormWrapper = isSection ? "section" : "div";
-  const wrapperClass = isSection ? "bg-content-dark py-[60px] px-10 text-center" : "w-full";
-  const containerClass = isSection ? "max-w-[600px] mx-auto" : "w-full";
+  const FormWrapper = isSection ? 'section' : 'div';
+  const wrapperClass = isSection ? 'bg-content-dark py-[60px] px-10 text-center' : 'w-full';
+  const containerClass = isSection ? 'max-w-[600px] mx-auto' : 'w-full';
 
   const getInputClass = (hasError) => {
-    let base = isSection
-      ? "w-full p-[12px_14px] border rounded-[3px] bg-white font-body text-small text-content-dark outline-none focus:border-accent transition-colors placeholder:text-content-muted "
-      : "w-full p-3 border rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all ";
-
-    return base + (hasError ? "border-red-500 bg-red-50/50 " : (isSection ? "border-transparent" : "border-gray-200"));
+    const base = isSection
+      ? 'w-full p-[12px_14px] border rounded-[3px] bg-white font-body text-small text-content-dark outline-none focus:border-accent transition-colors placeholder:text-content-muted '
+      : 'w-full p-3 border rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all ';
+    return base + (hasError ? 'border-red-500 bg-red-50/50 ' : isSection ? 'border-transparent' : 'border-gray-200');
   };
 
   const buttonClass = isSection
-    ? "bg-accent hover:bg-accent-dark text-white p-[14px] rounded-sm font-heading text-sm font-bold cursor-pointer transition-colors duration-200 uppercase tracking-wide border-none flex items-center justify-center gap-2 mt-2 disabled:opacity-75 disabled:cursor-not-allowed w-full"
-    : "w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none mt-4";
+    ? 'bg-accent hover:bg-accent-dark text-white p-[14px] rounded-sm font-heading text-sm font-bold cursor-pointer transition-colors duration-200 uppercase tracking-wide border-none flex items-center justify-center gap-2 mt-2 disabled:opacity-75 disabled:cursor-not-allowed w-full'
+    : 'w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none mt-4';
 
   return (
-    <FormWrapper className={wrapperClass} id={isSection ? "contact" : undefined}>
+    <FormWrapper className={wrapperClass} id={isSection ? 'contact' : undefined}>
       {(title || isSection) && (
-        <h2 className={isSection ? "font-heading text-[26px] font-extrabold text-white mb-[30px] uppercase tracking-wider" : "text-primary font-bold text-[24px] mb-8"}>
-          {title || "Contactez-nous"}
+        <h2 className={isSection ? 'font-heading text-[26px] font-extrabold text-white mb-[30px] uppercase tracking-wider' : 'text-primary font-bold text-[24px] mb-8'}>
+          {title || 'Contactez-nous'}
         </h2>
       )}
 
       <div className={containerClass}>
-        {status === 'success' && draft && (
-          <div className={isSection ? "bg-white text-content-dark p-6 rounded-md text-left" : "bg-green-50/30 border border-green-200 text-content-dark p-6 sm:p-8 rounded-xl text-left"}>
+        {status === 'success' && (
+          <div className={isSection ? 'bg-white text-content-dark p-6 rounded-md text-left' : 'bg-green-50/50 border border-green-200 text-content-dark p-6 sm:p-8 rounded-xl text-left'}>
             <div className="flex items-start gap-3 mb-5">
               <svg className="w-8 h-8 shrink-0 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
               <div>
-                <h3 className="font-bold text-lg text-primary">Votre message est prêt à être envoyé</h3>
+                <h3 className="font-bold text-lg text-primary">Message envoyé !</h3>
                 <p className="text-sm text-content-muted mt-1">
-                  Votre client mail devrait s'ouvrir automatiquement avec un brouillon pré-rempli.
-                  S'il ne s'ouvre pas, copiez les informations ci-dessous et envoyez-les manuellement.
+                  Notre équipe a bien reçu votre message {contactId && <span className="font-mono">(#{contactId})</span>} et vous répondra rapidement.
                 </p>
               </div>
             </div>
 
-            <div className="space-y-3 text-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <span className="font-bold text-primary min-w-[110px]">Destinataire :</span>
-                <code className="flex-1 bg-gray-100 px-3 py-2 rounded font-mono text-content-dark break-all">{draft.destinataire}</code>
-                <button type="button" onClick={() => copyToClipboard(draft.destinataire, 'email')} className="text-xs font-bold uppercase px-3 py-2 rounded bg-primary text-white hover:bg-primary-light transition whitespace-nowrap">
-                  {copied === 'email' ? 'Copié ✓' : 'Copier'}
-                </button>
+            {user ? (
+              <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg text-sm mb-4">
+                Vous pouvez suivre la conversation depuis votre <Link to="/mon-espace" className="font-bold underline">espace personnel</Link>.
               </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <span className="font-bold text-primary min-w-[110px]">Sujet :</span>
-                <code className="flex-1 bg-gray-100 px-3 py-2 rounded font-mono text-content-dark break-all">{draft.sujet}</code>
-                <button type="button" onClick={() => copyToClipboard(draft.sujet, 'sujet')} className="text-xs font-bold uppercase px-3 py-2 rounded bg-primary text-white hover:bg-primary-light transition whitespace-nowrap">
-                  {copied === 'sujet' ? 'Copié ✓' : 'Copier'}
-                </button>
+            ) : (
+              <div className="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-lg text-sm mb-4">
+                <strong>Astuce :</strong> <Link to="/connexion" className="font-bold underline">connectez-vous</Link> pour suivre la réponse de l'équipe et discuter en direct.
               </div>
+            )}
 
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-primary">Message :</span>
-                  <button type="button" onClick={() => copyToClipboard(draft.corps, 'corps')} className="text-xs font-bold uppercase px-3 py-2 rounded bg-primary text-white hover:bg-primary-light transition">
-                    {copied === 'corps' ? 'Copié ✓' : 'Copier le message'}
-                  </button>
-                </div>
-                <pre className="bg-gray-100 px-3 py-2 rounded font-mono text-content-dark text-xs whitespace-pre-wrap break-words max-h-48 overflow-auto">{draft.corps}</pre>
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a
-                href={draft.mailtoUrl}
-                className="flex-1 bg-accent hover:bg-accent-dark text-white font-bold py-3 px-5 rounded-lg text-center transition no-underline uppercase tracking-wide text-sm"
-              >
-                Ouvrir mon client mail
-              </a>
-              <button type="button" onClick={resetStatus} className="flex-1 sm:flex-none px-5 py-3 border border-gray-300 text-content-dark hover:bg-gray-50 font-medium rounded-lg transition text-sm">
-                Nouveau message
-              </button>
-            </div>
+            <button type="button" onClick={resetStatus} className="px-5 py-2.5 border border-gray-300 text-content-dark hover:bg-gray-50 font-medium rounded-lg transition text-sm">
+              Envoyer un autre message
+            </button>
           </div>
         )}
 
         {status === 'error' && (
-          <div className={isSection ? "" : "md:col-span-2 bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg flex items-start gap-3 mb-6"}>
-            {!isSection && (
-              <svg className="w-5 h-5 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-            )}
-            <p className={isSection ? "text-red-500 font-semibold mb-6 text-sm bg-red-100/10 border border-red-500/30 p-3 rounded" : "text-medium font-medium"} role="alert">
+          <div className={isSection ? '' : 'md:col-span-2 bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg flex items-start gap-3 mb-6'}>
+            <p className={isSection ? 'text-red-200 font-semibold mb-6 text-sm bg-red-900/30 border border-red-500/30 p-3 rounded' : 'text-medium font-medium'} role="alert">
               {serverError}
             </p>
           </div>
@@ -214,52 +175,45 @@ export default function ContactForm({ variant = "section", title }) {
 
         {status !== 'success' && (
           <form ref={formRef} className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 text-left" onSubmit={handleSubmit(onSubmit)} noValidate>
-
             <div aria-hidden="true" className="hidden">
               <input type="text" {...register('honeypot')} tabIndex="-1" autoComplete="off" />
             </div>
 
             <div className="flex flex-col gap-1">
               {!isSection && <label className="text-sm font-medium text-primary">Nom *</label>}
-              <input type="text" placeholder={isSection ? "Nom *" : ""} className={getInputClass(errors.nom)} disabled={status === 'loading'}
-                {...register('nom')} />
+              <input type="text" placeholder={isSection ? 'Nom *' : ''} className={getInputClass(errors.nom)} disabled={status === 'loading'} {...register('nom')} />
               {errors.nom && <span className="text-xs text-red-500 font-semibold">{errors.nom.message}</span>}
             </div>
 
             <div className="flex flex-col gap-1">
               {!isSection && <label className="text-sm font-medium text-primary">Prénom *</label>}
-              <input type="text" placeholder={isSection ? "Prénom *" : ""} className={getInputClass(errors.prenom)} disabled={status === 'loading'}
-                {...register('prenom')} />
+              <input type="text" placeholder={isSection ? 'Prénom *' : ''} className={getInputClass(errors.prenom)} disabled={status === 'loading'} {...register('prenom')} />
               {errors.prenom && <span className="text-xs text-red-500 font-semibold">{errors.prenom.message}</span>}
             </div>
 
             <div className="flex flex-col gap-1 md:col-span-2">
               {!isSection && <label className="text-sm font-medium text-primary">Email *</label>}
-              <input type="email" placeholder={isSection ? "Email *" : ""} className={getInputClass(errors.email)} disabled={status === 'loading'}
-                {...register('email')} />
+              <input type="email" placeholder={isSection ? 'Email *' : ''} className={getInputClass(errors.email)} disabled={status === 'loading'} {...register('email')} />
               {errors.email && <span className="text-xs text-red-500 font-semibold">{errors.email.message}</span>}
             </div>
 
             <div className="flex flex-col gap-1 md:col-span-2">
               {!isSection && <label className="text-sm font-medium text-primary">Téléphone</label>}
-              <input type="tel" placeholder={isSection ? "Téléphone" : ""} className={getInputClass(errors.telephone)} disabled={status === 'loading'}
-                {...register('telephone')} />
+              <input type="tel" placeholder={isSection ? 'Téléphone' : ''} className={getInputClass(errors.telephone)} disabled={status === 'loading'} {...register('telephone')} />
               {errors.telephone && <span className="text-xs text-red-500 font-semibold">{errors.telephone.message}</span>}
             </div>
 
             {!isSection && (
               <div className="flex flex-col gap-1 md:col-span-2">
                 <label className="text-sm font-medium text-primary">Sujet *</label>
-                <input type="text" className={getInputClass(errors.sujet)} disabled={status === 'loading'}
-                  {...register('sujet')} />
+                <input type="text" className={getInputClass(errors.sujet)} disabled={status === 'loading'} {...register('sujet')} />
                 {errors.sujet && <span className="text-xs text-red-500 font-semibold">{errors.sujet.message}</span>}
               </div>
             )}
 
             <div className="flex flex-col gap-1 md:col-span-2">
               {!isSection && <label className="text-sm font-medium text-primary">Message *</label>}
-              <textarea placeholder={isSection ? "Votre message *" : ""} className={getInputClass(errors.message) + (isSection ? " h-[120px]" : " h-[160px]") + " resize-none"} disabled={status === 'loading'}
-                {...register('message')} />
+              <textarea placeholder={isSection ? 'Votre message *' : ''} className={getInputClass(errors.message) + (isSection ? ' h-[120px]' : ' h-[160px]') + ' resize-none'} disabled={status === 'loading'} {...register('message')} />
               {errors.message && <span className="text-xs text-red-500 font-semibold">{errors.message.message}</span>}
             </div>
 
@@ -271,9 +225,9 @@ export default function ContactForm({ variant = "section", title }) {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Ouverture du client mail...
+                    Envoi en cours...
                   </>
-                ) : "Ouvrir mon client mail"}
+                ) : 'Envoyer le message'}
               </button>
             </div>
           </form>

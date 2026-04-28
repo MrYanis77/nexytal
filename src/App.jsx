@@ -1,13 +1,15 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-// Structure globale
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageLoader from './components/Items/PageLoader';
+import RequireAuth from './components/RequireAuth';
+import ChatWidget from './components/Chat/ChatWidget';
+import { AuthProvider } from './context/AuthContext';
+import usePageTracking from './hooks/usePageTracking';
 
-// Pages - Lazy loading pour optimiser les performances
 const HomePage = lazy(() => import('./pages/HomePage'));
 const FormationsPage = lazy(() => import('./pages/FormationsPage'));
 const ElearningPage = lazy(() => import('./pages/ElearningPage'));
@@ -31,37 +33,33 @@ const RessourcesIAPages = lazy(() => import('./pages/RessourcesIAPages'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
 const GestionCarriere = lazy(() => import('./pages/GestionCarriere'));
 const CoachingPage = lazy(() => import('./pages/CoachingPage'));
-
-// --- NOUVELLE PAGE AJOUTÉE ICI ---
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
+
+const UserDashboard = lazy(() => import('./pages/UserDashboard'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 
 function ComingSoon({ title }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 font-heading text-primary">
       <h1 className="text-3xl font-extrabold">{title}</h1>
-      <p className="text-content-muted font-body">Page en cours de construction — en attente du screenshot.</p>
+      <p className="text-content-muted font-body">Page en cours de construction.</p>
     </div>
   );
 }
 
-export default function App() {
-  // Les polices sont maintenant gérées statiquement dans index.html pour éviter le FOUT
+function AppShell() {
+  usePageTracking();
 
   return (
-    <BrowserRouter>
-      {/* Gestion de restauration du scroll global */}
+    <>
       <ScrollToTop />
-
-      {/* La Navbar sera visible sur toutes les pages */}
       <Navbar />
 
       <main className="min-h-screen">
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            {/* Redirection racine vers accueil */}
             <Route path="/" element={<Navigate to="/accueil" replace />} />
 
-            {/* Pages Principales */}
             <Route path="/accueil" element={<HomePage />} />
             <Route path="/formations" element={<FormationsPage />} />
             <Route path="/alternance" element={<AlternancePage />} />
@@ -69,7 +67,6 @@ export default function App() {
             <Route path="/financements" element={<FinancementPage />} />
             <Route path="/entreprise" element={<EntreprisePage />} />
 
-            {/* Autres Pages */}
             <Route path="/a-propos" element={<AproposPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
@@ -79,7 +76,6 @@ export default function App() {
             <Route path="/campus" element={<CampusPage />} />
             <Route path="/certification" element={<CertificationPage />} />
 
-            {/* --- NOUVELLE ROUTE AJOUTÉE ICI --- */}
             <Route path="/carriere" element={<CarrierePage />} />
             <Route path="/gestion-carrieres" element={<GestionCarriere />} />
             <Route path="/coaching-emploi" element={<CoachingPage />} />
@@ -90,15 +86,43 @@ export default function App() {
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
             <Route path="/conditions-generales" element={<PolitiqueCookies />} />
+            <Route path="/reglement-interieur" element={<ReglementInterieur />} />
 
-            {/* 404 */}
+            <Route
+              path="/mon-espace"
+              element={
+                <RequireAuth denyAdmin>
+                  <UserDashboard />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboard />
+                </RequireAuth>
+              }
+            />
+
             <Route path="*" element={<ComingSoon title="Page introuvable" />} />
           </Routes>
         </Suspense>
       </main>
 
-      {/* Le Footer sera visible sur toutes les pages */}
+      <ChatWidget />
+
       <Footer />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <AppShell />
+      </AuthProvider>
     </BrowserRouter>
   );
 }
