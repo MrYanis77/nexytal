@@ -12,26 +12,36 @@
 export const slides = [
   {
     id: 1,
-    badge: 'Infrastructure & Sécurité',
-    title: 'Devenez Administrateur\nd’infrastructures sécurisées',
-    subtitle: 'Garantissez la disponibilité et la sécurité',
-    desc: 'Concevez, administrez et sécurisez les infrastructures informatiques pour devenir un pilier stratégique des entreprises.',
+    badge: 'Cybersécurité',
+    title: 'Devenez Technicien\nRéseaux & Cybersécurité',
+    subtitle: 'Protégez les systèmes contre les menaces',
+    desc: 'Analysez et neutralisez les cybermenaces, gérez les accès et renforcez la sécurité des infrastructures réseau des entreprises.',
     cta: 'Découvrir la formation',
-    ctaTo: '/formation/formations-administrateur-dinfrastructures-securisees-ais',
-    video: '/assets/video/formations/infra-reseau.mp4'
+    ctaTo: '/formation/technicien-reseaux-cybersecurite',
+    video: '/assets/video/formations/cyber.mp4'
   },
   {
     id: 2,
-    badge: 'Développement Web',
-    title: 'Devenez Développeur\nWeb & Mobile',
-    subtitle: 'Créez les applications de demain',
-    desc: 'Concevez la partie visible et technique d\'applications web et mobiles, en veillant à la performance et à l’expérience utilisateur.',
+    badge: "Développement d'Applications",
+    title: "Devenez Développeur\nd'Applications Multimédia",
+    subtitle: 'Créez des expériences numériques immersives',
+    desc: 'Concevez et développez des applications multimédia innovantes, des sites web aux apps mobiles, en maîtrisant les dernières technologies.',
     cta: 'Découvrir la formation',
-    ctaTo: '/formation/formations-developpeur-web-mobile',
-    video: '/assets/video/formations/dev-web-mobile.mp4'
+    ctaTo: '/formation/formations-developpeur-dapplications-multimedia',
+    video: '/assets/video/formations/dev-app.mp4'
   },
   {
     id: 3,
+    badge: 'Systèmes & Réseaux',
+    title: 'Devenez Technicien\nSupérieur Systèmes & Réseaux',
+    subtitle: 'Expert en infrastructures informatiques',
+    desc: "Installez, configurez et maintenez les équipements réseau et systèmes d'entreprise. Devenez le garant du bon fonctionnement du SI.",
+    cta: 'Découvrir la formation',
+    ctaTo: '/formation/formations-technicien-superieur-systemes-et-reseaux',
+    video: '/assets/video/formations/technicien-sr.mp4'
+  },
+  {
+    id: 4,
     badge: 'Ressources Humaines',
     title: 'Devenez Assistant\nRessources Humaines',
     subtitle: 'Véritable trait d\'union dans l\'entreprise',
@@ -41,14 +51,64 @@ export const slides = [
     video: '/assets/video/formations/rh.mp4'
   },
   {
-    id: 4,
+    id: 5,
+    badge: 'Infrastructure & Sécurité',
+    title: 'Devenez Administrateur\nd’infrastructures sécurisées',
+    subtitle: 'Garantissez la disponibilité et la sécurité',
+    desc: 'Concevez, administrez et sécurisez les infrastructures informatiques pour devenir un pilier stratégique des entreprises.',
+    cta: 'Découvrir la formation',
+    ctaTo: '/formation/formations-administrateur-dinfrastructures-securisees-ais',
+    video: '/assets/video/formations/infra-reseau.mp4'
+  },
+  {
+    id: 6,
+    badge: 'Lead Dev & Architecture',
+    title: 'Devenez Lead\nDéveloppeur Web',
+    subtitle: 'Pilotez les projets web de A à Z',
+    desc: "Prenez la tête d'équipes de développement, concevez des architectures robustes et maîtrisez l'ensemble du cycle de vie des projets digitaux.",
+    cta: 'Découvrir la formation',
+    ctaTo: '/formation/formations-lead-developpeur-web',
+    video: '/assets/video/formations/dev_equipe.mp4'
+  },
+  {
+    id: 7,
+    badge: 'Développement Web',
+    title: 'Devenez Développeur\nWeb & Mobile',
+    subtitle: 'Créez les applications de demain',
+    desc: 'Concevez la partie visible et technique d\'applications web et mobiles, en veillant à la performance et à l’expérience utilisateur.',
+    cta: 'Découvrir la formation',
+    ctaTo: '/formation/formations-developpeur-web-mobile',
+    video: '/assets/video/formations/dev-web-mobile.mp4'
+  },
+  {
+    id: 8,
+    badge: 'Intelligence Artificielle',
+    title: "Maîtrisez\nl'Intelligence Artificielle",
+    subtitle: 'Le futur du numérique commence ici',
+    desc: "Apprenez à concevoir, entraîner et déployer des modèles d'IA. Devenez acteur de la révolution technologique qui transforme toutes les industries.",
+    cta: 'Découvrir la formation',
+    ctaTo: '/formation/formation-intelligence-artificielle',
+    video: '/assets/video/formations/informatique.mp4'
+  },
+  {
+    id: 9,
     badge: 'Comptabilité & Gestion',
     title: 'Devenez Gestionnaire\ncomptable et fiscal',
     subtitle: 'La colonne vertébrale de l\'entreprise',
     desc: 'Assurez la lisibilité financière de la structure, de la saisie des opérations courantes jusqu\'à l\'élaboration de la liasse fiscale.',
     cta: 'Découvrir la formation',
-    ctaTo: '/formations/gestionnaire-comptable-fiscal',
+    ctaTo: '/formation/gestionnaire-comptable-fiscal',
     video: '/assets/video/formations/comptable.mp4'
+  },
+  {
+    id: 10,
+    badge: 'DevOps & Cloud',
+    title: 'Devenez Administrateur\nSystème DevOps',
+    subtitle: 'Automatisez, déployez, scalez',
+    desc: 'Maîtrisez Docker, Kubernetes et les pipelines CI/CD pour gérer des infrastructures cloud modernes et accélérer la livraison logicielle.',
+    cta: 'Découvrir la formation',
+    ctaTo: '/formation/administrateursysteme-devops',
+    video: '/assets/video/formations/admin-infra.mp4'
   }
 ];
 
@@ -68,14 +128,26 @@ export const stats = [
  */
 export const services = [
   {
-    titre: 'Formations certifiantes',
+    titre: 'Formations Diplômantes',
     href: '/formations',
     image: '/assets/images/certification.jpg',
+    theme: 'navy',
     items: [
-      'Titres RNCP reconnus par l\'État',
-      'Parcours personnalisés selon vos objectifs',
-      'Accompagnement individuel tout au long du cursus',
-      'Expertise reconnue dans les métiers du digital',
+      'Titres RNCP reconnus par l\'État (niveaux 4 à 6)',
+      'Parcours de 6 à 18 mois, présentiel ou alternance',
+      'Cybersécurité, Dev Web, IA, RH, Comptabilité',
+      'Financement CPF, OPCO, France Travail',
+    ],
+  },
+  {
+    titre: 'Formations Courtes · E-Learning',
+    href: '/formations-courtes',
+    image: '/assets/images/analyste_data.jpg',
+    items: [
+      'Modules intensifs de quelques jours à quelques semaines',
+      '100 % à distance, accessible à votre rythme',
+      'DevOps, Python, Pentest, Management, IoT',
+      'Idéal pour une montée en compétences rapide',
     ],
   },
   {
@@ -91,7 +163,7 @@ export const services = [
   },
   {
     titre: 'Solutions entreprises',
-    href: '/carriere',
+    href: '/entreprise',
     image: '/assets/images/entreprise.jpg',
     items: [
       'Formation sur-mesure pour vos équipes',

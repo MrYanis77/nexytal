@@ -9,11 +9,11 @@ export const imageMap = {
   // ── Cybersécurité & Réseaux ─────────────────────────────────────────────
   'formations-administrateur-dinfrastructures-securisees-ais': '/assets/images/expert_cyber.jpg',
   'formations-technicien-superieur-systemes-et-reseaux': '/assets/images/Terchnicien_reseau.jpg',
-  'administrateur-reseaux-netops': '/assets/images/admin_system.jpg',
+  'administrateur-reseaux-netops': '/assets/images/Datacenter.jpg',
   'administrateursysteme-devops': '/assets/images/devops.jpg',
   'technicien-reseaux-cybersecurite': '/assets/images/analyst_soc.jpg',
-  'formation-initiation-cybersecurite': '/assets/images/expert_cyber.jpg',
-  'formation-implementer-politique-cybersecurite': '/assets/images/analyst_soc.jpg',
+  'formation-initiation-cybersecurite': '/assets/images/pentester.jpg',
+  'formation-implementer-politique-cybersecurite': '/assets/images/admin_system.jpg',
   'formation-cisco-configuration-administration': '/assets/images/Terchnicien_reseau.jpg',
 
   // ── Digital & Développement Web ─────────────────────────────────────────
@@ -21,23 +21,39 @@ export const imageMap = {
   'formations-developpeur-dapplications-multimedia': '/assets/images/designer_app_mobile.jpg',
   'formations-concepteur-developpeur-dapplications': '/assets/images/concepteur_app.jpg',
   'formations-concepteur-designer-ui': '/assets/images/designer_app_mobile.jpg',
-  'formations-lead-developpeur-web': '/assets/images/concepteur_app.jpg',
+  'formations-lead-developpeur-web': '/assets/images/analyste_data.jpg',
   'formation-intelligence-artificielle': '/assets/images/analyste_data.jpg',
   'formation-python-tosa': '/assets/images/concepteur_app.jpg',
   'formation-responsive-web-design': '/assets/images/concepteur_web.jpg',
-  'formation-php': '/assets/images/concepteur_app.jpg',
+  'formation-php': '/assets/images/admin_system.jpg',
   'executive-mastere-ingenierie-logiciel': '/assets/images/concepteur_app.jpg',
 
   // ── RH, Gestion & Comptabilité ──────────────────────────────────────────
   'formations-community-manager': '/assets/images/designer_app_mobile.jpg',
   'formations-assistante-ressources-humaines': '/assets/images/responsable_rh.jpg',
   'formations-assistante-de-direction': '/assets/images/secretaire_5.png',
-  'formations-assistante-administratifve': '/assets/images/secretaire_5.png',
-  'formations-assistante-commerciale': '/assets/images/secretaire_4.jpg',
-  'formations-conseillerere-relation-client-a-distance': '/assets/images/secretaire_1.jpg',
-  'formations-secretaire-comptable': '/assets/images/secretaire_2.jpg',
+  'formations-assistante-administratifve': '/assets/images/secretaire_4.jpg',
+  'formations-assistante-commerciale': '/assets/images/secretaire_1.jpg',
+  'formations-conseillerere-relation-client-a-distance': '/assets/images/secretaire_2.jpg',
+  'formations-secretaire-comptable': '/assets/images/comptable2.jpg',
   'gestionnaire-comptable-fiscal': '/assets/images/comptable_1.jpg',
   'formations-comptable-assistant': '/assets/images/comptable2.jpg',
+
+  // ── E-Learning / Formations Courtes ─────────────────────────────────────
+  'systemes-embarques-iot-android':                    '/assets/images/concepteur_app.jpg',
+  'cybersecurite-pentest-web-serveurs':                '/assets/images/pentester.jpg',
+  'cybersecurite-audit-android-introduction':          '/assets/images/analyst_soc.jpg',
+  'cybersecurite-preparation-osed':                    '/assets/images/expert_cyber.jpg',
+  'cybersecurite-pecb-lead-cloud-security-manager':    '/assets/images/Datacenter.jpg',
+  'digital-developpement-big-data-strategie-marketing':'/assets/images/analyste_data.jpg',
+  'digital-developpement-java':                        '/assets/images/concepteur_app.jpg',
+  'management-situationnel':                           '/assets/images/responsable_rh.jpg',
+  'management-rse':                                    '/assets/images/entreprise.jpg',
+  'management-reussir-management-projet':              '/assets/images/emploi.jpg',
+  'management-devenir-manager-agile':                  '/assets/images/designer_app_mobile.jpg',
+  'management-management-3-0':                         '/assets/images/certification.jpg',
+  'devops-devenez-devops-avec-docker':                 '/assets/images/devops.jpg',
+  'informatique-administration-windows-server':        '/assets/images/admin_system.jpg',
 };
 
 // Fallback si un ID n'est pas encore dans le mapping
@@ -70,7 +86,7 @@ const mapCourteIdToItem = (id) => {
 export const hero = {
   titre: "Nos formations",
   sousTitre: "Des parcours certifiants adaptés à vos ambitions professionnelles",
-  video: "/assets/video/formations/dev-web-mobile.mp4",
+  video: "/assets/video/formation.mp4",
 };
 
 export const catalogue = [

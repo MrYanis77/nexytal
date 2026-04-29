@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navlinks, megaMenuFormations } from "../data/navdata";
 import { useAuth } from "../context/AuthContext";
 
 // ── Mega Menu Formations ───────────────────────────────────────────────────────
-function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
+function FormationsMegaMenu({ onMouseEnter, onMouseLeave, onClose }) {
   const [activeTab, setActiveTab] = useState("diplomantes");
   const [hoveredCatId, setHoveredCatId] = useState(
     megaMenuFormations.diplomantes[0]?.id
@@ -71,22 +71,13 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
                 key={cat.id}
                 onMouseEnter={() => setHoveredCatId(cat.id)}
                 onClick={() => setHoveredCatId(cat.id)}
-                className={`w-full flex items-center justify-between px-5 py-3 text-left text-sm font-bold transition-all border-l-[3px] ${
+                className={`w-full flex items-center px-5 py-3 text-left text-sm font-bold transition-all border-l-[3px] ${
                   hoveredCatId === cat.id
                     ? "border-accent bg-accent/5 text-accent"
                     : "border-transparent text-primary hover:bg-gray-100 hover:text-accent"
                 }`}
               >
                 <span className="truncate">{cat.label}</span>
-                <span
-                  className={`ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
-                    hoveredCatId === cat.id
-                      ? "bg-accent text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}
-                >
-                  {cat.formations.length}
-                </span>
               </button>
             ))}
           </div>
@@ -95,6 +86,7 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
           <div className="p-4 border-t border-gray-100 shrink-0">
             <Link
               to={activeTab === "diplomantes" ? "/formations" : "/formations-courtes"}
+              onClick={onClose}
               className="flex items-center justify-between w-full px-4 py-3 bg-primary text-white rounded-xl text-xs font-bold no-underline hover:bg-primary/90 transition-colors"
             >
               <span>
@@ -132,18 +124,11 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
                 </h3>
                 <Link
                   to={currentCat.href}
+                  onClick={onClose}
                   className="text-[11px] text-accent font-semibold hover:underline no-underline"
                 >
                   Voir toutes les formations de ce domaine →
                 </Link>
-              </div>
-              <div className="text-right shrink-0">
-                <p className="text-3xl font-extrabold text-primary leading-none">
-                  {currentCat.formations.length}
-                </p>
-                <p className="text-[10px] text-gray-400 uppercase tracking-wide mt-0.5">
-                  formation{currentCat.formations.length > 1 ? "s" : ""}
-                </p>
               </div>
             </div>
 
@@ -154,6 +139,7 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave }) {
                   <Link
                     key={i}
                     to={f.href}
+                    onClick={onClose}
                     className="flex items-center gap-3 p-2.5 rounded-xl border border-gray-100 hover:border-accent/40 hover:bg-orange-50/50 transition-all no-underline group"
                   >
                     <div className="relative w-14 h-11 shrink-0 rounded-lg overflow-hidden bg-gray-100">
@@ -351,6 +337,7 @@ export default function Navbar() {
         <FormationsMegaMenu
           onMouseEnter={() => openMega("Formations")}
           onMouseLeave={scheduleMegaClose}
+          onClose={() => setActiveMegaLabel(null)}
         />
       )}
       {activeMegaLabel && activeMegaLabel !== "Formations" && (
@@ -478,9 +465,6 @@ export default function Navbar() {
                         >
                           <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
                           {cat.label}
-                          <span className="ml-auto text-xs text-gray-500 bg-white/10 px-1.5 py-0.5 rounded-full">
-                            {cat.formations.length}
-                          </span>
                         </Link>
                       ))}
 
@@ -503,9 +487,6 @@ export default function Navbar() {
                         >
                           <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
                           {cat.label}
-                          <span className="ml-auto text-xs text-gray-500 bg-white/10 px-1.5 py-0.5 rounded-full">
-                            {cat.formations.length}
-                          </span>
                         </Link>
                       ))}
                     </>

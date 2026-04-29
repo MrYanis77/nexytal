@@ -224,11 +224,11 @@ const categoryImages = {
   'ia-data':                       '/assets/images/analyste_data.jpg',
   'ressources-humaines':           '/assets/images/responsable_rh.jpg',
   'comptabilite-gestion':          '/assets/images/comptable_1.jpg',
-  'cybersecurite':                 '/assets/images/analyst_soc.jpg',
-  'management':                    '/assets/images/responsable_rh.jpg',
-  'devops-devsecops':              '/assets/images/devops.jpg',
-  'informatique-systemes-reseaux': '/assets/images/admin_system.jpg',
-  'systemes-embarques-iot':        '/assets/images/concepteur_app.jpg',
+  'cybersecurite':                 '/assets/images/pentester.jpg',
+  'management':                    '/assets/images/entreprise.jpg',
+  'devops-devsecops':              '/assets/images/Datacenter.jpg',
+  'informatique-systemes-reseaux': '/assets/images/Terchnicien_reseau.jpg',
+  'systemes-embarques-iot':        '/assets/images/admin_system.jpg',
 };
 
 const cortesLabels = {

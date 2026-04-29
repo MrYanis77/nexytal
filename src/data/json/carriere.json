@@ -7,8 +7,8 @@
         },
         "titre": "Gestion de Carrière",
         "url": "https://Nexytal.com/gestion-de-carriere/",
-        "image": "https://Nexytal.com/wp-content/uploads/2026/01/bilan-competences.webp",
-        "imageCoaching": "https://Nexytal.com/wp-content/uploads/2026/01/Coaching.webp",
+        "image": "/assets/images/emploi.jpg",
+        "imageCoaching": "/assets/images/responsable_rh.jpg",
         "tagline": "Prenez en main votre évolution professionnelle et accompagnez le changement.",
         "description": "La gestion de carrière est un accompagnement sur-mesure visant à faire le point sur vos compétences, développer votre efficacité professionnelle et votre capacité d'adaptation face aux évolutions du marché de l'emploi.",
         "bilanDeCompetences": {

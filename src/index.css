@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* ========================================================
      🎨 1. COULEURS SÉMANTIQUES (Ne plus utiliser d'hex en dur !)
@@ -63,8 +65,29 @@
    ========================================================== */
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --color-primary: #0d1726;
+    --color-primary-light: #162235;
+    --color-primary-alt: #355f93;
+    --color-accent: #f39233;
+    --color-accent-dark: #cf5f1a;
+    --color-surface: #0f172a;
+    --color-surface-soft: #111827;
+    --color-surface-alt: #1f2937;
+    --color-footer: #0b1220;
+    --color-content: #e5e7eb;
+    --color-content-dark: #f3f4f6;
+    --color-content-muted: #94a3b8;
+    --color-border: #334155;
+  }
+
   body {
-    @apply font-body text-content bg-white antialiased;
+    @apply font-body text-content bg-surface antialiased transition-colors duration-300;
   }
 
   h1,

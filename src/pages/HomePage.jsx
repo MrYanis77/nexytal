@@ -158,9 +158,7 @@ export default function HomePage() {
         <h2 className="font-heading text-2xl md:text-h1 font-extrabold text-primary text-center mb-[50px] uppercase tracking-wider">
           Nos Formations & Services
         </h2>
-
-        {/* Grille utilisant le composant CardFormation avec lien intégré */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <CardFormation
               key={index}

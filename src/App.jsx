@@ -35,7 +35,6 @@ const GestionCarriere = lazy(() => import('./pages/GestionCarriere'));
 const CoachingPage = lazy(() => import('./pages/CoachingPage'));
 
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
-const FormationsCortesPage = lazy(() => import('./pages/FormationsCortesPage'));
 
 const UserDashboard = lazy(() => import('./pages/UserDashboard'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
@@ -66,6 +65,7 @@ function AppShell() {
             <Route path="/formations" element={<FormationsPage />} />
             <Route path="/alternance" element={<AlternancePage />} />
             <Route path="/e-learning" element={<ElearningPage />} />
+            <Route path="/formations-courtes" element={<Navigate to="/e-learning" replace />} />
             <Route path="/financements" element={<FinancementPage />} />
             <Route path="/entreprise" element={<EntreprisePage />} />
 
@@ -75,7 +75,6 @@ function AppShell() {
             <Route path="/inscription" element={<InscriptionPage />} />
             <Route path="/connexion" element={<ConnexionPage />} />
             <Route path="/formation/:id" element={<FormationDetail />} />
-            <Route path="/formations-courtes" element={<FormationsCortesPage />} />
             <Route path="/campus" element={<CampusPage />} />
             <Route path="/certification" element={<CertificationPage />} />
 

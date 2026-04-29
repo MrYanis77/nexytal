@@ -48,7 +48,7 @@ export const dataNousRejoindre = {
         hero: {
             titre: "Devenez Intervenant Expert",
             sousTitre: "Partagez votre savoir-faire et formez les talents de demain.",
-            video: "public/assets/video/intervenant.mp4",
+            video: "/assets/video/intervenant.mp4",
         },
         pourquoiNousRejoindre: {
             titre: "Transmettez votre expertise",

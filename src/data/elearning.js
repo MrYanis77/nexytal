@@ -7,7 +7,7 @@
 export const hero = {
   titre: "E-learning",
   sousTitre: "Formez-vous à votre rythme avec notre plateforme d'apprentissage en ligne",
-  video: "/assets/video/formations/cyber.mp4",
+  video: "/assets/video/formation.mp4",
 };
 
 export const features = [
