@@ -1,10 +1,8 @@
+// Tracking de visites commenté (nécessite le backend /api/visit)
+/*
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-/**
- * Sends a beacon to /api/visit on every client-side route change.
- * Ignores admin/dashboard routes to avoid polluting the visit stats.
- */
 export default function usePageTracking() {
   const location = useLocation();
 
@@ -33,3 +31,6 @@ export default function usePageTracking() {
     }).catch(() => {});
   }, [location.pathname]);
 }
+*/
+
+export default function usePageTracking() {}

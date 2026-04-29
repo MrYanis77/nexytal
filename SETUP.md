@@ -1,4 +1,4 @@
-# Nexytal - Setup base de données et backend
+# Alt Formations - Setup base de données et backend
 
 Cette application utilise React + Vite (frontend) et Express + MySQL (backend).
 
@@ -16,7 +16,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=ton_mot_de_passe
-DB_NAME=nexytal_db
+DB_NAME=alt_formations_db
 
 # Sécurité
 # OBLIGATOIRE en production : remplacer par une chaîne aléatoire d'au moins 32 caractères
@@ -25,20 +25,20 @@ IP_HASH_SALT=change-moi-pour-un-secret-aleatoire-long
 # CORS : liste séparée par des virgules d'origines autorisées
 # (en dev, par défaut http://localhost:5173 et http://127.0.0.1:5173)
 # En prod, indiquez explicitement le domaine du frontend, ex.:
-# CORS_ORIGINS=https://www.nexytal.fr,https://nexytal.fr
+# CORS_ORIGINS=https://www.altformations.fr,https://altformations.fr
 CORS_ORIGINS=
 
 # Email (Resend) - obligatoire pour l'envoi des emails
 RESEND_API_KEY=ta_cle_resend
 # Adresse expéditrice : utiliser un domaine vérifié sur Resend en production
 RESEND_FROM=onboarding@resend.dev
-EMAIL_DESTINATAIRE=contact@nexytal.fr
+EMAIL_DESTINATAIRE=contact@altformations.fr
 
 # Compte admin par défaut (utilisé par seed:admin)
-ADMIN_EMAIL=admin@nexytal.fr
+ADMIN_EMAIL=admin@altformations.fr
 ADMIN_PASSWORD=Admin1234!
 ADMIN_PRENOM=Admin
-ADMIN_NOM=Nexytal
+ADMIN_NOM=Alt Formations
 ```
 
 **Important production :**
@@ -54,7 +54,7 @@ Exécute le script SQL :
 mysql -u root -p < schema.sql
 ```
 
-Cela crée la base `nexytal_db` et les 7 tables : `users`, `sessions`, `contacts`,
+Cela crée la base `alt_formations_db` et les 7 tables : `users`, `sessions`, `contacts`,
 `faq_requests`, `chat_messages`, `faq`, `page_visits`.
 
 ## 3. Création du compte administrateur

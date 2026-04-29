@@ -3,10 +3,10 @@
  * Usage : node src/data/backend/seed-admin.js
  *
  * Variables d'environnement (toutes optionnelles) :
- *   ADMIN_EMAIL    (defaut: admin@nexytal.fr)
+ *   ADMIN_EMAIL    (defaut: admin@altformations.fr)
  *   ADMIN_PASSWORD (defaut: Admin1234!)
  *   ADMIN_PRENOM   (defaut: Admin)
- *   ADMIN_NOM      (defaut: Nexytal)
+ *   ADMIN_NOM      (defaut: Alt Formations)
  *
  * Refuse d'ecraser un compte non-admin existant : passe FORCE_OVERWRITE=1 pour forcer.
  */
@@ -17,10 +17,10 @@ import { query } from './db.js';
 dotenv.config();
 
 async function main() {
-  const email = (process.env.ADMIN_EMAIL || 'admin@nexytal.fr').toLowerCase();
+  const email = (process.env.ADMIN_EMAIL || 'admin@altformations.fr').toLowerCase();
   const password = process.env.ADMIN_PASSWORD || 'Admin1234!';
   const prenom = process.env.ADMIN_PRENOM || 'Admin';
-  const nom = process.env.ADMIN_NOM || 'Nexytal';
+  const nom = process.env.ADMIN_NOM || 'Alt Formations';
   const force = process.env.FORCE_OVERWRITE === '1';
 
   if (password.length < 8) {

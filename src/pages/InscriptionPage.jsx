@@ -1,12 +1,14 @@
+// Système d'inscription commenté
+/*
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import de Link
+import { Link } from 'react-router-dom';
 import FormUser from '../components/Form/FormUser';
 
 export default function InscriptionPage() {
   return (
     <div className="min-h-screen bg-surface-soft py-12 px-4 flex flex-col items-center">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-black text-primary tracking-tight uppercase">Nexytal</h1>
+        <h1 className="text-3xl font-black text-primary tracking-tight uppercase">Alt Formations</h1>
         <p className="text-gray-500 mt-2 font-medium">Créez votre compte pour accéder à nos formations</p>
       </div>
 
@@ -27,4 +29,9 @@ export default function InscriptionPage() {
       </div>
     </div>
   );
+}
+*/
+
+export default function InscriptionPage() {
+  return null;
 }

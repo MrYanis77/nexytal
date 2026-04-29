@@ -13,7 +13,7 @@ export function useContactForm() {
   // Note : Avec une API d'envoi silencieux (hors mailto), l'e-mail de destination 
   // est généralement lié et sécurisé par la clé d'accès (Access Key) pour éviter le piratage.
   const emailItem = contactData?.coordonnees?.items?.find(item => item.type === 'Email');
-  const destinataireAffichage = emailItem ? emailItem.valeur : 'formations@nexytal.fr';
+  const destinataireAffichage = emailItem ? emailItem.valeur : 'formations@altformations.fr';
 
   const handleChange = (e) => {
     setFields(prev => ({ ...prev, [e.target.name]: e.target.value }));

@@ -1,10 +1,10 @@
 /**
- * authData.js - Données pour la page d'inscription Nexytal
+ * authData.js - Données pour la page d'inscription Alt Formations
  */
 
 export const registerData = {
   header: {
-    title: "Nexytal",
+    title: "Alt Formations",
     subtitle: "Créez votre compte pour accéder à nos formations"
   },
   sections: {

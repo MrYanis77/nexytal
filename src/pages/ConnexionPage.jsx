@@ -1,12 +1,14 @@
+// Système de connexion commenté
+/*
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import de Link
+import { Link } from 'react-router-dom';
 import FormUser from '../components/Form/FormUser';
 
 export default function ConnexionPage() {
   return (
     <div className="min-h-screen bg-surface-soft flex flex-col items-center justify-center p-4">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-black text-primary tracking-tight uppercase">Nexytal</h1>
+        <h1 className="text-3xl font-black text-primary tracking-tight uppercase">Alt Formations</h1>
         <p className="text-gray-500 mt-2 font-medium text-lg">Bon retour parmi nous !</p>
       </div>
 
@@ -25,4 +27,9 @@ export default function ConnexionPage() {
       </p>
     </div>
   );
+}
+*/
+
+export default function ConnexionPage() {
+  return null;
 }

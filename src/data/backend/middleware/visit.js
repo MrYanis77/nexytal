@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import { query } from '../db.js';
 
-const IP_SALT = process.env.IP_HASH_SALT || 'nexytal-default-salt-change-me';
+const IP_SALT = process.env.IP_HASH_SALT || 'alt-formations-default-salt-change-me';
 
 export function hashIp(ip) {
   return crypto

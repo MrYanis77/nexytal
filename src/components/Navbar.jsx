@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { navlinks, megaMenuFormations } from "../data/navdata";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 
 // ── Mega Menu Formations ───────────────────────────────────────────────────────
 function FormationsMegaMenu({ onMouseEnter, onMouseLeave, onClose }) {
@@ -228,14 +228,14 @@ export default function Navbar() {
   const [activeMegaLabel, setActiveMegaLabel] = useState(null);
   const closeTimer = useRef(null);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, isAdmin, logout } = useAuth();
+  // const navigate = useNavigate();
+  // const { user, isAdmin, logout } = useAuth();
 
-  const handleLogout = async () => {
-    await logout();
-    setIsOpen(false);
-    navigate("/accueil");
-  };
+  // const handleLogout = async () => {
+  //   await logout();
+  //   setIsOpen(false);
+  //   navigate("/accueil");
+  // };
 
   const toggleMobileMenu = (label) => {
     setOpenMobileMenus((prev) => ({ ...prev, [label]: !prev[label] }));
@@ -256,9 +256,9 @@ export default function Navbar() {
       {/* Logo */}
       <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
         <img
-          src="/assets/logo-nexytal-dark.png"
-          alt="Logo Nexytal"
-          className="h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          src="/assets/logo-ALT.jpg"
+          alt="Logo Alt Formations"
+          className="h-10 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
         />
       </Link>
 
@@ -350,6 +350,7 @@ export default function Navbar() {
 
       {/* ── Actions desktop ── */}
       <div className="flex items-center gap-3">
+        {/* Auth desktop commenté
         {user ? (
           <div className="hidden sm:flex items-center gap-2">
             {isAdmin ? (
@@ -379,7 +380,7 @@ export default function Navbar() {
             Se connecter
           </Link>
         )}
-
+        */}
 
         <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -568,7 +569,7 @@ export default function Navbar() {
             </div>
           ))}
 
-          {/* Auth mobile */}
+          {/* Auth mobile commenté
           <div className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-3">
             {user ? (
               <>
@@ -615,6 +616,7 @@ export default function Navbar() {
               </>
             )}
           </div>
+          */}
         </div>
       </div>
     </nav>

@@ -1,15 +1,15 @@
--- Schema MySQL pour Nexytal
+-- Schema MySQL pour Alt Formations
 -- Auth, contact, FAQ, chat, admin
 -- À exécuter sur une base de données vide. Le script est idempotent (DROP IF EXISTS / CREATE TABLE IF NOT EXISTS).
 
 -- ---------------------------------------------------------------------------
 -- Création de la base de données (à adapter selon votre hébergeur)
 -- ---------------------------------------------------------------------------
-CREATE DATABASE IF NOT EXISTS nexytal_db
+CREATE DATABASE IF NOT EXISTS alt_formations_db
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE nexytal_db;
+USE alt_formations_db;
 
 -- ---------------------------------------------------------------------------
 -- Table USERS

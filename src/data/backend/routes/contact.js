@@ -7,7 +7,7 @@ const router = express.Router();
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const RESEND_FROM = process.env.RESEND_FROM || 'onboarding@resend.dev';
-const ADMIN_RECIPIENT = process.env.EMAIL_DESTINATAIRE || 'contact@nexytal.fr';
+const ADMIN_RECIPIENT = process.env.EMAIL_DESTINATAIRE || 'contact@altformations.fr';
 
 router.post('/', async (req, res) => {
   try {

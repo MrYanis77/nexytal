@@ -1,5 +1,5 @@
 /**
- * Page d'accueil - Nexytal
+ * Page d'accueil - Alt Formations
  * Ce fichier centralise les sections principales de la landing page :
  * - Hero Carousel : Diaporama dynamique avec vidéos en fond.
  * - StatsSection : Affichage des chiffres clés.
@@ -67,7 +67,7 @@ export default function HomePage() {
               <img
                 src={slides[currentSlide].image}
                 className="w-full h-full object-cover"
-                alt="Background Nexytal"
+                alt="Background Alt Formations"
               />
             )}
           </motion.div>

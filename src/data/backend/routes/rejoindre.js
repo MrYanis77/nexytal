@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
     const emailOptions = {
       from: 'onboarding@resend.dev',
-      to: process.env.EMAIL_DESTINATAIRE || 'contact@nexytal.fr',
+      to: process.env.EMAIL_DESTINATAIRE || 'contact@altformations.fr',
       subject: `[CANDIDATURE] ${String(type || '').toUpperCase()} - ${prenom} ${nom}`,
       html: `
         <div style="font-family: sans-serif; color: #1a202c; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">

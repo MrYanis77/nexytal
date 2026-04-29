@@ -36,10 +36,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 3 : Nexytal */}
+          {/* Colonne 3 : Alt Formations */}
           <div className="flex flex-col">
             <h4 className="font-heading font-bold text-small text-accent mb-[14px] uppercase tracking-wider">
-              Nexytal
+              Alt Formations
             </h4>
             <ul className="list-none p-0 m-0 space-y-2">
               <li><Link to="/a-propos" className="text-gray-300 text-sm hover:text-white transition-colors">À propos</Link></li>
@@ -87,20 +87,20 @@ export default function Footer() {
         {/* Copyright & Réseaux Sociaux */}
         <div className="border-t border-[#4a4545] pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm">
-            &copy; {currentYear} Nexytal. Tous droits réservés.
+            &copy; {currentYear} Alt Formations. Tous droits réservés.
           </div>
 
           <div className="flex items-center gap-6">
             {/* Facebook */}
-            <a href="https://www.facebook.com/nexytal/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-all">
+            <a href="https://www.facebook.com/altformations/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-all">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
             {/* Instagram */}
-            <a href="https://www.instagram.com/nexytal/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-all">
+            <a href="https://www.instagram.com/altformations/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-all">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
             {/* LinkedIn */}
-            <a href="https://www.linkedin.com/company/nexytal/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-all">
+            <a href="https://www.linkedin.com/company/altformations/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-all">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
           </div>

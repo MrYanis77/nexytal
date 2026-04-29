@@ -5,10 +5,10 @@ import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageLoader from './components/Items/PageLoader';
-import RequireAuth from './components/RequireAuth';
-import ChatWidget from './components/Chat/ChatWidget';
-import { AuthProvider } from './context/AuthContext';
-import usePageTracking from './hooks/usePageTracking';
+// import RequireAuth from './components/RequireAuth';
+// import ChatWidget from './components/Chat/ChatWidget';
+// import { AuthProvider } from './context/AuthContext';
+// import usePageTracking from './hooks/usePageTracking';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const FormationsPage = lazy(() => import('./pages/FormationsPage'));
@@ -19,8 +19,8 @@ const EntreprisePage = lazy(() => import('./pages/EntreprisePage'));
 const AproposPage = lazy(() => import('./pages/AproposPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
-const ConnexionPage = lazy(() => import('./pages/ConnexionPage'));
-const InscriptionPage = lazy(() => import('./pages/InscriptionPage'));
+// const ConnexionPage = lazy(() => import('./pages/ConnexionPage'));
+// const InscriptionPage = lazy(() => import('./pages/InscriptionPage'));
 const FormationDetail = lazy(() => import('./pages/FormationDetail'));
 const CampusPage = lazy(() => import('./pages/CampusPages'));
 const CertificationPage = lazy(() => import('./pages/CertificationPage'));
@@ -36,8 +36,8 @@ const CoachingPage = lazy(() => import('./pages/CoachingPage'));
 
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
 
-const UserDashboard = lazy(() => import('./pages/UserDashboard'));
-const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+// const UserDashboard = lazy(() => import('./pages/UserDashboard'));
+// const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 
 function ComingSoon({ title }) {
   return (
@@ -49,7 +49,7 @@ function ComingSoon({ title }) {
 }
 
 function AppShell() {
-  usePageTracking();
+  // usePageTracking();
 
   return (
     <>
@@ -72,8 +72,8 @@ function AppShell() {
             <Route path="/a-propos" element={<AproposPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/inscription" element={<InscriptionPage />} />
-            <Route path="/connexion" element={<ConnexionPage />} />
+            {/* <Route path="/inscription" element={<InscriptionPage />} /> */}
+            {/* <Route path="/connexion" element={<ConnexionPage />} /> */}
             <Route path="/formation/:id" element={<FormationDetail />} />
             <Route path="/campus" element={<CampusPage />} />
             <Route path="/certification" element={<CertificationPage />} />
@@ -90,6 +90,7 @@ function AppShell() {
             <Route path="/conditions-generales" element={<PolitiqueCookies />} />
             <Route path="/reglement-interieur" element={<ReglementInterieur />} />
 
+            {/*
             <Route
               path="/mon-espace"
               element={
@@ -106,13 +107,14 @@ function AppShell() {
                 </RequireAuth>
               }
             />
+            */}
 
             <Route path="*" element={<ComingSoon title="Page introuvable" />} />
           </Routes>
         </Suspense>
       </main>
 
-      <ChatWidget />
+      {/* <ChatWidget /> */}
 
       <Footer />
     </>
@@ -122,9 +124,9 @@ function AppShell() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <AppShell />
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </BrowserRouter>
   );
 }
