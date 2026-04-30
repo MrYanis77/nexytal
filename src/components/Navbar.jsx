@@ -251,372 +251,374 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-[100] w-full bg-primary px-4 xl:px-8 flex items-center justify-between h-[104px] relative">
+    <nav className="sticky top-0 z-[100] w-full bg-primary relative">
+      <div className="max-w-[1400px] mx-auto px-4 xl:px-8 flex items-center justify-between h-[80px]">
 
-      {/* Logo */}
-      <Link to="/" className="flex-shrink-0 no-underline flex items-center gap-3 group">
-        <img
-          src="/assets/logo-ALT.jpg"
-          alt="Logo Alt Formations"
-          className="h-10 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-        />
-      </Link>
+        {/* Logo */}
+        <Link to="/" className="flex-shrink-0 no-underline group flex items-center">
+          <img
+            src="/assets/Logo-blanc.png"
+            alt="Logo Alt Formations"
+            className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        </Link>
 
-      {/* ── Menu Desktop ── */}
-      <div className="hidden xl:flex items-center gap-2 2xl:gap-6">
-        {navlinks.map((item) => {
-          if (item.submenu) {
+        {/* ── Menu Desktop ── */}
+        <div className="hidden xl:flex items-center gap-2 2xl:gap-6">
+          {navlinks.map((item) => {
+            if (item.submenu) {
+              return (
+                <div
+                  key={item.label}
+                  className="self-stretch flex items-center"
+                  onMouseEnter={() => openMega(item.label)}
+                  onMouseLeave={scheduleMegaClose}
+                >
+                  {item.href ? (
+                    <Link
+                      to={item.href}
+                      className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
+                        item.href !== "/" && location.pathname.startsWith(item.href)
+                          ? "text-accent"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                      <svg
+                        className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
+                          activeMegaLabel === item.label ? "rotate-180" : ""
+                        }`}
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 font-heading flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 ${
+                        activeMegaLabel === item.label
+                          ? "text-accent"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                      <svg
+                        className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
+                          activeMegaLabel === item.label ? "rotate-180" : ""
+                        }`}
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              );
+            }
+
             return (
-              <div
-                key={item.label}
-                className="self-stretch flex items-center"
-                onMouseEnter={() => openMega(item.label)}
-                onMouseLeave={scheduleMegaClose}
-              >
-                {item.href ? (
-                  <Link
-                    to={item.href}
-                    className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
-                      item.href !== "/" && location.pathname.startsWith(item.href)
-                        ? "text-accent"
-                        : "text-gray-300 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    <svg
-                      className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
-                        activeMegaLabel === item.label ? "rotate-180" : ""
-                      }`}
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                    </svg>
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 font-heading flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 ${
-                      activeMegaLabel === item.label
-                        ? "text-accent"
-                        : "text-gray-300 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    <svg
-                      className={`w-3.5 h-3.5 fill-current opacity-50 transition-transform duration-200 ${
-                        activeMegaLabel === item.label ? "rotate-180" : ""
-                      }`}
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                    </svg>
-                  </button>
-                )}
+              <div key={item.label} className="py-[25px]">
+                <Link
+                  to={item.href}
+                  className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
+                    item.href !== "/" && location.pathname.startsWith(item.href)
+                      ? "text-accent"
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
               </div>
             );
-          }
+          })}
+        </div>
 
-          return (
-            <div key={item.label} className="py-[25px]">
-              <Link
-                to={item.href}
-                className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
-                  item.href !== "/" && location.pathname.startsWith(item.href)
-                    ? "text-accent"
-                    : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-
-      {activeMegaLabel === "Formations" && (
-        <FormationsMegaMenu
-          onMouseEnter={() => openMega("Formations")}
-          onMouseLeave={scheduleMegaClose}
-          onClose={() => setActiveMegaLabel(null)}
-        />
-      )}
-      {activeMegaLabel && activeMegaLabel !== "Formations" && (
-        <GenericMegaMenu
-          item={navlinks.find((n) => n.label === activeMegaLabel)}
-          onMouseEnter={() => openMega(activeMegaLabel)}
-          onMouseLeave={scheduleMegaClose}
-        />
-      )}
-
-      {/* ── Actions desktop ── */}
-      <div className="flex items-center gap-3">
-        {/* Auth desktop commenté
-        {user ? (
-          <div className="hidden sm:flex items-center gap-2">
-            {isAdmin ? (
-              <Link
-                to="/admin"
-                className="text-xs sm:text-sm font-bold text-primary bg-accent hover:bg-accent-dark hover:text-white px-3 py-2 rounded-lg no-underline transition-colors"
-              >
-                Admin · {user.prenom}
-              </Link>
-            ) : (
-              <Link
-                to="/mon-espace"
-                className="text-xs sm:text-sm font-bold text-primary bg-white hover:bg-gray-100 px-3 py-2 rounded-lg no-underline transition-colors"
-              >
-                {user.prenom}
-              </Link>
-            )}
-            <button
-              onClick={handleLogout}
-              className="text-xs sm:text-sm font-bold text-white hover:text-accent px-2 py-2 transition-colors"
-            >
-              Déconnexion
-            </button>
-          </div>
-        ) : (
-          <Link to="/connexion" className="hidden sm:block btn-orange text-sm py-2.5 px-5 no-underline">
-            Se connecter
-          </Link>
+        {activeMegaLabel === "Formations" && (
+          <FormationsMegaMenu
+            onMouseEnter={() => openMega("Formations")}
+            onMouseLeave={scheduleMegaClose}
+            onClose={() => setActiveMegaLabel(null)}
+          />
         )}
-        */}
+        {activeMegaLabel && activeMegaLabel !== "Formations" && (
+          <GenericMegaMenu
+            item={navlinks.find((n) => n.label === activeMegaLabel)}
+            onMouseEnter={() => openMega(activeMegaLabel)}
+            onMouseLeave={scheduleMegaClose}
+          />
+        )}
 
-        <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {isOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path d="M4 6h16M4 12h16m-7 6h7" />
-            )}
-          </svg>
-        </button>
-      </div>
+        {/* ── Actions desktop ── */}
+        <div className="flex items-center gap-3">
+          {/* Auth desktop commenté
+          {user ? (
+            <div className="hidden sm:flex items-center gap-2">
+              {isAdmin ? (
+                <Link
+                  to="/admin"
+                  className="text-xs sm:text-sm font-bold text-primary bg-accent hover:bg-accent-dark hover:text-white px-3 py-2 rounded-lg no-underline transition-colors"
+                >
+                  Admin · {user.prenom}
+                </Link>
+              ) : (
+                <Link
+                  to="/mon-espace"
+                  className="text-xs sm:text-sm font-bold text-primary bg-white hover:bg-gray-100 px-3 py-2 rounded-lg no-underline transition-colors"
+                >
+                  {user.prenom}
+                </Link>
+              )}
+              <button
+                onClick={handleLogout}
+                className="text-xs sm:text-sm font-bold text-white hover:text-accent px-2 py-2 transition-colors"
+              >
+                Déconnexion
+              </button>
+            </div>
+          ) : (
+            <Link to="/connexion" className="hidden sm:block btn-orange text-sm py-2.5 px-5 no-underline">
+              Se connecter
+            </Link>
+          )}
+          */}
 
-      {/* ── Menu Mobile ── */}
-      <div
-        className={`fixed inset-0 bg-primary z-[90] transition-transform duration-300 xl:hidden ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        } flex flex-col overflow-y-auto`}
-      >
-        <div className="flex items-center justify-between px-6 min-h-[70px] border-b border-white/10 shrink-0">
-          <span className="text-white font-heading font-extrabold text-lg tracking-widest uppercase">Menu</span>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2 text-gray-300 hover:text-white bg-white/5 px-3 py-2 rounded-lg transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          <button className="xl:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path d="M4 6h16M4 12h16m-7 6h7" />
+              )}
             </svg>
-            <span className="text-sm font-semibold uppercase">Retour</span>
           </button>
         </div>
 
-        <div className="flex flex-col gap-6 py-10 px-6">
-          {navlinks.map((item) => (
-            <div key={item.label} className="flex flex-col gap-4 text-left">
-              <div className="flex items-center justify-between w-full">
-                {item.href ? (
-                  <Link
-                    to={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-xl font-bold font-heading no-underline flex-grow ${
-                      location.pathname.startsWith(item.href) && item.href !== "/"
-                        ? "text-accent"
-                        : "text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <span className="text-xl font-bold font-heading flex-grow text-white">
-                    {item.label}
-                  </span>
-                )}
-                {item.submenu && (
-                  <button onClick={() => toggleMobileMenu(item.label)} className="p-2 text-white">
-                    <svg
-                      className={`w-6 h-6 fill-current transition-transform ${
-                        openMobileMenus[item.label] ? "rotate-180" : ""
+        {/* ── Menu Mobile ── */}
+        <div
+          className={`fixed inset-0 bg-primary z-[90] transition-transform duration-300 xl:hidden ${
+            isOpen ? "translate-y-0" : "-translate-y-full"
+          } flex flex-col overflow-y-auto`}
+        >
+          <div className="flex items-center justify-between px-6 min-h-[70px] border-b border-white/10 shrink-0">
+            <span className="text-white font-heading font-extrabold text-lg tracking-widest uppercase">Menu</span>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-gray-300 hover:text-white bg-white/5 px-3 py-2 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <span className="text-sm font-semibold uppercase">Retour</span>
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-6 py-10 px-6">
+            {navlinks.map((item) => (
+              <div key={item.label} className="flex flex-col gap-4 text-left">
+                <div className="flex items-center justify-between w-full">
+                  {item.href ? (
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-xl font-bold font-heading no-underline flex-grow ${
+                        location.pathname.startsWith(item.href) && item.href !== "/"
+                          ? "text-accent"
+                          : "text-white"
                       }`}
-                      viewBox="0 0 20 20"
                     >
-                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-
-              {/* Mobile sous-menu */}
-              {item.submenu && openMobileMenus[item.label] && (
-                <div className="flex flex-col gap-5 pl-4 border-l-2 border-accent/30">
-
-                  {/* Formations : affichage spécial avec images */}
-                  {item.label === "Formations" ? (
-                    <>
-                      <p className="text-xs font-extrabold text-accent uppercase tracking-widest">
-                        Formations Diplômantes
-                      </p>
-                      {megaMenuFormations.diplomantes.map((cat) => (
-                        <Link
-                          key={cat.id}
-                          to={cat.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-3 text-gray-300 text-base font-semibold no-underline hover:text-white"
-                        >
-                          <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
-                          {cat.label}
-                        </Link>
-                      ))}
-
-                      <p className="text-xs font-extrabold text-accent uppercase tracking-widest mt-2">
-                        E-Learning
-                      </p>
-                      <Link
-                        to="/formations-courtes"
-                        onClick={() => setIsOpen(false)}
-                        className="text-gray-300 text-base font-semibold no-underline hover:text-white"
-                      >
-                        Voir tout le catalogue →
-                      </Link>
-                      {megaMenuFormations.elearning.map((cat) => (
-                        <Link
-                          key={cat.id}
-                          to={cat.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-3 text-gray-300 text-base font-semibold no-underline hover:text-white"
-                        >
-                          <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
-                          {cat.label}
-                        </Link>
-                      ))}
-                    </>
+                      {item.label}
+                    </Link>
                   ) : (
-                    /* Autres menus : accordion classique */
-                    item.submenu.map((sub) => (
-                      <div key={sub.label} className="flex flex-col gap-4">
-                        <div className="flex items-center justify-between w-full">
-                          <Link
-                            to={sub.href}
-                            onClick={() => setIsOpen(false)}
-                            className="text-gray-300 text-lg font-semibold no-underline flex-grow"
-                          >
-                            {sub.label}
-                          </Link>
-                          {sub.submenu && (
-                            <button onClick={() => toggleMobileMenu(sub.label)} className="p-2 text-gray-400">
-                              <svg
-                                className={`w-5 h-5 fill-current transition-transform ${
-                                  openMobileMenus[sub.label] ? "rotate-180" : ""
-                                }`}
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                              </svg>
-                            </button>
-                          )}
-                        </div>
-
-                        {sub.submenu && openMobileMenus[sub.label] && (
-                          <div className="flex flex-col gap-4 pl-4 border-l-2 border-slate-600">
-                            {sub.submenu.map((subItem) => (
-                              <div key={subItem.label} className="flex flex-col gap-3">
-                                <div className="flex items-center justify-between w-full">
-                                  <Link
-                                    to={subItem.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-gray-400 text-base font-semibold no-underline flex-grow"
-                                  >
-                                    {subItem.label}
-                                  </Link>
-                                  {subItem.submenu && (
-                                    <button onClick={() => toggleMobileMenu(subItem.label)} className="p-1 text-gray-500">
-                                      <svg
-                                        className={`w-5 h-5 fill-current transition-transform ${
-                                          openMobileMenus[subItem.label] ? "rotate-180" : ""
-                                        }`}
-                                        viewBox="0 0 20 20"
-                                      >
-                                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                      </svg>
-                                    </button>
-                                  )}
-                                </div>
-
-                                {subItem.submenu && openMobileMenus[subItem.label] && (
-                                  <div className="flex flex-col gap-3 pl-4 border-l-2 border-gray-600/50">
-                                    {subItem.submenu.map((subSub) => (
-                                      <Link
-                                        key={subSub.label}
-                                        to={subSub.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className="text-gray-500 text-sm font-semibold no-underline"
-                                      >
-                                        {subSub.label}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))
+                    <span className="text-xl font-bold font-heading flex-grow text-white">
+                      {item.label}
+                    </span>
+                  )}
+                  {item.submenu && (
+                    <button onClick={() => toggleMobileMenu(item.label)} className="p-2 text-white">
+                      <svg
+                        className={`w-6 h-6 fill-current transition-transform ${
+                          openMobileMenus[item.label] ? "rotate-180" : ""
+                        }`}
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                      </svg>
+                    </button>
                   )}
                 </div>
+
+                {/* Mobile sous-menu */}
+                {item.submenu && openMobileMenus[item.label] && (
+                  <div className="flex flex-col gap-5 pl-4 border-l-2 border-accent/30">
+
+                    {/* Formations : affichage spécial avec images */}
+                    {item.label === "Formations" ? (
+                      <>
+                        <p className="text-xs font-extrabold text-accent uppercase tracking-widest">
+                          Formations Diplômantes
+                        </p>
+                        {megaMenuFormations.diplomantes.map((cat) => (
+                          <Link
+                            key={cat.id}
+                            to={cat.href}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-3 text-gray-300 text-base font-semibold no-underline hover:text-white"
+                          >
+                            <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
+                            {cat.label}
+                          </Link>
+                        ))}
+
+                        <p className="text-xs font-extrabold text-accent uppercase tracking-widest mt-2">
+                          E-Learning
+                        </p>
+                        <Link
+                          to="/formations-courtes"
+                          onClick={() => setIsOpen(false)}
+                          className="text-gray-300 text-base font-semibold no-underline hover:text-white"
+                        >
+                          Voir tout le catalogue →
+                        </Link>
+                        {megaMenuFormations.elearning.map((cat) => (
+                          <Link
+                            key={cat.id}
+                            to={cat.href}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-3 text-gray-300 text-base font-semibold no-underline hover:text-white"
+                          >
+                            <img src={cat.image} alt="" className="w-8 h-8 object-cover rounded-md shrink-0" />
+                            {cat.label}
+                          </Link>
+                        ))}
+                      </>
+                    ) : (
+                      /* Autres menus : accordion classique */
+                      item.submenu.map((sub) => (
+                        <div key={sub.label} className="flex flex-col gap-4">
+                          <div className="flex items-center justify-between w-full">
+                            <Link
+                              to={sub.href}
+                              onClick={() => setIsOpen(false)}
+                              className="text-gray-300 text-lg font-semibold no-underline flex-grow"
+                            >
+                              {sub.label}
+                            </Link>
+                            {sub.submenu && (
+                              <button onClick={() => toggleMobileMenu(sub.label)} className="p-2 text-gray-400">
+                                <svg
+                                  className={`w-5 h-5 fill-current transition-transform ${
+                                    openMobileMenus[sub.label] ? "rotate-180" : ""
+                                  }`}
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                </svg>
+                              </button>
+                            )}
+                          </div>
+
+                          {sub.submenu && openMobileMenus[sub.label] && (
+                            <div className="flex flex-col gap-4 pl-4 border-l-2 border-slate-600">
+                              {sub.submenu.map((subItem) => (
+                                <div key={subItem.label} className="flex flex-col gap-3">
+                                  <div className="flex items-center justify-between w-full">
+                                    <Link
+                                      to={subItem.href}
+                                      onClick={() => setIsOpen(false)}
+                                      className="text-gray-400 text-base font-semibold no-underline flex-grow"
+                                    >
+                                      {subItem.label}
+                                    </Link>
+                                    {subItem.submenu && (
+                                      <button onClick={() => toggleMobileMenu(subItem.label)} className="p-1 text-gray-500">
+                                        <svg
+                                          className={`w-5 h-5 fill-current transition-transform ${
+                                            openMobileMenus[subItem.label] ? "rotate-180" : ""
+                                          }`}
+                                          viewBox="0 0 20 20"
+                                        >
+                                          <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                        </svg>
+                                      </button>
+                                    )}
+                                  </div>
+
+                                  {subItem.submenu && openMobileMenus[subItem.label] && (
+                                    <div className="flex flex-col gap-3 pl-4 border-l-2 border-gray-600/50">
+                                      {subItem.submenu.map((subSub) => (
+                                        <Link
+                                          key={subSub.label}
+                                          to={subSub.href}
+                                          onClick={() => setIsOpen(false)}
+                                          className="text-gray-500 text-sm font-semibold no-underline"
+                                        >
+                                          {subSub.label}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Auth mobile commenté
+            <div className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-3">
+              {user ? (
+                <>
+                  {isAdmin ? (
+                    <Link
+                      to="/admin"
+                      onClick={() => setIsOpen(false)}
+                      className="bg-accent text-white text-center py-3 px-5 rounded-lg font-bold no-underline"
+                    >
+                      Tableau de bord admin ({user.prenom})
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/mon-espace"
+                      onClick={() => setIsOpen(false)}
+                      className="bg-white text-primary text-center py-3 px-5 rounded-lg font-bold no-underline"
+                    >
+                      Mon espace ({user.prenom})
+                    </Link>
+                  )}
+                  <button
+                    onClick={handleLogout}
+                    className="border border-white/30 text-white text-center py-3 px-5 rounded-lg font-bold"
+                  >
+                    Déconnexion
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/connexion"
+                    onClick={() => setIsOpen(false)}
+                    className="btn-orange text-center py-3 px-5 no-underline"
+                  >
+                    Se connecter
+                  </Link>
+                  <Link
+                    to="/inscription"
+                    onClick={() => setIsOpen(false)}
+                    className="border border-white/30 text-white text-center py-3 px-5 rounded-lg font-bold no-underline"
+                  >
+                    Créer un compte
+                  </Link>
+                </>
               )}
             </div>
-          ))}
-
-          {/* Auth mobile commenté
-          <div className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-3">
-            {user ? (
-              <>
-                {isAdmin ? (
-                  <Link
-                    to="/admin"
-                    onClick={() => setIsOpen(false)}
-                    className="bg-accent text-white text-center py-3 px-5 rounded-lg font-bold no-underline"
-                  >
-                    Tableau de bord admin ({user.prenom})
-                  </Link>
-                ) : (
-                  <Link
-                    to="/mon-espace"
-                    onClick={() => setIsOpen(false)}
-                    className="bg-white text-primary text-center py-3 px-5 rounded-lg font-bold no-underline"
-                  >
-                    Mon espace ({user.prenom})
-                  </Link>
-                )}
-                <button
-                  onClick={handleLogout}
-                  className="border border-white/30 text-white text-center py-3 px-5 rounded-lg font-bold"
-                >
-                  Déconnexion
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/connexion"
-                  onClick={() => setIsOpen(false)}
-                  className="btn-orange text-center py-3 px-5 no-underline"
-                >
-                  Se connecter
-                </Link>
-                <Link
-                  to="/inscription"
-                  onClick={() => setIsOpen(false)}
-                  className="border border-white/30 text-white text-center py-3 px-5 rounded-lg font-bold no-underline"
-                >
-                  Créer un compte
-                </Link>
-              </>
-            )}
+            */}
           </div>
-          */}
         </div>
       </div>
     </nav>

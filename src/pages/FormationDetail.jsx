@@ -72,56 +72,6 @@ export default function FormationDetail() {
         />
       )}
 
-      {/* 4. DÉBOUCHÉS */}
-      {data.debouches && (
-        <section className="py-[70px] px-6 bg-primary">
-          <div className="max-w-container-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-white text-2xl md:text-h1 font-extrabold mb-4 uppercase tracking-wider">
-                {data.debouches.titre}
-              </h2>
-              <p className="text-white/80 text-medium max-w-[700px] mx-auto leading-relaxed">
-                {data.debouches.sousTitre}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-              {data.debouches.postes?.map((poste, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-card shadow-lg flex flex-col justify-between relative group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                  <div className="absolute top-6 right-6 text-success">
-                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                  </div>
-                  <div className="mt-2">
-                    <h3 className="font-heading font-black text-primary text-[20px] leading-tight mb-6 pr-8">
-                      {poste.titre}
-                    </h3>
-                    <div className="flex items-center gap-3 text-accent">
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                        <polyline points="17 6 23 6 23 12" />
-                      </svg>
-                      <span className="font-bold text-base tracking-wide">
-                        {poste.salaire}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-              <p className="text-white text-medium leading-relaxed">
-                <strong className="text-accent font-bold uppercase tracking-wider mr-2 text-sm">Secteurs d'activité :</strong>
-                {data.debouches.secteurs}
-              </p>
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* 5. PROGRAMME */}
       {data.programme && (
         <section className="py-20 px-6 bg-surface-soft">
@@ -207,6 +157,56 @@ export default function FormationDetail() {
                   <span className="text-primary font-bold text-medium">{competence}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4. DÉBOUCHÉS */}
+      {data.debouches && (
+        <section className="py-[70px] px-6 bg-primary">
+          <div className="max-w-container-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-white text-2xl md:text-h1 font-extrabold mb-4 uppercase tracking-wider">
+                {data.debouches.titre}
+              </h2>
+              <p className="text-white/80 text-medium max-w-[700px] mx-auto leading-relaxed">
+                {data.debouches.sousTitre}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+              {data.debouches.postes?.map((poste, idx) => (
+                <div key={idx} className="bg-white p-8 rounded-card shadow-lg flex flex-col justify-between relative group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                  <div className="absolute top-6 right-6 text-success">
+                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
+                  <div className="mt-2">
+                    <h3 className="font-heading font-black text-primary text-[20px] leading-tight mb-6 pr-8">
+                      {poste.titre}
+                    </h3>
+                    <div className="flex items-center gap-3 text-accent">
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                        <polyline points="17 6 23 6 23 12" />
+                      </svg>
+                      <span className="font-bold text-base tracking-wide">
+                        {poste.salaire}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+              <p className="text-white text-medium leading-relaxed">
+                <strong className="text-accent font-bold uppercase tracking-wider mr-2 text-sm">Secteurs d'activité :</strong>
+                {data.debouches.secteurs}
+              </p>
             </div>
           </div>
         </section>
