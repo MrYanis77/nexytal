@@ -131,7 +131,6 @@ export const services = [
     titre: 'Formations Diplômantes',
     href: '/formations',
     image: '/assets/images/certification.jpg',
-    theme: 'navy',
     items: [
       'Titres RNCP reconnus par l\'État (niveaux 4 à 6)',
       'Parcours de 6 à 18 mois, présentiel ou alternance',

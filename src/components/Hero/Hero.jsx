@@ -1,8 +1,7 @@
 import React from 'react';
 
 /**
- * Hero.jsx — Bannière hero avec vidéo uniquement
- * Version éclaircie (Overlay 20%)
+ * Hero.jsx — Bannière hero avec vidéo en fond (sans overlay)
  */
 export default function Hero({
   title,
@@ -27,9 +26,6 @@ export default function Hero({
           <source src={video} type="video/mp4" />
         </video>
       )}
-
-      {/* Overlay éclairci (passé de /40 à /20) */}
-      <div className="absolute inset-0 bg-primary/20 z-0"></div>
 
       {/* Contenu textuel */}
       <div className="relative z-10 max-w-4xl mx-auto">

@@ -47,7 +47,7 @@ export default function HomePage() {
           <motion.div
             key={`bg-${currentSlide}`}
             initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 0.9, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
             className="absolute inset-0 z-0"
@@ -72,8 +72,6 @@ export default function HomePage() {
             )}
           </motion.div>
         </AnimatePresence>
-
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-primary/80 via-primary/30 to-transparent" />
 
         <div className="container mx-auto relative z-20 px-6 md:px-[60px]">
           <AnimatePresence mode="wait">
