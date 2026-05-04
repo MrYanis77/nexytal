@@ -105,10 +105,10 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave, onClose }) {
             >
               <span>
                 {activeTab === "diplomantes"
-                  ? "Toutes les formations"
+                  ? "Toutes les formations diplômantes"
                   : activeTab === "certifiantes"
-                  ? "Toutes les certifiantes"
-                  : "Tout le catalogue E-Learning"}
+                  ? "Toutes les formations certifiantes"
+                  : "Toutes les formations en E-Learning"}
               </span>
               <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />

@@ -12,6 +12,7 @@ import CardModule from '../components/Card/CardModule';
 import InfoGrid from '../components/Infos/InfoGrid';
 import { Target, CheckCircle, GraduationCap, Briefcase } from "lucide-react";
 import Breadcrumb from '../components/Breadcrumb';
+import CallToAction from '../components/CallToAction';
 
 export default function FormationDetail() {
   const { id } = useParams();
@@ -283,31 +284,15 @@ export default function FormationDetail() {
 
       {/* 9. CTA FINAL */}
       {data.ctaFinal && (
-        <section className="py-20 px-6 bg-primary text-center text-white">
-          <div className="max-w-container-xl mx-auto">
-            <h2 className="text-2xl md:text-[34px] font-extrabold mb-4 uppercase">
-              {data.ctaFinal.titre}
-            </h2>
-            <p className="text-medium opacity-80 mb-10 leading-relaxed">
-              {data.ctaFinal.sousTitre}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {data.ctaFinal.boutons?.[0] && (
-                <Link to="/contact" className="btn-orange px-10 py-4 text-sm shadow-xl hover:-translate-y-1 transition-all no-underline inline-block">
-                  {data.ctaFinal.boutons[0].label}
-                </Link>
-              )}
-              {franceCompetenceLink && (
-                <a href={franceCompetenceLink} target="_blank" rel="noopener noreferrer" className="bg-white text-primary px-10 py-4 rounded-sm font-bold text-sm hover:bg-gray-100 transition-all border-2 border-primary no-underline inline-block">
-                  Fiche France Compétences
-                </a>
-              )}
-              <Link to="/formations" className="bg-white text-primary px-10 py-4 rounded-sm font-bold text-sm hover:bg-gray-100 transition-all no-underline inline-block">
-                Toutes les formations
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CallToAction
+          variante="sombre"
+          titre={data.ctaFinal.titre}
+          sousTitre={data.ctaFinal.sousTitre}
+          texteBouton={data.ctaFinal.boutons?.[0]?.label || "S'inscrire maintenant"}
+          lienBouton={data.ctaFinal.boutons?.[0]?.url || "/contact"}
+          texteBoutonSecondaire="Toutes les formations"
+          lienBoutonSecondaire="/formations"
+        />
       )}
     </div>
   );

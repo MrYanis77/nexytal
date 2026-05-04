@@ -4,26 +4,26 @@
 
 @theme {
   /* ========================================================
-     🎨 1. COULEURS SÉMANTIQUES (Ne plus utiliser d'hex en dur !)
+     🎨 1. COULEURS SÉMANTIQUES : ÉNERGIE (COMPLÉMENTAIRE)
      ======================================================== */
-  --color-primary: #002845;
-  --color-primary-light: #1E2F47;
-  --color-primary-alt: #2b6cb0;
-  --color-accent: #F39233;
-  --color-accent-dark: #cf5f1a;
+  --color-primary: #1D5EA3;
+  --color-primary-light: #2A73C4;
+  --color-primary-alt: #3E9DD8;
+  --color-accent: #E67E22; /* Orange plus profond/cuivré */
+  --color-accent-dark: #D35400;
   --color-surface: #ffffff;
   --color-surface-soft: #F8FAFC;
-  --color-surface-alt: #fcfcfc;
-  --color-footer: #363131;
-  --color-content: #333333;
-  --color-content-dark: #1a1a1a;
-  --color-content-muted: #666666;
-  --color-success: #4ADE80;
-  --color-star: #fbbc04;
-  --color-border: #e5e5e5;
+  --color-surface-alt: #f1f5f9;
+  --color-footer: #1e293b;
+  --color-content: #334155;
+  --color-content-dark: #1a3a5c;
+  --color-content-muted: #64748b;
+  --color-success: #22c55e;
+  --color-star: #f59e0b;
+  --color-border: #e2e8f0;
 
   /* ========================================================
-     📐 2. ARRONDIS ET BORDURES (BORDER-RADIUS)
+     📐 2. ARRONDIS ET BORDURES
      ======================================================== */
   --radius-sm: 6px;
   --radius-btn: 8px;
@@ -32,7 +32,7 @@
   --radius-hero: 40px;
 
   /* ========================================================
-     🅰️ 3. TYPOGRAPHIES (POLICES & TAILLES & GRAISSES)
+     🅰️ 3. TYPOGRAPHIES
      ======================================================== */
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Open Sans", sans-serif;
@@ -41,11 +41,8 @@
   --text-tiny: 11px;
   --text-small: 13px;
   --text-medium: 15px;
-
-  /* NOUVEAU : Tailles spécifiques pour la Navbar */
   --text-nav: 15px;
   --text-nav-lg: 17px;
-
   --text-h1: 32px;
   --text-h2: 28px;
 
@@ -63,25 +60,21 @@
 /* ==========================================================
    🛠️ 5. COUCHES DE BASE ET COMPOSANTS GLOBAUX
    ========================================================== */
-
 @layer base {
-  :root {
-    color-scheme: light;
-  }
+  :root { color-scheme: light; }
 
   .dark {
     color-scheme: dark;
-    --color-primary: #0d1726;
-    --color-primary-light: #162235;
-    --color-primary-alt: #355f93;
-    --color-accent: #f39233;
-    --color-accent-dark: #cf5f1a;
+    --color-primary: #2A73C4;
+    --color-primary-light: #3E9DD8;
+    --color-accent: #E67E22;
+    --color-accent-dark: #D35400;
     --color-surface: #0f172a;
-    --color-surface-soft: #111827;
-    --color-surface-alt: #1f2937;
-    --color-footer: #0b1220;
-    --color-content: #e5e7eb;
-    --color-content-dark: #f3f4f6;
+    --color-surface-soft: #1e293b;
+    --color-surface-alt: #334155;
+    --color-footer: #020617;
+    --color-content: #cbd5e1;
+    --color-content-dark: #f8fafc;
     --color-content-muted: #94a3b8;
     --color-border: #334155;
   }
@@ -90,17 +83,20 @@
     @apply font-body text-content bg-surface antialiased transition-colors duration-300;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-heading;
+  h1, h2, h3, h4 {
+    @apply font-heading text-content-dark;
   }
 }
 
 @layer components {
+  /* Renommé pour être agnostique à la couleur */
+  .btn-accent {
+    @apply bg-accent hover:bg-accent-dark text-white px-5 py-2 rounded-btn font-extrabold transition-all duration-200 cursor-pointer border-none shadow-sm hover:shadow-md;
+  }
+
+  /* Alias pour compatibilité avec l'existant */
   .btn-orange {
-    @apply bg-accent hover:bg-accent-dark text-white px-5 py-2 rounded-sm font-extrabold transition-all duration-200 cursor-pointer border-none;
+    @apply bg-accent hover:bg-accent-dark text-white px-5 py-2 rounded-btn font-extrabold transition-all duration-200 cursor-pointer border-none shadow-sm hover:shadow-md;
   }
 
   .animate-fadeIn {

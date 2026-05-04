@@ -31,7 +31,7 @@ const CallToAction = ({
 
             <div className="max-w-3xl mx-auto relative z-10">
                 {/* TITRE (Taille et marges réduites) */}
-                <h2 className={`font-heading text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight ${sousTitre ? 'mb-3' : 'mb-6'}`}>
+                <h2 className={`font-heading text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight ${sousTitre ? 'mb-3' : 'mb-6'} ${estSombre ? 'text-white' : 'text-primary'}`}>
                     {titre}
                 </h2>
 
