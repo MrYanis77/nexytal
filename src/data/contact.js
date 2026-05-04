@@ -14,12 +14,12 @@ export const contactData = {
     items: [
       {
         type: "Téléphone",
-        valeur: "01 23 45 67 89",
+        valeur: "01 60 43 94 32",
         icon: "📞"
       },
       {
         type: "Email",
-        valeur: "contact@alt-formations.com",
+        valeur: "contact@nexytal.com",
         icon: "✉️"
       },
       {

@@ -1,4 +1,4 @@
-// Données de campus pour l'application Alt Formations
+// Données de campus pour l'application Nexytal
 // Chaque objet contient les informations de localisation et d'affichage
 
 export const hero = {

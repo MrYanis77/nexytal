@@ -1,4 +1,4 @@
-# Alt Formations - Setup base de données et backend
+# Nexytal - Setup base de données et backend
 
 Cette application utilise React + Vite (frontend) et Express + MySQL (backend).
 
@@ -16,7 +16,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=ton_mot_de_passe
-DB_NAME=alt_formations_db
+DB_NAME=nexytal_db
 
 # Sécurité
 # OBLIGATOIRE en production : remplacer par une chaîne aléatoire d'au moins 32 caractères
@@ -38,7 +38,7 @@ EMAIL_DESTINATAIRE=contact@altformations.fr
 ADMIN_EMAIL=admin@altformations.fr
 ADMIN_PASSWORD=Admin1234!
 ADMIN_PRENOM=Admin
-ADMIN_NOM=Alt Formations
+ADMIN_NOM=Nexytal
 ```
 
 **Important production :**
@@ -54,7 +54,7 @@ Exécute le script SQL :
 mysql -u root -p < schema.sql
 ```
 
-Cela crée la base `alt_formations_db` et les 7 tables : `users`, `sessions`, `contacts`,
+Cela crée la base `nexytal_db` et les 7 tables : `users`, `sessions`, `contacts`,
 `faq_requests`, `chat_messages`, `faq`, `page_visits`.
 
 ## 3. Création du compte administrateur

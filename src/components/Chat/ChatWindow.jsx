@@ -266,7 +266,7 @@ export default function ChatWindow({
                     : 'bg-white border border-gray-200 text-content-dark rounded-bl-sm'
               }`}>
                 <div className="text-[10px] uppercase tracking-wider font-bold opacity-70 mb-0.5">
-                  {isAdmin ? 'Équipe Alt Formations' : `${m.prenom} ${m.nom}`}
+                  {isAdmin ? 'Équipe Nexytal' : `${m.prenom} ${m.nom}`}
                 </div>
                 <div className="whitespace-pre-wrap break-words">{m.message}</div>
                 <div className="text-[10px] opacity-60 mt-1 text-right">{formatDate(m.created_at)}</div>

@@ -31,10 +31,9 @@ const ReglementInterieur = lazy(() => import('./pages/ReglementInterieur'));
 const PolitiqueCookies = lazy(() => import('./pages/PolitiqueCookies'));
 const RessourcesIAPages = lazy(() => import('./pages/RessourcesIAPages'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
-const GestionCarriere = lazy(() => import('./pages/GestionCarriere'));
-const CoachingPage = lazy(() => import('./pages/CoachingPage'));
-
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
+const BilanDeCompetencePage = lazy(() => import('./pages/BilanDeCompetencePage'));
+const FormationsCertifiantesPage = lazy(() => import('./pages/FormationsCertifiantesPage'));
 
 // const UserDashboard = lazy(() => import('./pages/UserDashboard'));
 // const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
@@ -66,6 +65,7 @@ function AppShell() {
             <Route path="/alternance" element={<AlternancePage />} />
             <Route path="/e-learning" element={<ElearningPage />} />
             <Route path="/formations-courtes" element={<Navigate to="/e-learning" replace />} />
+            <Route path="/formations-certifiantes" element={<FormationsCertifiantesPage />} />
             <Route path="/financements" element={<FinancementPage />} />
             <Route path="/entreprise" element={<EntreprisePage />} />
 
@@ -78,9 +78,12 @@ function AppShell() {
             <Route path="/campus" element={<CampusPage />} />
             <Route path="/certification" element={<CertificationPage />} />
 
-            <Route path="/carriere" element={<CarrierePage />} />
-            <Route path="/gestion-carrieres" element={<GestionCarriere />} />
-            <Route path="/coaching-emploi" element={<CoachingPage />} />
+            <Route path="/carrieres" element={<CarrierePage />} />
+            <Route path="/carriere" element={<Navigate to="/carrieres" replace />} />
+            <Route path="/gestion-carrieres" element={<Navigate to="/carrieres" replace />} />
+            <Route path="/coaching-emploi" element={<Navigate to="/carrieres" replace />} />
+
+            <Route path="/bilan-de-competences" element={<BilanDeCompetencePage />} />
 
             <Route path="/ressources-ia" element={<RessourcesIAPages />} />
             <Route path="/nous-rejoindre" element={<NousRejoindre />} />

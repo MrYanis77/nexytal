@@ -6,7 +6,7 @@
  *   ADMIN_EMAIL    (defaut: admin@altformations.fr)
  *   ADMIN_PASSWORD (defaut: Admin1234!)
  *   ADMIN_PRENOM   (defaut: Admin)
- *   ADMIN_NOM      (defaut: Alt Formations)
+ *   ADMIN_NOM      (defaut: Nexytal)
  *
  * Refuse d'ecraser un compte non-admin existant : passe FORCE_OVERWRITE=1 pour forcer.
  */
@@ -20,7 +20,7 @@ async function main() {
   const email = (process.env.ADMIN_EMAIL || 'admin@altformations.fr').toLowerCase();
   const password = process.env.ADMIN_PASSWORD || 'Admin1234!';
   const prenom = process.env.ADMIN_PRENOM || 'Admin';
-  const nom = process.env.ADMIN_NOM || 'Alt Formations';
+  const nom = process.env.ADMIN_NOM || 'Nexytal';
   const force = process.env.FORCE_OVERWRITE === '1';
 
   if (password.length < 8) {

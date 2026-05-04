@@ -164,7 +164,7 @@ export default function NousRejoindre() {
           <div className="rounded-section overflow-hidden h-[400px] xl:h-[500px] shadow-lg border-8 border-white group">
             <img
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
-              alt="Team Alt Formations"
+              alt="Team Nexytal"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>

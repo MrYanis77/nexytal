@@ -20,7 +20,7 @@
             },
             {
                 "q": "Dans quels domaines proposez-vous des formations ?",
-                "a": "Alt Formations couvre quatre grands domaines : le Numérique & Cybersécurité (développeur web, DevOps, administrateur systèmes et réseaux...), les Ressources Humaines & Tertiaire (assistante RH, commerciale, administrative...), la Comptabilité & Gestion, ainsi que les formations en Intelligence Artificielle."
+                "a": "Nexytal couvre quatre grands domaines : le Numérique & Cybersécurité (développeur web, DevOps, administrateur systèmes et réseaux...), les Ressources Humaines & Tertiaire (assistante RH, commerciale, administrative...), la Comptabilité & Gestion, ainsi que les formations en Intelligence Artificielle."
             },
             {
                 "q": "Vos formations sont-elles diplômantes ?",
@@ -58,7 +58,7 @@
             },
             {
                 "q": "Une entreprise peut-elle financer la formation de ses collaborateurs ?",
-                "a": "Absolument. Alt Formations est certifié Qualiopi, ce qui permet aux entreprises de faire financer la montée en compétences de leurs salariés via leur OPCO (Opérateurs de Compétences). Nous gérons toutes les démarches administratives pour vous."
+                "a": "Absolument. Nexytal est certifié Qualiopi, ce qui permet aux entreprises de faire financer la montée en compétences de leurs salariés via leur OPCO (Opérateurs de Compétences). Nous gérons toutes les démarches administratives pour vous."
             },
             {
                 "q": "Qu'est-ce qu'un OPCO et comment fonctionne-t-il ?",
@@ -87,12 +87,12 @@
         "categorie": "Nous rejoindre (Formateur & Collaborateur)",
         "questions": [
             {
-                "q": "Comment postuler pour devenir formateur chez Alt Formations ?",
+                "q": "Comment postuler pour devenir formateur chez Nexytal ?",
                 "a": "Vous pouvez vous rendre sur la page 'Nous rejoindre' et sélectionner le profil 'Formateur'. Un formulaire dédié vous permettra de nous envoyer votre CV et de détailler vos domaines d'expertise (IA, Cybersécurité, Réseaux, etc.)."
             },
             {
                 "q": "Quels sont les avantages à rejoindre vos équipes en tant que collaborateur ?",
-                "a": "Rejoindre Alt Formations, c'est intégrer une structure dynamique avec des perspectives d'évolution, une mutuelle avantageuse, des possibilités de télétravail et un engagement fort pour la qualité de vie au travail."
+                "a": "Rejoindre Nexytal, c'est intégrer une structure dynamique avec des perspectives d'évolution, une mutuelle avantageuse, des possibilités de télétravail et un engagement fort pour la qualité de vie au travail."
             },
             {
                 "q": "Recrutez-vous des formateurs indépendants (freelance) ?",
@@ -106,11 +106,11 @@
     },
     {
         "id": "entreprise",
-        "categorie": "L'Entreprise : Alt Formations",
+        "categorie": "L'Entreprise : Nexytal",
         "questions": [
             {
                 "q": "Êtes-vous un organisme certifié ?",
-                "a": "Oui, Alt Formations est certifié Qualiopi au titre des actions de formation. Cette certification, délivrée après audit par un organisme accrédité, garantit la qualité de nos processus pédagogiques et de notre accompagnement. Vous pouvez télécharger notre certificat directement depuis le pied de page de notre site."
+                "a": "Oui, Nexytal est certifié Qualiopi au titre des actions de formation. Cette certification, délivrée après audit par un organisme accrédité, garantit la qualité de nos processus pédagogiques et de notre accompagnement. Vous pouvez télécharger notre certificat directement depuis le pied de page de notre site."
             },
             {
                 "q": "Quelles solutions proposez-vous aux entreprises ?",
@@ -129,8 +129,8 @@
                 "a": "Oui, nous concevons des programmes de formation entièrement adaptés aux besoins spécifiques de votre entreprise. Que ce soit pour une équipe entière ou des collaborateurs ciblés, nous analysons vos besoins, définissons les objectifs pédagogiques et assurons un suivi post-formation. Contactez-nous pour un devis personnalisé."
             },
             {
-                "q": "Qui est Alt Formations ?",
-                "a": "Alt Formations est le nom commercial global de notre structure. Notre organisation regroupe deux pôles complémentaires : le pôle conseil et gestion des ressources humaines (recrutement, bilan de compétences, coaching carrière), et le pôle pédagogique centré sur la délivrance de formations certifiantes."
+                "q": "Qui est Nexytal ?",
+                "a": "Nexytal est le nom commercial global de notre structure. Notre organisation regroupe deux pôles complémentaires : le pôle conseil et gestion des ressources humaines (recrutement, bilan de compétences, coaching carrière), et le pôle pédagogique centré sur la délivrance de formations certifiantes."
             }
         ]
     },
