@@ -34,7 +34,7 @@ const FiltreCat = ({
   const displayAllLabel = allLabel ?? allValue;
 
   return (
-    <section className="py-5 bg-white/95 backdrop-blur-md border-b border-border sticky top-[72px] z-30 shadow-[0_4px_24px_-4px_rgba(0,40,69,0.08)]">
+    <section className="py-5 bg-white/95 backdrop-blur-md border-b border-border sticky top-20 z-30 shadow-[0_4px_24px_-4px_rgba(0,40,69,0.08)]">
       <div className="max-w-container-3xl mx-auto px-6">
 
         {hasSearch && (

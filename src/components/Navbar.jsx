@@ -99,7 +99,7 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave, onClose }) {
           {/* CTA bas */}
           <div className="p-4 border-t border-gray-100 shrink-0">
             <Link
-              to={activeTab === "diplomantes" ? "/formations" : activeTab === "certifiantes" ? "/formations-certifiantes" : "/formations-courtes"}
+              to={activeTab === "diplomantes" ? "/formations" : activeTab === "certifiantes" ? "/formations?type=certifiantes" : "/formations?type=elearning"}
               onClick={onClose}
               className="flex items-center justify-between w-full px-4 py-3 bg-primary text-white rounded-xl text-xs font-bold no-underline hover:bg-primary/90 transition-colors"
             >
@@ -133,7 +133,11 @@ function FormationsMegaMenu({ onMouseEnter, onMouseLeave, onClose }) {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] font-extrabold text-accent uppercase tracking-widest mb-0.5">
-                  {activeTab === "diplomantes" ? "Formation Diplômante" : "E-Learning"}
+                  {activeTab === "diplomantes"
+                    ? "Formation diplômante"
+                    : activeTab === "certifiantes"
+                    ? "Formation certifiante"
+                    : "E-Learning"}
                 </p>
                 <h3 className="font-heading font-extrabold text-primary text-lg uppercase tracking-wide truncate">
                   {currentCat.label}
@@ -485,7 +489,7 @@ export default function Navbar() {
                           Formations Certifiantes
                         </p>
                         <Link
-                          to="/formations-certifiantes"
+                          to="/formations?type=certifiantes"
                           onClick={() => setIsOpen(false)}
                           className="text-gray-300 text-base font-semibold no-underline hover:text-white"
                         >
@@ -507,7 +511,7 @@ export default function Navbar() {
                           E-Learning
                         </p>
                         <Link
-                          to="/formations-courtes"
+                          to="/formations?type=elearning"
                           onClick={() => setIsOpen(false)}
                           className="text-gray-300 text-base font-semibold no-underline hover:text-white"
                         >

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Ajout de useState
+import React, { useState, useCallback } from 'react'; // Ajout de useState
 import { certifications, hero, categories } from '../data/certification'; // Import des catégories
 import CardFormation from '../components/Card/CardFormation';
 import Breadcrumb from '../components/Breadcrumb';
@@ -8,6 +8,25 @@ import CallToAction from '../components/CallToAction';
 
 export default function CertificationPage() {
   const [activeCategory, setActiveCategory] = useState("Tous");
+
+  const scrollToCertificationGrid = useCallback(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById('catalogue-certifications-root')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      });
+    });
+  }, []);
+
+  const handleFilterCategoryChange = useCallback(
+    (cat) => {
+      setActiveCategory(cat);
+      scrollToCertificationGrid();
+    },
+    [scrollToCertificationGrid]
+  );
 
   // Logique de filtrage
   const filteredCertifs = activeCategory === "Tous"
@@ -34,10 +53,10 @@ export default function CertificationPage() {
       <FiltreCat
         categories={categories}
         activeCat={activeCategory}
-        setActiveCat={setActiveCategory}
+        setActiveCat={handleFilterCategoryChange}
       />
 
-      <section className="pb-20 px-6">
+      <section id="catalogue-certifications-root" className="pb-20 px-6 scroll-mt-[280px]">
         <div className="max-w-container-3xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* On utilise filteredCertifs au lieu de certifications */}
@@ -47,12 +66,6 @@ export default function CertificationPage() {
                 title={certif.nom}
                 image={certif.imageUrl || "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80"}
                 href={certif.lienFranceCompetence}
-                points={[
-                  `Code RNCP : ${certif.rncp}`,
-                  `Niveau : ${certif.niveau}`,
-                  "Éligible au compte CPF",
-                  "Formation reconnue par l'État"
-                ]}
               />
             ))}
           </div>

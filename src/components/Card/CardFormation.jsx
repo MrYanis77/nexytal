@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom';
 export default function CardFormation({
   title,
   image,
-  points = [
-    "Certification professionnelle reconnue",
-    "Formateurs experts du secteur",
-    "Plateforme e-learning accessible 24/7"
-  ],
   variant = "white",
-  href = "#", // Nouvelle prop pour le lien
-  hideButton = false
-
+  href = "#",
+  hideButton = false,
+  typeBadge,
+  /** Lien externe (ex. Google Maps) — affiche un bouton dédié */
+  mapsHref,
+  mapsButtonLabel = 'Google Maps',
 }) {
   const isNavy = variant === "navy";
 
@@ -25,7 +23,15 @@ export default function CardFormation({
     `}>
 
       {/* Image de la formation */}
-      <div className="h-48 w-full overflow-hidden">
+      <div className="relative h-48 w-full overflow-hidden">
+        {typeBadge ? (
+          <span
+            className="absolute top-3 left-3 z-[1] max-w-[calc(100%-1.5rem)] rounded-md bg-primary/95 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-white shadow-md"
+            title={typeBadge}
+          >
+            {typeBadge}
+          </span>
+        ) : null}
         <img
           src={image}
           alt={title}
@@ -36,34 +42,34 @@ export default function CardFormation({
         />
       </div>
 
-      {/* Contenu de la carte */}
       <div className="p-6 flex flex-col flex-grow relative">
-
-        {/* Titre avec changement de couleur subtil au survol pour la version blanche */}
-        <h3 className={`text-lg font-bold mb-5 min-h-[3rem] leading-tight transition-colors duration-300 ${!isNavy ? 'group-hover:text-accent' : ''}`}>
+        <h3
+          className={`text-lg font-bold leading-tight transition-colors duration-300 ${!isNavy ? 'group-hover:text-accent' : ''}`}
+        >
           {title}
         </h3>
 
-        {/* Liste à puces orange */}
-        <ul className="space-y-3 mb-8 flex-grow">
-          {points.map((point, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm">
-              <span className="text-accent mt-1.5 text-micro flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1">•</span>
-              <span className={isNavy ? "text-white/90" : "text-content-muted"}>
-                {point}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Bouton transformé en lien interne React */}
-        {!hideButton && (
-          <Link
-            to={href}
-            className="btn-orange self-start text-sm py-2.5 px-6 no-underline inline-block transition-transform duration-300 hover:scale-105"
-          >
-            En savoir plus
-          </Link>
+        {(!hideButton || mapsHref) && (
+          <div className="mt-auto pt-6 flex flex-col gap-3">
+            {!hideButton && (
+              <Link
+                to={href}
+                className="btn-orange self-start text-sm py-2.5 px-6 no-underline inline-block transition-transform duration-300 hover:scale-105"
+              >
+                En savoir plus
+              </Link>
+            )}
+            {mapsHref ? (
+              <a
+                href={mapsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-orange self-start text-sm py-2.5 px-6 no-underline inline-block transition-transform duration-300 hover:scale-105"
+              >
+                {mapsButtonLabel}
+              </a>
+            ) : null}
+          </div>
         )}
       </div>
     </div>
