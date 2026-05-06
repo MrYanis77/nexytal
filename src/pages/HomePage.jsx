@@ -162,7 +162,6 @@ export default function HomePage() {
               key={index}
               title={service.titre}
               image={service.image || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600"}
-              points={service.items}
               variant={service.theme || "white"}
               href={service.href || "#"}
             />

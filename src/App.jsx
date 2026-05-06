@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
@@ -12,7 +12,6 @@ import PageLoader from './components/Items/PageLoader';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const FormationsPage = lazy(() => import('./pages/FormationsPage'));
-const ElearningPage = lazy(() => import('./pages/ElearningPage'));
 const AlternancePage = lazy(() => import('./pages/AlternancePage'));
 const FinancementPage = lazy(() => import('./pages/FinancementPage'));
 const EntreprisePage = lazy(() => import('./pages/EntreprisePage'));
@@ -33,7 +32,12 @@ const RessourcesIAPages = lazy(() => import('./pages/RessourcesIAPages'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
 const CarrierePage = lazy(() => import('./pages/CarrierePage'));
 const BilanDeCompetencePage = lazy(() => import('./pages/BilanDeCompetencePage'));
-const FormationsCertifiantesPage = lazy(() => import('./pages/FormationsCertifiantesPage'));
+/** Anciennes URLs → catalogue unifié (ancres conservées pour les domaines). */
+function RedirectFormationCatalogTab({ tab }) {
+  const { hash } = useLocation();
+  const path = tab === 'diplomantes' ? `/formations${hash}` : `/formations?type=${tab}${hash}`;
+  return <Navigate to={path} replace />;
+}
 
 // const UserDashboard = lazy(() => import('./pages/UserDashboard'));
 // const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
@@ -63,9 +67,9 @@ function AppShell() {
             <Route path="/accueil" element={<HomePage />} />
             <Route path="/formations" element={<FormationsPage />} />
             <Route path="/alternance" element={<AlternancePage />} />
-            <Route path="/e-learning" element={<ElearningPage />} />
-            <Route path="/formations-courtes" element={<Navigate to="/e-learning" replace />} />
-            <Route path="/formations-certifiantes" element={<FormationsCertifiantesPage />} />
+            <Route path="/e-learning" element={<RedirectFormationCatalogTab tab="elearning" />} />
+            <Route path="/formations-courtes" element={<RedirectFormationCatalogTab tab="elearning" />} />
+            <Route path="/formations-certifiantes" element={<RedirectFormationCatalogTab tab="certifiantes" />} />
             <Route path="/financements" element={<FinancementPage />} />
             <Route path="/entreprise" element={<EntreprisePage />} />
 

@@ -140,7 +140,7 @@ export const services = [
   },
   {
     titre: 'Formations Courtes · E-Learning',
-    href: '/formations-courtes',
+    href: '/formations?type=elearning',
     image: '/assets/images/analyste_data.jpg',
     items: [
       'Modules intensifs de quelques jours à quelques semaines',

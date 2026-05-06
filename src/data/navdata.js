@@ -118,10 +118,10 @@ export const formationsCertifiantesArray = Object.entries(formationsCertifiantes
 // Fusion de toutes les formations dans un tableau unique
 export const formationsArray = [...longFormationsArray, ...formationsCortesArray, ...formationsCertifiantesArray];
 
-// Filtrage pour récupérer chaque groupe et générer le sous-sous-menu
+// Filtrage pour récupérer chaque groupe et générer le sous-sous-menu (diplômantes = parcours longs uniquement)
 const getSubMenu = (categoryKey) => {
   return formationsArray
-    .filter(f => f.categorie === categoryKey)
+    .filter(f => f.categorie === categoryKey && f.type === 'longue')
     .map(f => ({
       label: f.hero?.titre || f.titre || f.id,
       href: `/formation/${f.id}`
@@ -172,7 +172,7 @@ export const navlinks = [
       },
       {
         label: "Formations Certifiantes",
-        href: "/formations-certifiantes",
+        href: "/formations?type=certifiantes",
         submenu: formationsCertifiantesArray.map(f => ({
           label: f.hero?.titre || f.titre || f.id,
           href: `/formation/${f.id}`
@@ -180,7 +180,7 @@ export const navlinks = [
       },
       {
         label: "E-Learning",
-        href: "/formations-courtes",
+        href: "/formations?type=elearning",
         submenu: getFormationsCortesSubMenu(),
       },
     ],
@@ -239,13 +239,13 @@ const cortesLabels = {
   'systemes-embarques-iot':        'Systèmes Embarqués & IOT',
 };
 
-const buildMegaCategory = (categoryKey, label, href) => ({
+const buildMegaCategory = (categoryKey, label, href, { onlyLong = false } = {}) => ({
   id: categoryKey,
   label,
   href,
   image: categoryImages[categoryKey] || FALLBACK_IMG,
   formations: formationsArray
-    .filter(f => f.categorie === categoryKey)
+    .filter(f => f.categorie === categoryKey && (!onlyLong || f.type === 'longue'))
     .map(f => ({
       label: f.hero?.titre || f.titre || f.id,
       href:  `/formation/${f.id}`,
@@ -262,7 +262,7 @@ const buildElearningCategories = () => {
       grouped[cat] = {
         id:         cat,
         label:      cortesLabels[cat] || cat,
-        href:       `/formations-courtes#${cat}`,
+        href:       `/formations?type=elearning#${cat}`,
         image:      categoryImages[cat] || FALLBACK_IMG,
         formations: [],
       };
@@ -285,7 +285,7 @@ const buildCertifiantesCategories = () => {
       grouped[cat] = {
         id:         cat,
         label:      cortesLabels[cat] || cat,
-        href:       `/formations-certifiantes#${cat}`,
+        href:       `/formations?type=certifiantes#${cat}`,
         image:      categoryImages[cat] || FALLBACK_IMG,
         formations: [],
       };
@@ -310,6 +310,7 @@ export const megaMenuFormations = {
       'Ressources Humaines / Comptabilité / Gestion',
       '/formations#rh-comptabilite-gestion'
     ),
+
   ],
   certifiantes: buildCertifiantesCategories(),
   elearning: buildElearningCategories(),
