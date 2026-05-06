@@ -187,7 +187,7 @@ export const navlinks = [
   },
   { label: "Certifications", href: "/certification" },
   // { label: "Financements", href: "/financements" },
-  // { label: "F.A.Q", href: "/faq" },
+  { label: "F.A.Q", href: "/faq" },
   // { label: "Bilan de Compétences", href: "/bilan-de-competences" },
   {
     label: "Ressources",

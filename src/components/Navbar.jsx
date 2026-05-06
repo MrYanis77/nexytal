@@ -262,10 +262,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-[100] w-full bg-primary relative">
+    <nav className="sticky top-0 z-[100] w-full bg-primary relative" aria-label="Navigation principale">
       {/* Padding gauche/droite : px-4 xl:px-8 */}
-      {/* Logo à gauche, liens centrés sur la barre, actions à droite. Écart logo ↔ zone centrale ↔ actions : gap-* ci-dessous (à modifier) */}
-      <div className="relative w-full px-4 xl:px-8 flex items-center justify-between h-[80px] gap-14 xl:gap-16 2xl:gap-20">
+      {/* Logo à gauche, liens regroupés au centre, actions à droite */}
+      <div className="relative w-full px-4 xl:px-8 flex items-center h-[80px] gap-3 xl:gap-6">
 
         {/* Logo */}
         <Link
@@ -279,22 +279,22 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Liens centrés (milieu de la navbar) — espacement entre chaque lien : gap-2 / 2xl:gap-6 */}
-        <div className="pointer-events-none absolute inset-0 hidden xl:flex items-center justify-center z-[100]">
-          <div className="pointer-events-auto flex items-center gap-2 2xl:gap-6">
+        {/* Liens desktop : groupe serré, centré dans l’espace disponible */}
+        <div className="hidden xl:flex flex-1 min-w-0 self-stretch items-stretch justify-center z-[100]">
+          <div className="flex items-stretch gap-1 2xl:gap-2">
             {navlinks.map((item) => {
               if (item.submenu) {
                 return (
                   <div
                     key={item.label}
-                    className="self-stretch flex items-center"
+                    className="flex items-center"
                     onMouseEnter={() => openMega(item.label)}
                     onMouseLeave={scheduleMegaClose}
                   >
                     {item.href ? (
                       <Link
                         to={item.href}
-                        className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
+                        className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 whitespace-nowrap ${
                           item.href !== "/" && location.pathname.startsWith(item.href)
                             ? "text-accent"
                             : "text-gray-300 hover:text-white"
@@ -313,7 +313,7 @@ export default function Navbar() {
                     ) : (
                       <button
                         type="button"
-                        className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 font-heading flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 ${
+                        className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 font-heading flex items-center gap-1 whitespace-nowrap bg-transparent border-0 cursor-pointer p-0 ${
                           activeMegaLabel === item.label
                             ? "text-accent"
                             : "text-gray-300 hover:text-white"
@@ -335,10 +335,10 @@ export default function Navbar() {
               }
 
               return (
-                <div key={item.label} className="py-[25px]">
+                <div key={item.label} className="flex items-center">
                   <Link
                     to={item.href}
-                    className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading flex items-center gap-1 ${
+                    className={`text-nav 2xl:text-nav-lg font-semibold transition-colors duration-200 no-underline font-heading whitespace-nowrap ${
                       item.href !== "/" && location.pathname.startsWith(item.href)
                         ? "text-accent"
                         : "text-gray-300 hover:text-white"

@@ -35,8 +35,6 @@ export const contactData = {
     titre: "Horaires d'ouverture",
     jours: [
       { label: "Lundi - Vendredi", heures: "9h00 - 18h00" },
-      { label: "Samedi", heures: "Fermé" },
-      { label: "Dimanche", heures: "Fermé" }
     ]
   },
   // Formulaire de message

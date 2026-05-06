@@ -1,5 +1,5 @@
 /**
- * Page d'accueil - Nexytal
+ * Page d'accueil - Alt Formations
  * Ce fichier centralise les sections principales de la landing page :
  * - Hero Carousel : Diaporama dynamique avec vidéos en fond.
  * - StatsSection : Affichage des chiffres clés.
@@ -67,7 +67,7 @@ export default function HomePage() {
               <img
                 src={slides[currentSlide].image}
                 className="w-full h-full object-cover"
-                alt="Background Nexytal"
+                alt="Background Alt Formations"
               />
             )}
           </motion.div>
@@ -118,10 +118,10 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 2 : STATS */}
-      <StatsSection stats={stats} />
+      {/* <StatsSection stats={stats} /> */}
 
-      {/* SECTION PRÉSENTATION : Professionnels et engagés
-      <section className="py-20 px-6 max-w-container-2xl mx-auto text-center">
+       {/* SECTION PRÉSENTATION : Professionnels et engagés */}
+      {/* <section className="py-20 px-6 max-w-container-2xl mx-auto text-center">
         <h2 className="font-heading text-2xl md:text-h1 font-extrabold text-primary uppercase tracking-wider mb-8">
           {presentation.titre}
         </h2>
@@ -149,7 +149,7 @@ export default function HomePage() {
             {presentation.conclusion}
           </p>
         </div>
-      </section> */}
+      </section>  */}
 
       {/* SECTION 3 : NOS SERVICES / FORMATIONS */}
       <section className="pb-[80px] pt-10 px-6 md:px-[60px] max-w-container-3xl mx-auto">
@@ -164,6 +164,7 @@ export default function HomePage() {
               image={service.image || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600"}
               variant={service.theme || "white"}
               href={service.href || "#"}
+              items={service.items}
             />
           ))}
         </div>
