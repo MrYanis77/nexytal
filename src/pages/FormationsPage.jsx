@@ -1,13 +1,12 @@
 import CatalogueFormationsPage from '../components/CatalogueFormationsPage';
 import { hero, catalogue, catalogueCourtes } from '../data/formations';
-import { HardDrive, Code, Brain, Users, Calculator, Container, Cpu } from 'lucide-react';
+import { HardDrive, Code, Brain, Briefcase, Container, Cpu } from 'lucide-react';
 
 const categoryIcons = {
   'cybersecurite-reseaux': <HardDrive className="w-6 h-6" />,
   'digital-developpement': <Code className="w-6 h-6" />,
   'ia-data': <Brain className="w-6 h-6" />,
-  'ressources-humaines': <Users className="w-6 h-6" />,
-  'comptabilite-gestion': <Calculator className="w-6 h-6" />,
+  'rh-comptabilite-gestion': <Briefcase className="w-6 h-6" />,
   'devops-devsecops': <Container className="w-6 h-6" />,
   'systemes-embarques-iot': <Cpu className="w-6 h-6" />,
 };

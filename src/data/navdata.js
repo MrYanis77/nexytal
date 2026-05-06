@@ -29,18 +29,16 @@ const categoryMap = {
   'formation-intelligence-artificielle': 'ia-data',
   'formation-python-tosa': 'ia-data',
 
-  // RH
-  'formations-assistante-ressources-humaines': 'ressources-humaines',
-  'formations-assistante-de-direction': 'ressources-humaines',
-  'formations-assistante-administratifve': 'ressources-humaines',
-  'formations-assistante-commerciale': 'ressources-humaines',
-  'formations-conseillerere-relation-client-a-distance': 'ressources-humaines',
-
-  // Compta & Gestion
-  'formations-community-manager': 'comptabilite-gestion',
-  'formations-secretaire-comptable': 'comptabilite-gestion',
-  'gestionnaire-comptable-fiscal': 'comptabilite-gestion',
-  'formations-comptable-assistant': 'comptabilite-gestion'
+  // RH + Comptabilité & Gestion (domaine fusionné)
+  'formations-assistante-ressources-humaines': 'rh-comptabilite-gestion',
+  'formations-assistante-de-direction': 'rh-comptabilite-gestion',
+  'formations-assistante-administratifve': 'rh-comptabilite-gestion',
+  'formations-assistante-commerciale': 'rh-comptabilite-gestion',
+  'formations-conseillerere-relation-client-a-distance': 'rh-comptabilite-gestion',
+  'formations-community-manager': 'rh-comptabilite-gestion',
+  'formations-secretaire-comptable': 'rh-comptabilite-gestion',
+  'gestionnaire-comptable-fiscal': 'rh-comptabilite-gestion',
+  'formations-comptable-assistant': 'rh-comptabilite-gestion',
 };
 
 // Conversion du JSON en tableau et ajout dynamique de la catégorie si manquante
@@ -166,15 +164,10 @@ export const navlinks = [
             submenu: getSubMenu('ia-data')
           },
           {
-            label: "Ressources Humaines",
-            href: "/formations#ressources-humaines",
-            submenu: getSubMenu('ressources-humaines')
+            label: "Ressources Humaines / Comptabilité / Gestion",
+            href: "/formations#rh-comptabilite-gestion",
+            submenu: getSubMenu('rh-comptabilite-gestion'),
           },
-          {
-            label: "Gestion & Compta",
-            href: "/formations#comptabilite-gestion",
-            submenu: getSubMenu('comptabilite-gestion')
-          }
         ],
       },
       {
@@ -195,7 +188,7 @@ export const navlinks = [
   { label: "Certifications", href: "/certification" },
   { label: "Financements", href: "/financements" },
   { label: "F.A.Q", href: "/faq" },
-  { label: "Bilan de Compétences", href: "/bilan-de-competences" },
+  // { label: "Bilan de Compétences", href: "/bilan-de-competences" },
   {
     label: "Ressources",
     submenu: [
@@ -215,7 +208,7 @@ export const navlinks = [
   },
   { label: "Nos Campus", href: "/campus" },
   { label: "Contact", href: "/contact" },
-  { label: "Nous rejoindre", href: "/nous-rejoindre" },
+  // { label: "Nous rejoindre", href: "/nous-rejoindre" },
 ];
 
 // ── Mega Menu Formations ───────────────────────────────────────────────────────
@@ -225,8 +218,7 @@ const categoryImages = {
   'cybersecurite-reseaux':         '/assets/images/expert_cyber.jpg',
   'digital-developpement':         '/assets/images/concepteur_web.jpg',
   'ia-data':                       '/assets/images/analyste_data.jpg',
-  'ressources-humaines':           '/assets/images/responsable_rh.jpg',
-  'comptabilite-gestion':          '/assets/images/comptable_1.jpg',
+  'rh-comptabilite-gestion':       '/assets/images/responsable_rh.jpg',
   'cybersecurite':                 '/assets/images/pentester.jpg',
   'management':                    '/assets/images/entreprise.jpg',
   'devops-devsecops':              '/assets/images/Datacenter.jpg',
@@ -313,8 +305,11 @@ export const megaMenuFormations = {
     buildMegaCategory('cybersecurite-reseaux',  'Cybersécurité & Réseaux',  '/formations#cybersecurite-reseaux'),
     buildMegaCategory('digital-developpement',  'Développement Web',        '/formations#digital-developpement'),
     buildMegaCategory('ia-data',                'IA & Data',                '/formations#ia-data'),
-    buildMegaCategory('ressources-humaines',    'Ressources Humaines',      '/formations#ressources-humaines'),
-    buildMegaCategory('comptabilite-gestion',   'Comptabilité & Gestion',   '/formations#comptabilite-gestion'),
+    buildMegaCategory(
+      'rh-comptabilite-gestion',
+      'Ressources Humaines / Comptabilité / Gestion',
+      '/formations#rh-comptabilite-gestion'
+    ),
   ],
   certifiantes: buildCertifiantesCategories(),
   elearning: buildElearningCategories(),

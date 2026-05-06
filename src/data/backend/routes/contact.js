@@ -1,13 +1,9 @@
 import express from 'express';
-import { Resend } from 'resend';
 import { query } from '../db.js';
 import { clean, escapeHtml, looksLikeInjection } from '../utils.js';
+import { getSmtpTransport, getDefaultFrom, getAdminRecipient } from '../mail/smtp.js';
 
 const router = express.Router();
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-
-const RESEND_FROM = process.env.RESEND_FROM || 'onboarding@resend.dev';
-const ADMIN_RECIPIENT = process.env.EMAIL_DESTINATAIRE || 'contact@altformations.fr';
 
 router.post('/', async (req, res) => {
   try {
@@ -47,13 +43,12 @@ router.post('/', async (req, res) => {
 
     const contactId = result.insertId;
 
-    if (resend) {
+    const transport = getSmtpTransport();
+    if (transport) {
       try {
-        await resend.emails.send({
-          from: RESEND_FROM,
-          to: ADMIN_RECIPIENT,
-          subject: `Nouveau message du site: ${clean(sujet, 100)}`,
-          html: `
+        const from = getDefaultFrom();
+        const to = getAdminRecipient();
+        const html = `
             <div style="font-family: sans-serif; color: #1a202c; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
               <h2 style="color: #fca311; text-transform: uppercase;">Nouveau Contact #${contactId}</h2>
               <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
@@ -69,10 +64,16 @@ router.post('/', async (req, res) => {
               </div>
               <p style="margin-top: 20px; font-size: 12px; color: #718096;">Connectez-vous au tableau de bord admin pour répondre via le chat.</p>
             </div>
-          `,
+          `;
+        await transport.sendMail({
+          from,
+          to,
+          replyTo: clean(email, 100),
+          subject: `Nouveau message du site: ${clean(sujet, 100)}`,
+          html,
         });
       } catch (mailErr) {
-        console.error('Resend send error (non-blocking):', mailErr);
+        console.error('SMTP send error (non-blocking):', mailErr);
       }
     }
 
