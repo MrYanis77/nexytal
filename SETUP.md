@@ -28,11 +28,16 @@ IP_HASH_SALT=change-moi-pour-un-secret-aleatoire-long
 # CORS_ORIGINS=https://www.altformations.fr,https://altformations.fr
 CORS_ORIGINS=
 
-# Email (Resend) - obligatoire pour l'envoi des emails
-RESEND_API_KEY=ta_cle_resend
-# Adresse expéditrice : utiliser un domaine vérifié sur Resend en production
-RESEND_FROM=onboarding@resend.dev
-EMAIL_DESTINATAIRE=contact@altformations.fr
+# Email (SMTP — ex. IONOS) — pour /api/contact et /api/rejoindre
+SMTP_HOST=smtp.ionos.fr
+SMTP_PORT=465
+# true = SSL (465), false = STARTTLS (587). Laisser vide = auto selon le port (465 = secure).
+SMTP_SECURE=
+SMTP_USER=contact@nexytal.com
+SMTP_PASS=mot_de_passe_boite_mail
+# Expéditeur visible (souvent identique à SMTP_USER)
+SMTP_FROM=contact@nexytal.com
+EMAIL_DESTINATAIRE=contact@nexytal.com
 
 # Compte admin par défaut (utilisé par seed:admin)
 ADMIN_EMAIL=admin@altformations.fr

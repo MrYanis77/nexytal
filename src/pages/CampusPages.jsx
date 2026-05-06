@@ -24,11 +24,8 @@ export default function CampusPages() {
         <div className="max-w-container-3xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-primary mb-4">
-              Découvrez nos infrastructures
+              Découvrez nos Campus et infrastructures
             </h2>
-            <p className="text-lg font-body text-content-muted max-w-2xl mx-auto">
-              Huit implantations en Île-de-France. Ouvrez l'itinéraire directement dans Google Maps.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

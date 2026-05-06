@@ -143,26 +143,20 @@ export const catalogue = [
     ].map(mapIdToItem).filter(Boolean),
   },
   {
-    id: 'ressources-humaines',
-    label: 'Ressources Humaines',
+    id: 'rh-comptabilite-gestion',
+    label: 'Ressources Humaines / Comptabilité / Gestion',
     items: [
       'formations-assistante-ressources-humaines',
       'formations-assistante-de-direction',
       'formations-assistante-administratifve',
       'formations-assistante-commerciale',
       'formations-conseillerere-relation-client-a-distance',
-    ].map(mapIdToItem).filter(Boolean),
-  },
-  {
-    id: 'comptabilite-gestion',
-    label: 'Comptabilité & Gestion',
-    items: [
       'formations-community-manager',
       'formations-secretaire-comptable',
       'gestionnaire-comptable-fiscal',
       'formations-comptable-assistant'
     ].map(mapIdToItem).filter(Boolean),
-  }
+  },
 ];
 
 const categoriesCourtes = {

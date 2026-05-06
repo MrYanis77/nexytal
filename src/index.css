@@ -6,18 +6,22 @@
   /* ========================================================
      🎨 1. COULEURS SÉMANTIQUES : VIOLET & VIEUX ROSE
      ======================================================== */
-  /* Violet inspiré de la seconde image */
-  --color-primary: #5E24B3; 
-  --color-primary-light: #7E45D3;
-  --color-primary-alt: #46158C;
   
+  /* Violet plus clair, lumineux et moderne (type lavande/améthyste) */
+  --color-primary: #8B5CF6;       /* Violet principal plus doux */
+  --color-primary-light: #A78BFA; /* Variante très claire/pastel */
+  --color-primary-alt: #7C3AED;   /* Variante un peu plus soutenue (utile pour les hovers) */
+  
+  /* NOUVEAU : Le blanc "lilas" harmonieux pour le texte sur fond violet */
+  --color-on-primary: #F5F3FF;
+
   /* Rouge très clair / vieux rose inspiré de la première image */
   --color-accent: #C48B8A; 
   --color-accent-dark: #A87170;
   
   /* Couleurs de surface et de contenu adaptées pour s'harmoniser */
   --color-surface: #ffffff;
-  --color-surface-soft: #FDFBFC; /* Très léger reflet rose/violet */
+  --color-surface-soft: #FAF5FF; /* NOUVEAU : Blanc avec un très léger reflet violet/lilas */
   --color-surface-alt: #F4EFF6;
   --color-footer: #1A1525; /* Un fond sombre subtilement violet */
   --color-content: #334155;
@@ -70,12 +74,18 @@
 
   .dark {
     color-scheme: dark;
-    /* En dark mode, on éclaircit le violet pour qu'il ressorte */
-    --color-primary: #9D64ED; 
-    --color-primary-light: #B88DF5;
+    
+    /* En dark mode, on utilise un violet très clair et éclatant */
+    --color-primary: #B894FF; 
+    --color-primary-light: #D4BFFF;
+
+    /* NOUVEAU : Comme le violet principal devient clair en dark mode, on passe le texte des boutons en sombre pour rester lisible */
+    --color-on-primary: #0E0914; 
+    
     /* L'accent rose clair reste doux mais lumineux */
     --color-accent: #D6A2A1;
     --color-accent-dark: #C48B8A;
+    
     --color-surface: #0E0914; /* Noir profond avec une touche de violet */
     --color-surface-soft: #181224;
     --color-surface-alt: #251B38;
@@ -96,7 +106,12 @@
 }
 
 @layer components {
-  /* Le texte passe en 'content-dark' pour rester parfaitement lisible sur le fond clair du vieux rose */
+  /* Bouton principal violet avec le nouveau blanc harmonieux */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-alt text-on-primary px-5 py-2 rounded-btn font-extrabold transition-all duration-200 cursor-pointer border-none shadow-sm hover:shadow-md;
+  }
+
+  /* Bouton d'accent rose/vieux rose (le texte passe en 'content-dark' pour rester parfaitement lisible) */
   .btn-accent {
     @apply bg-accent hover:bg-accent-dark text-content-dark px-5 py-2 rounded-btn font-extrabold transition-all duration-200 cursor-pointer border-none shadow-sm hover:shadow-md;
   }
