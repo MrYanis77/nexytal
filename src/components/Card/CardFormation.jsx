@@ -8,6 +8,8 @@ export default function CardFormation({
   href = "#",
   hideButton = false,
   typeBadge,
+  /** Ligne de puces sous le titre (optionnel ; ex. services sur la homepage) */
+  items,
   /** Lien externe (ex. Google Maps) — affiche un bouton dédié */
   mapsHref,
   mapsButtonLabel = 'Google Maps',
@@ -48,6 +50,16 @@ export default function CardFormation({
         >
           {title}
         </h3>
+
+        {items && items.length > 0 ? (
+          <ul
+            className={`mt-4 list-disc space-y-1.5 pl-5 text-sm font-body leading-relaxed ${isNavy ? 'text-white/90 marker:text-accent' : 'text-content-muted marker:text-accent'}`}
+          >
+            {items.map((line, i) => (
+              <li key={i}>{line}</li>
+            ))}
+          </ul>
+        ) : null}
 
         {(!hideButton || mapsHref) && (
           <div className="mt-auto pt-6 flex flex-col gap-3">
